@@ -48,6 +48,7 @@ class MainActivity : AppCompatActivity() {
                     .withIconTintingEnabled(true)
                     .withName("Create group")
                     .withSelectable(false)
+                    .withIcon(R.drawable.ic_menu_create_groups)
             ).build()
     }
 
