@@ -48,7 +48,12 @@ class MainActivity : AppCompatActivity() {
                     .withIconTintingEnabled(true)
                     .withName("Create group")
                     .withSelectable(false)
-                    .withIcon(R.drawable.ic_menu_create_groups)
+                    .withIcon(R.drawable.ic_menu_create_groups),
+                PrimaryDrawerItem().withIdentifier(101)
+                    .withIconTintingEnabled(true)
+                    .withName("Create secret chat")
+                    .withSelectable(false)
+                    .withIcon(R.drawable.ic_menu_secret_chat)
             ).build()
     }
 
