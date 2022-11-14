@@ -1,9 +1,8 @@
 package ru.k2d.k2dmessenger
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.mikepenz.materialdrawer.AccountHeader
 import com.mikepenz.materialdrawer.AccountHeaderBuilder
@@ -15,6 +14,7 @@ import com.mikepenz.materialdrawer.model.ProfileDrawerItem
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem
 import ru.k2d.k2dmessenger.databinding.ActivityMainBinding
 import ru.k2d.k2dmessenger.ui.ChatsFragment
+import ru.k2d.k2dmessenger.ui.SettingsFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -103,7 +103,11 @@ class MainActivity : AppCompatActivity() {
                     position: Int,
                     drawerItem: IDrawerItem<*>
                 ): Boolean {
-                    Toast.makeText(applicationContext, position.toString(), Toast.LENGTH_SHORT).show()
+                    when(position){
+                        7 -> supportFragmentManager.beginTransaction()
+                            .addToBackStack(null)
+                            .replace(R.id.dataContainer,SettingsFragment()).commit()
+                    }
                     return false
                 }
             }).build()
