@@ -12,9 +12,9 @@ import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem
 import ru.k2d.k2dmessenger.R
-import ru.k2d.k2dmessenger.ui.SettingsFragment
+import ru.k2d.k2dmessenger.ui.fragments.SettingsFragment
 
-class AppDrawer(val mainActivity: AppCompatActivity, val toolbar: Toolbar) {
+class AppDrawer(val mainActivity: AppCompatActivity, private val toolbar: Toolbar) {
 
     private lateinit var mDrawer: Drawer
     private lateinit var mHeader: AccountHeader

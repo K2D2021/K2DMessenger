@@ -1,21 +1,20 @@
-package ru.k2d.k2dmessenger.ui
+package ru.k2d.k2dmessenger.ui.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import ru.k2d.k2dmessenger.R
-import ru.k2d.k2dmessenger.databinding.FragmentChatsBinding
+import ru.k2d.k2dmessenger.databinding.FragmentSettingsBinding
 
-class ChatsFragment : Fragment() {
+class SettingsFragment : Fragment() {
 
-    private lateinit var mBinding: FragmentChatsBinding
+    private lateinit var mBinding: FragmentSettingsBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        mBinding = FragmentChatsBinding.inflate(layoutInflater)
+        mBinding = FragmentSettingsBinding.inflate(layoutInflater)
         return mBinding.root
     }
 
