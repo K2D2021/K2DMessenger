@@ -1,22 +1,8 @@
 package ru.k2d.k2dmessenger.ui.fragments
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import ru.k2d.k2dmessenger.databinding.FragmentSettingsBinding
+import ru.k2d.k2dmessenger.R
 
-class SettingsFragment : Fragment() {
-
-    private lateinit var mBinding: FragmentSettingsBinding
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        mBinding = FragmentSettingsBinding.inflate(layoutInflater)
-        return mBinding.root
-    }
+class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
 
     override fun onResume() {
         super.onResume()
