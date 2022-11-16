@@ -100,7 +100,7 @@ class AppDrawer(val mainActivity: AppCompatActivity, private val toolbar: Toolba
             .withHeaderBackground(R.drawable.header)
             .addProfiles(
                 ProfileDrawerItem().withName("John Smith")
-                    .withEmail("+79099909")
+                    .withEmail(R.string.default_phone_number)
             ).build()
     }
 
