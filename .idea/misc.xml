@@ -5,6 +5,8 @@
       <map>
         <entry key="..\:/Users/K2D/AndroidStudioProjects/K2DMessenger/app/src/main/res/drawable/header.xml" value="0.255" />
         <entry key="..\:/Users/K2D/AndroidStudioProjects/K2DMessenger/app/src/main/res/layout/activity_main.xml" value="0.371875" />
+        <entry key="..\:/Users/K2D/AndroidStudioProjects/K2DMessenger/app/src/main/res/layout/fragment_chats.xml" value="0.371875" />
+        <entry key="..\:/Users/K2D/AndroidStudioProjects/K2DMessenger/app/src/main/res/layout/fragment_settings.xml" value="0.371875" />
       </map>
     </option>
   </component>
