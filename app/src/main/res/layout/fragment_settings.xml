@@ -67,12 +67,10 @@
     
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/settings_btn_change_number_phone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/vertical_margin"
         app:layout_constraintTop_toBottomOf="@id/settings_text_account"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        style="@style/settingsButtons">
 
         <TextView
             android:id="@+id/settings_phone_number"
