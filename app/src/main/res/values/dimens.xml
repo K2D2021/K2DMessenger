@@ -10,8 +10,12 @@
     <dimen name="smallText">14sp</dimen>
 
     <!-- Settings fragment-->
-    <dimen name="settings_user_photo_width">55dp</dimen>
     <dimen name="settings_user_photo_height">55dp</dimen>
+    <dimen name="settings_user_photo_width">55dp</dimen>
     <dimen name="settings_user_photo_border">2dp</dimen>
 
+
+    <dimen name="settings_btn_change_photo_width">45dp</dimen>
+    <dimen name="settings_btn_change_photo_height">45dp</dimen>
+    <dimen name="settings_ripple_effect_radius">4dp</dimen>
 </resources>
