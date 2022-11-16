@@ -7,4 +7,8 @@
     <string name="account">Account</string>
     <string name="default_phone_number">+7(123)909–99–09</string>
     <string name="settings_label_phone_number">Press to change phone number</string>
+    <string name="settings_default_login">johnsmith22</string>
+    <string name="settings_label_login">The name of user</string>
+    <string name="settings_default_bio">About me</string>
+    <string name="settings_label_bio">Write something about you</string>
 </resources>
