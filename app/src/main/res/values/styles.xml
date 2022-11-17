@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="actionMenu" parent="Theme.AppCompat.Light">
+        <item name="background">@color/colorAccent</item>
+        <item name="actionMenuTextColor">@color/colorBlack</item>
+    </style>
+    
     <style name="settingsButtons">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
