@@ -13,4 +13,6 @@
     <string name="settings_label_bio">Write something about you</string>
     <string name="settings_menu_change_name">Change name</string>
     <string name="settings_menu_exit">Exit</string>
+    <string name="cd_register_btn_next">Button to go next page</string>
+    <string name="cd_register_image">register_image</string>
 </resources>
