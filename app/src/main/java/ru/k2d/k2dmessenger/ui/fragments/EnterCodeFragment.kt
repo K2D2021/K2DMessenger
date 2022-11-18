@@ -4,17 +4,15 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import kotlinx.android.synthetic.main.fragment_enter_code.*
 import ru.k2d.k2dmessenger.R
-import ru.k2d.k2dmessenger.databinding.FragmentEnterCodeBinding
 
 class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
 
-    private lateinit var mBinding: FragmentEnterCodeBinding
 
     override fun onStart() {
         super.onStart()
-        mBinding = FragmentEnterCodeBinding.inflate(layoutInflater)
-        mBinding.registerInputCode.addTextChangedListener(object :TextWatcher{
+        register_input_code.addTextChangedListener(object :TextWatcher{
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
 
@@ -22,7 +20,7 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
             }
 
             override fun afterTextChanged(s: Editable?) {
-                val string = mBinding.registerInputCode.text.toString()
+                val string = register_input_code.text.toString()
                 if (string.length == 6){
                     verifyCode()
                 }
