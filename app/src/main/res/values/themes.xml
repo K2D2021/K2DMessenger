@@ -6,6 +6,7 @@
         <item name="colorPrimaryVariant">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="popupTheme">@style/actionMenu</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
         <item name="android:colorBackground">@color/colorAccent</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/colorBlack</item>

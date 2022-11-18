@@ -15,4 +15,9 @@
     <string name="settings_menu_exit">Exit</string>
     <string name="cd_register_btn_next">Button to go next page</string>
     <string name="cd_register_image">register_image</string>
+    <string name="register_text_enter_code">Write code</string>
+    <string name="register_text_we_send">We send you the SMS</string>
+    <string name="register_hint_default_code">_ _ _ _ _ _</string>
+    <string name="register_title_your_phone">Your phone number</string>
+    <string name="register_toast_enter_phone">Write the phone number</string>
 </resources>
