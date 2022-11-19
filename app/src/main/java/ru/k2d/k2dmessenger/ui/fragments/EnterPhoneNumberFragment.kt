@@ -2,7 +2,6 @@ package ru.k2d.k2dmessenger.ui.fragments
 
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import kotlinx.android.synthetic.main.fragment_enter_phone_number.*
 import ru.k2d.k2dmessenger.R
 
@@ -15,15 +14,18 @@ class EnterPhoneNumberFragment : Fragment(R.layout.fragment_enter_phone_number) 
             sendCode()
         }
     }
-    //TODO need to choose sintetics (NO!) or repair code with binding
 
 
     private fun sendCode() {
-        if (register_input_phone_number.text.toString().isEmpty()){
-            Toast.makeText(activity,getString(R.string.register_toast_enter_phone),Toast.LENGTH_SHORT).show()
+        if (register_input_phone_number.text.toString().isEmpty()) {
+            Toast.makeText(
+                activity,
+                getString(R.string.register_toast_enter_phone),
+                Toast.LENGTH_SHORT
+            ).show()
         } else {
             fragmentManager?.beginTransaction()
-                ?.replace(R.id.registerDataContainer,EnterCodeFragment())
+                ?.replace(R.id.registerDataContainer, EnterCodeFragment())
                 ?.addToBackStack(null)
                 ?.commit()
         }
