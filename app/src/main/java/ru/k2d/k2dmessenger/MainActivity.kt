@@ -1,6 +1,5 @@
 package ru.k2d.k2dmessenger
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -8,6 +7,8 @@ import ru.k2d.k2dmessenger.activities.RegisterActivity
 import ru.k2d.k2dmessenger.databinding.ActivityMainBinding
 import ru.k2d.k2dmessenger.ui.fragments.ChatsFragment
 import ru.k2d.k2dmessenger.ui.objects.AppDrawer
+import ru.k2d.k2dmessenger.utilits.replaceActivity
+import ru.k2d.k2dmessenger.utilits.replaceFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,24 +27,18 @@ class MainActivity : AppCompatActivity() {
         initFunc()
     }
 
-
     private fun initFunc() {
-        if (false){
+        if (false) {
             setSupportActionBar(mToolbar)
             mAppDrawer.create()
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.dataContainer, ChatsFragment()).commit()
+            replaceFragment(ChatsFragment())
         } else {
-            val intent = Intent(this, RegisterActivity::class.java)
-            startActivity(intent)
+            replaceActivity(RegisterActivity())
         }
-
     }
-
-
 
     private fun initFields() {
         mToolbar = mBinding.mainToolbar
-        mAppDrawer = AppDrawer(this,mToolbar)
+        mAppDrawer = AppDrawer(this, mToolbar)
     }
 }
