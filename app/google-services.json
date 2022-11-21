@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "31035350488",
+    "project_id": "k2dmessenger",
+    "storage_bucket": "k2dmessenger.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:31035350488:android:b5e78b4ff5812b1475a6ad",
+        "android_client_info": {
+          "package_name": "ru.k2d.k2dmessenger"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "31035350488-loci6tcomoujlq7v8lf4ljhmmvdod00d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByz-qP8hKZ6VN1RIwnjAQLJwZp3CX-vn8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "31035350488-loci6tcomoujlq7v8lf4ljhmmvdod00d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
