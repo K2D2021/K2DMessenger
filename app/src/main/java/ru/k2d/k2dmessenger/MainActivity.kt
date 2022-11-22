@@ -3,12 +3,12 @@ package ru.k2d.k2dmessenger
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import com.google.firebase.auth.FirebaseAuth
 import ru.k2d.k2dmessenger.activities.RegisterActivity
 import ru.k2d.k2dmessenger.databinding.ActivityMainBinding
 import ru.k2d.k2dmessenger.ui.fragments.ChatsFragment
 import ru.k2d.k2dmessenger.ui.objects.AppDrawer
 import ru.k2d.k2dmessenger.utilits.AUTH
+import ru.k2d.k2dmessenger.utilits.initFirebase
 import ru.k2d.k2dmessenger.utilits.replaceActivity
 import ru.k2d.k2dmessenger.utilits.replaceFragment
 
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         if (AUTH.currentUser != null) {
             setSupportActionBar(mToolbar)
             mAppDrawer.create()
-            replaceFragment(ChatsFragment(), false)
+            replaceFragment(ChatsFragment())
         } else {
             replaceActivity(RegisterActivity())
         }
@@ -43,6 +43,6 @@ class MainActivity : AppCompatActivity() {
     private fun initFields() {
         mToolbar = mBinding.mainToolbar
         mAppDrawer = AppDrawer(this, mToolbar)
-        AUTH = FirebaseAuth.getInstance()
+        initFirebase()
     }
 }

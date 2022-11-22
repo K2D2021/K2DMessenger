@@ -6,12 +6,10 @@ import kotlinx.android.synthetic.main.fragment_enter_code.*
 import ru.k2d.k2dmessenger.MainActivity
 import ru.k2d.k2dmessenger.R
 import ru.k2d.k2dmessenger.activities.RegisterActivity
-import ru.k2d.k2dmessenger.utilits.AUTH
-import ru.k2d.k2dmessenger.utilits.AppTextWatcher
-import ru.k2d.k2dmessenger.utilits.replaceActivity
-import ru.k2d.k2dmessenger.utilits.showToast
+import ru.k2d.k2dmessenger.utilits.*
 
-class EnterCodeFragment(val phoneNumber: String, val id: String) : Fragment(R.layout.fragment_enter_code) {
+class EnterCodeFragment(val phoneNumber: String, val id: String) :
+    Fragment(R.layout.fragment_enter_code) {
 
 
     override fun onStart() {
@@ -27,11 +25,23 @@ class EnterCodeFragment(val phoneNumber: String, val id: String) : Fragment(R.la
 
     private fun enterCode() {
         val code = register_input_code.text.toString()
-        val credential = PhoneAuthProvider.getCredential(id,code)
-        AUTH.signInWithCredential(credential).addOnCompleteListener{ task ->
-            if (task.isSuccessful){
-                showToast("Welcome!")
-                (activity as RegisterActivity).replaceActivity(MainActivity())
+        val credential = PhoneAuthProvider.getCredential(id, code)
+        AUTH.signInWithCredential(credential).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val uid = AUTH.currentUser?.uid.toString()
+                val dateMap = mutableMapOf<String, Any>()
+                dateMap[CHILD_ID] = uid
+                dateMap[CHILD_PHONE] = phoneNumber
+                dateMap[CHILD_USERNAME] = uid
+
+                REF_DATABASE_ROOT.child(NODE_USERS).child(uid).updateChildren(dateMap)
+                    .addOnCompleteListener { task2 ->
+
+                        if (task2.isSuccessful) {
+                            showToast("Welcome!")
+                            (activity as RegisterActivity).replaceActivity(MainActivity())
+                        } else showToast(task2.exception?.message.toString())
+                    }
             } else {
                 showToast(task.exception?.message.toString())
             }
