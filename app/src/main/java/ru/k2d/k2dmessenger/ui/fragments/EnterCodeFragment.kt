@@ -1,5 +1,6 @@
 package ru.k2d.k2dmessenger.ui.fragments
 
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.PhoneAuthProvider
 import kotlinx.android.synthetic.main.fragment_enter_code.*
@@ -36,15 +37,13 @@ class EnterCodeFragment(val phoneNumber: String, val id: String) :
 
                 REF_DATABASE_ROOT.child(NODE_USERS).child(uid).updateChildren(dateMap)
                     .addOnCompleteListener { task2 ->
-
                         if (task2.isSuccessful) {
                             showToast("Welcome!")
                             (activity as RegisterActivity).replaceActivity(MainActivity())
                         } else showToast(task2.exception?.message.toString())
                     }
-            } else {
-                showToast(task.exception?.message.toString())
-            }
+            } else showToast(task.exception?.message.toString())
+            Toast.makeText(activity, "TEST", Toast.LENGTH_SHORT).show()
         }
     }
 }
