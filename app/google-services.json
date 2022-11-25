@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "31035350488",
-    "project_id": "k2dmessenger",
-    "storage_bucket": "k2dmessenger.appspot.com"
+    "project_number": "167716252424",
+    "project_id": "k2dmessengerv2",
+    "storage_bucket": "k2dmessengerv2.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:31035350488:android:b5e78b4ff5812b1475a6ad",
+        "mobilesdk_app_id": "1:167716252424:android:1fc8176cc08d15635c5abd",
         "android_client_info": {
           "package_name": "ru.k2d.k2dmessenger"
         }
       },
       "oauth_client": [
         {
-          "client_id": "31035350488-loci6tcomoujlq7v8lf4ljhmmvdod00d.apps.googleusercontent.com",
+          "client_id": "167716252424-rg85ii5n2b4vsj8f13s7kb9j9ag11m30.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyByz-qP8hKZ6VN1RIwnjAQLJwZp3CX-vn8"
+          "current_key": "AIzaSyC5vUXjx1DcY4B8SjrpmBrK3aggEMsgmTI"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "31035350488-loci6tcomoujlq7v8lf4ljhmmvdod00d.apps.googleusercontent.com",
+              "client_id": "167716252424-rg85ii5n2b4vsj8f13s7kb9j9ag11m30.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
