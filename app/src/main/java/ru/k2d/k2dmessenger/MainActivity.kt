@@ -48,3 +48,4 @@ class MainActivity : AppCompatActivity() {
 }
 
 //TODO need to research run on main PC
+//need to new link with new realtime database
