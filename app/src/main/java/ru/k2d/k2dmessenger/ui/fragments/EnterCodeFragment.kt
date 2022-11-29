@@ -43,7 +43,6 @@ class EnterCodeFragment(val phoneNumber: String, val id: String) :
                         } else showToast(task2.exception?.message.toString())
                     }
             } else showToast(task.exception?.message.toString())
-            Toast.makeText(activity, "TEST", Toast.LENGTH_SHORT).show()
         }
     }
 }
