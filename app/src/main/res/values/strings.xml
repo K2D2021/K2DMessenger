@@ -21,4 +21,6 @@
     <string name="register_title_your_phone">Your phone number</string>
     <string name="register_toast_enter_phone">Write the phone number</string>
     <string name="register_phone_hint">+X (XXX) XXX-XX-XX</string>
+    <string name="settings_hint_input_name">Name</string>
+    <string name="settings_hint_input_surname">Family</string>
 </resources>

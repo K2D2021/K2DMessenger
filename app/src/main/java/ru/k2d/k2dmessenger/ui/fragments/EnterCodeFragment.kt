@@ -1,6 +1,5 @@
 package ru.k2d.k2dmessenger.ui.fragments
 
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.PhoneAuthProvider
 import kotlinx.android.synthetic.main.fragment_enter_code.*
