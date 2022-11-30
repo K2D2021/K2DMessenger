@@ -23,4 +23,6 @@
     <string name="register_phone_hint">+X (XXX) XXX-XX-XX</string>
     <string name="settings_hint_input_name">Name</string>
     <string name="settings_hint_input_surname">Family</string>
+    <string name="settings_toast_name_is_empty">Name required</string>
+    <string name="toast_data_update">Data updated</string>
 </resources>
