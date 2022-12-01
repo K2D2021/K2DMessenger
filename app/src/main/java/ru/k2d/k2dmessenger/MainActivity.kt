@@ -3,14 +3,15 @@ package ru.k2d.k2dmessenger
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 import ru.k2d.k2dmessenger.activities.RegisterActivity
 import ru.k2d.k2dmessenger.databinding.ActivityMainBinding
+import ru.k2d.k2dmessenger.models.User
 import ru.k2d.k2dmessenger.ui.fragments.ChatsFragment
 import ru.k2d.k2dmessenger.ui.objects.AppDrawer
-import ru.k2d.k2dmessenger.utilits.AUTH
-import ru.k2d.k2dmessenger.utilits.initFirebase
-import ru.k2d.k2dmessenger.utilits.replaceActivity
-import ru.k2d.k2dmessenger.utilits.replaceFragment
+import ru.k2d.k2dmessenger.utilits.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -44,5 +45,13 @@ class MainActivity : AppCompatActivity() {
         mToolbar = mBinding.mainToolbar
         mAppDrawer = AppDrawer(this, mToolbar)
         initFirebase()
+        initUser()
+    }
+
+    private fun initUser() {
+        REF_DATABASE_ROOT.child(NODE_USERS).child(UID)
+            .addListenerForSingleValueEvent(AppValueEventListener {
+                USER = it.getValue(User::class.java) ?: User()
+            })
     }
 }
