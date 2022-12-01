@@ -3,13 +3,12 @@ package ru.k2d.k2dmessenger.ui.fragments
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
-import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_change_name.*
 import ru.k2d.k2dmessenger.MainActivity
 import ru.k2d.k2dmessenger.R
 import ru.k2d.k2dmessenger.utilits.*
 
-class ChangeNameFragment : Fragment(R.layout.fragment_change_name) {
+class ChangeNameFragment : BaseFragment(R.layout.fragment_change_name) {
 
     override fun onResume() {
         super.onResume()

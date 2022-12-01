@@ -3,10 +3,12 @@ package ru.k2d.k2dmessenger.ui.fragments
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import kotlinx.android.synthetic.main.fragment_settings.*
 import ru.k2d.k2dmessenger.MainActivity
 import ru.k2d.k2dmessenger.R
 import ru.k2d.k2dmessenger.activities.RegisterActivity
 import ru.k2d.k2dmessenger.utilits.AUTH
+import ru.k2d.k2dmessenger.utilits.USER
 import ru.k2d.k2dmessenger.utilits.replaceActivity
 import ru.k2d.k2dmessenger.utilits.replaceFragment
 
@@ -15,6 +17,15 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
     override fun onResume() {
         super.onResume()
         setHasOptionsMenu(true)
+        initFields()
+    }
+
+    private fun initFields() {
+        settings_full_name.text = USER.fullname
+        settings_phone_number.text = USER.phone
+        settings_username.text = USER.username
+        settings_bio.text = USER.bio
+        settings_status.text = USER.status
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
