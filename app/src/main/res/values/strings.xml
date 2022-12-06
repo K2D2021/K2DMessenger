@@ -26,4 +26,5 @@
     <string name="settings_toast_name_is_empty">Name required</string>
     <string name="toast_data_update">Data updated</string>
     <string name="settings_hint_input_username">Username</string>
+    <string name="settings_input_bio">Bio</string>
 </resources>
