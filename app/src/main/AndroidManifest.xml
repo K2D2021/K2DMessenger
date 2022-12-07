@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="ru.k2d.k2dmessenger">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -14,9 +17,12 @@
         android:theme="@style/ThemeK2DMessengerLight"
         tools:targetApi="31">
         <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
+        <activity
             android:name=".activities.RegisterActivity"
-            android:windowSoftInputMode="stateVisible|adjustResize"
-            android:exported="false">
+            android:exported="false"
+            android:windowSoftInputMode="stateVisible|adjustResize">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
