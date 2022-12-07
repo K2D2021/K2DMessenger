@@ -1,7 +1,5 @@
 package ru.k2d.k2dmessenger.ui.fragments
 
-import android.app.Activity.RESULT_OK
-import android.content.Intent
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -26,10 +24,10 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
         settings_username.text = USER.username
         settings_bio.text = USER.bio
         settings_status.text = USER.status
-        settings_btn_change_user_name.setOnClickListener{
+        settings_btn_change_user_name.setOnClickListener {
             replaceFragment(ChangeUsernameFragment())
         }
-        settings_btn_change_bio.setOnClickListener{
+        settings_btn_change_bio.setOnClickListener {
             replaceFragment(ChangeBioFragment())
         }
         settings_change_photo.setOnClickListener {
@@ -39,16 +37,10 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
 
     private fun changePhotoUser() {
         CropImage.activity()
-            .setAspectRatio(1,1)
-            .setRequestedSize(512,512)
+            .setAspectRatio(1, 1)
+            .setRequestedSize(512, 512)
             .setCropShape(CropImageView.CropShape.OVAL)
             .start(APP_ACTIVITY)
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
-            val uri = CropImage.getActivityResult(data).uri
-        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
