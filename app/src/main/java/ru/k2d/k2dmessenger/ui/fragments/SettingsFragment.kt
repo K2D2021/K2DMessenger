@@ -1,5 +1,7 @@
 package ru.k2d.k2dmessenger.ui.fragments
 
+import android.app.Activity.RESULT_OK
+import android.content.Intent
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -41,6 +43,12 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
             .setRequestedSize(512,512)
             .setCropShape(CropImageView.CropShape.OVAL)
             .start(APP_ACTIVITY)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
+            val uri = CropImage.getActivityResult(data).uri
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
