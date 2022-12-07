@@ -3,14 +3,13 @@ package ru.k2d.k2dmessenger.ui.fragments
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import com.theartofdev.edmodo.cropper.CropImage
+import com.theartofdev.edmodo.cropper.CropImageView
 import kotlinx.android.synthetic.main.fragment_settings.*
 import ru.k2d.k2dmessenger.MainActivity
 import ru.k2d.k2dmessenger.R
 import ru.k2d.k2dmessenger.activities.RegisterActivity
-import ru.k2d.k2dmessenger.utilits.AUTH
-import ru.k2d.k2dmessenger.utilits.USER
-import ru.k2d.k2dmessenger.utilits.replaceActivity
-import ru.k2d.k2dmessenger.utilits.replaceFragment
+import ru.k2d.k2dmessenger.utilits.*
 
 class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
 
@@ -32,6 +31,17 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
         settings_btn_change_bio.setOnClickListener{
             replaceFragment(ChangeBioFragment())
         }
+        settings_change_photo.setOnClickListener {
+            changePhotoUser()
+        }
+    }
+
+    private fun changePhotoUser() {
+        CropImage.activity()
+            .setAspectRatio(1,1)
+            .setRequestedSize(512,512)
+            .setCropShape(CropImageView.CropShape.OVAL)
+            .start(APP_ACTIVITY)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -42,7 +52,7 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
         when (item.itemId) {
             R.id.settings_menu_exit -> {
                 AUTH.signOut()
-                (activity as MainActivity).replaceActivity(RegisterActivity())
+                (APP_ACTIVITY).replaceActivity(RegisterActivity())
             }
             R.id.settings_menu_change_name -> (replaceFragment(ChangeNameFragment()))
         }
