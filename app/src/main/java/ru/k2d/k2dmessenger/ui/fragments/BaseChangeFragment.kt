@@ -18,6 +18,7 @@ open class BaseChangeFragment(layout: Int) : Fragment(layout) {
 
     override fun onStop() {
         super.onStop()
+        APP_ACTIVITY.hideKeyboard()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
