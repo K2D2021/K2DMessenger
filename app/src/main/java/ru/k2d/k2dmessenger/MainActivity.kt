@@ -1,12 +1,8 @@
 package ru.k2d.k2dmessenger
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
-import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import com.theartofdev.edmodo.cropper.CropImage
 import ru.k2d.k2dmessenger.activities.RegisterActivity
 import ru.k2d.k2dmessenger.databinding.ActivityMainBinding
 import ru.k2d.k2dmessenger.models.User
@@ -51,11 +47,6 @@ class MainActivity : AppCompatActivity() {
             .addListenerForSingleValueEvent(AppValueEventListener {
                 USER = it.getValue(User::class.java) ?: User()
             })
-    }
-
-    fun hideKeyboard(){
-        val imm : InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(window.decorView.windowToken,0)
     }
 }
 
