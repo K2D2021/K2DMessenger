@@ -75,6 +75,7 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
                                 .child(CHILD_PHOTO_URL).setValue(photoUrl)
                                 .addOnCompleteListener {
                                     if (it.isSuccessful){
+
                                         showToast(getString(R.string.toast_data_update))
                                         USER.photoUrl = photoUrl
                                     }
