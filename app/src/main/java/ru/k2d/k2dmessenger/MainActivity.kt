@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.core.content.getSystemService
 import com.theartofdev.edmodo.cropper.CropImage
 import ru.k2d.k2dmessenger.activities.RegisterActivity
 import ru.k2d.k2dmessenger.databinding.ActivityMainBinding
@@ -63,8 +62,23 @@ class MainActivity : AppCompatActivity() {
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
             val uri = CropImage.getActivityResult(data).uri
             val path = REF_STORAGE_ROOT.child(FOLDER_PROFILE_IMAGE).child(CURRENT_UID)
-            path.putFile(uri).addOnCompleteListener{
-                if (it.isSuccessful) showToast(getString(R.string.toast_data_update))
+            path.putFile(uri).addOnCompleteListener{ task1 ->
+                if (task1.isSuccessful){
+                    path.downloadUrl.addOnCompleteListener {task2 ->
+                        if (task2.isSuccessful){
+                            val photoUrl = task2.result.toString()
+                            REF_DATABASE_ROOT.child(NODE_USERS)
+                                .child(CURRENT_UID)
+                                .child(CHILD_PHOTO_URL).setValue(photoUrl)
+                                .addOnCompleteListener {
+                                    if (it.isSuccessful){
+                                        showToast(getString(R.string.toast_data_update))
+                                        USER.photoUrl = photoUrl
+                                    }
+                                }
+                        }
+                    }
+                }
             }
         }
     }
