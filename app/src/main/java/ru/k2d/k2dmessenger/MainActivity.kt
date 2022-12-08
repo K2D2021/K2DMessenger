@@ -24,10 +24,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         mBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
-    }
-
-    override fun onStart() {
-        super.onStart()
         APP_ACTIVITY = this
         initFields()
         initFunc()
