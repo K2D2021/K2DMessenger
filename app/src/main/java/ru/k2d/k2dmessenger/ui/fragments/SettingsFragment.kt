@@ -2,11 +2,9 @@ package ru.k2d.k2dmessenger.ui.fragments
 
 import android.app.Activity.RESULT_OK
 import android.content.Intent
-import android.net.Uri
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
-import com.google.firebase.storage.StorageReference
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
 import kotlinx.android.synthetic.main.fragment_settings.*
