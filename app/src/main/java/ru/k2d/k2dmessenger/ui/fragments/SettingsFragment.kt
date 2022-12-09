@@ -35,6 +35,7 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
         settings_change_photo.setOnClickListener {
             changePhotoUser()
         }
+        settings_user_photo.downloadAndSetImage(USER.photoUrl)
     }
 
     private fun changePhotoUser() {
