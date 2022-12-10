@@ -14,6 +14,7 @@ import com.mikepenz.materialdrawer.model.ProfileDrawerItem
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem
 import ru.k2d.k2dmessenger.R
 import ru.k2d.k2dmessenger.ui.fragments.SettingsFragment
+import ru.k2d.k2dmessenger.utilits.USER
 import ru.k2d.k2dmessenger.utilits.replaceFragment
 
 class AppDrawer(val mainActivity: AppCompatActivity, private val toolbar: Toolbar) {
@@ -21,6 +22,7 @@ class AppDrawer(val mainActivity: AppCompatActivity, private val toolbar: Toolba
     private lateinit var mDrawer: Drawer
     private lateinit var mHeader: AccountHeader
     private lateinit var mDrawerLayout: DrawerLayout
+    private lateinit var mCurrentProfile: ProfileDrawerItem
 
     fun create(){
         createHeader()
@@ -115,12 +117,16 @@ class AppDrawer(val mainActivity: AppCompatActivity, private val toolbar: Toolba
     }
 
     private fun createHeader() {
+        mCurrentProfile = ProfileDrawerItem()
+            .withName(USER.fullname)
+            .withEmail(USER.phone)
+            .withIcon(USER.photoUrl)
+            .withIdentifier(200)
         mHeader = AccountHeaderBuilder()
             .withActivity(mainActivity)
             .withHeaderBackground(R.drawable.header)
             .addProfiles(
-                ProfileDrawerItem().withName("John Smith")
-                    .withEmail(R.string.default_phone_number)
+                mCurrentProfile
             ).build()
     }
 
