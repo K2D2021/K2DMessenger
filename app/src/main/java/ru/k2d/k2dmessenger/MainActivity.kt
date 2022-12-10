@@ -21,6 +21,8 @@ class MainActivity : AppCompatActivity() {
         mBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
         APP_ACTIVITY = this
+        initFirebase()
+        initUser()
         initFields()
         initFunc()
     }
@@ -38,8 +40,6 @@ class MainActivity : AppCompatActivity() {
     private fun initFields() {
         mToolbar = mBinding.mainToolbar
         mAppDrawer = AppDrawer(this, mToolbar)
-        initFirebase()
-        initUser()
     }
 
     private fun initUser() {
