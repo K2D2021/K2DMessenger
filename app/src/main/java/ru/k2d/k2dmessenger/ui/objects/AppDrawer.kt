@@ -24,13 +24,13 @@ class AppDrawer(val mainActivity: AppCompatActivity, private val toolbar: Toolba
     private lateinit var mDrawerLayout: DrawerLayout
     private lateinit var mCurrentProfile: ProfileDrawerItem
 
-    fun create(){
+    fun create() {
         createHeader()
         createDrawer()
         mDrawerLayout = mDrawer.drawerLayout
     }
 
-    fun disableDrawer(){
+    fun disableDrawer() {
         mDrawer.actionBarDrawerToggle?.isDrawerIndicatorEnabled = false
         mainActivity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
         mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
@@ -39,7 +39,7 @@ class AppDrawer(val mainActivity: AppCompatActivity, private val toolbar: Toolba
         }
     }
 
-    fun enableDrawer(){
+    fun enableDrawer() {
         mainActivity.supportActionBar?.setDisplayHomeAsUpEnabled(false)
         mDrawer.actionBarDrawerToggle?.isDrawerIndicatorEnabled = true
         mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
@@ -108,7 +108,7 @@ class AppDrawer(val mainActivity: AppCompatActivity, private val toolbar: Toolba
                     position: Int,
                     drawerItem: IDrawerItem<*>
                 ): Boolean {
-                    when(position){
+                    when (position) {
                         7 -> mainActivity.replaceFragment(SettingsFragment())
                     }
                     return false
@@ -130,5 +130,12 @@ class AppDrawer(val mainActivity: AppCompatActivity, private val toolbar: Toolba
             ).build()
     }
 
+    fun updateHeader() {
+        mCurrentProfile
+            .withName(USER.fullname)
+            .withEmail(USER.phone)
+            .withIcon(USER.photoUrl)
 
+        mHeader.updateProfile(mCurrentProfile)
+    }
 }
