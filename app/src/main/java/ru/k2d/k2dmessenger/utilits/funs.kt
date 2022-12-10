@@ -3,11 +3,11 @@ package ru.k2d.k2dmessenger.utilits
 import android.content.Context
 import android.content.Intent
 import android.view.inputmethod.InputMethodManager
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.squareup.picasso.Picasso
-import de.hdodenhof.circleimageview.CircleImageView
 import ru.k2d.k2dmessenger.R
 
 fun showToast(message: String) {
@@ -42,7 +42,7 @@ fun hideKeyboard(){
     imm.hideSoftInputFromWindow(APP_ACTIVITY.window.decorView.windowToken,0)
 }
 
-fun CircleImageView.downloadAndSetImage(url: String){
+fun ImageView.downloadAndSetImage(url: String){
     Picasso.get()
         .load(url)
         .placeholder(R.drawable.default_photo)

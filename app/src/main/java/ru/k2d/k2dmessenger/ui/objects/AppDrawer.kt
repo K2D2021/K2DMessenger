@@ -1,6 +1,9 @@
 package ru.k2d.k2dmessenger.ui.objects
 
+import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.view.View
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
@@ -12,9 +15,12 @@ import com.mikepenz.materialdrawer.model.DividerDrawerItem
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem
+import com.mikepenz.materialdrawer.util.AbstractDrawerImageLoader
+import com.mikepenz.materialdrawer.util.DrawerImageLoader
 import ru.k2d.k2dmessenger.R
 import ru.k2d.k2dmessenger.ui.fragments.SettingsFragment
 import ru.k2d.k2dmessenger.utilits.USER
+import ru.k2d.k2dmessenger.utilits.downloadAndSetImage
 import ru.k2d.k2dmessenger.utilits.replaceFragment
 
 class AppDrawer(val mainActivity: AppCompatActivity, private val toolbar: Toolbar) {
@@ -25,6 +31,7 @@ class AppDrawer(val mainActivity: AppCompatActivity, private val toolbar: Toolba
     private lateinit var mCurrentProfile: ProfileDrawerItem
 
     fun create() {
+        initLoader()
         createHeader()
         createDrawer()
         mDrawerLayout = mDrawer.drawerLayout
@@ -137,5 +144,13 @@ class AppDrawer(val mainActivity: AppCompatActivity, private val toolbar: Toolba
             .withIcon(USER.photoUrl)
 
         mHeader.updateProfile(mCurrentProfile)
+    }
+
+    private fun initLoader(){
+        DrawerImageLoader.init(object :AbstractDrawerImageLoader(){
+            override fun set(imageView: ImageView, uri: Uri, placeholder: Drawable) {
+                imageView.downloadAndSetImage(uri.toString())
+            }
+        })
     }
 }
