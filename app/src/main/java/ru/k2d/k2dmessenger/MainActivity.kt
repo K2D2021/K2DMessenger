@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import ru.k2d.k2dmessenger.activities.RegisterActivity
 import ru.k2d.k2dmessenger.databinding.ActivityMainBinding
-import ru.k2d.k2dmessenger.models.User
 import ru.k2d.k2dmessenger.ui.fragments.ChatsFragment
 import ru.k2d.k2dmessenger.ui.objects.AppDrawer
 import ru.k2d.k2dmessenger.utilits.*
