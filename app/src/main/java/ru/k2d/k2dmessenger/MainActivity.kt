@@ -1,8 +1,10 @@
 package ru.k2d.k2dmessenger
 
+import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
 import ru.k2d.k2dmessenger.activities.RegisterActivity
 import ru.k2d.k2dmessenger.databinding.ActivityMainBinding
 import ru.k2d.k2dmessenger.ui.fragments.ChatsFragment
@@ -22,8 +24,15 @@ class MainActivity : AppCompatActivity() {
         APP_ACTIVITY = this
         initFirebase()
         initUser {
+            initContacs()
             initFields()
             initFunc()
+        }
+    }
+
+    private fun initContacs() {
+        if (checkPermissions(READ_CONTACTS)) {
+            showToast("Reading the contacts")
         }
     }
 
@@ -51,6 +60,21 @@ class MainActivity : AppCompatActivity() {
         super.onStop()
         AppStates.updateState(AppStates.OFFLINE)
 
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (ContextCompat.checkSelfPermission(
+                APP_ACTIVITY,
+                READ_CONTACTS
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            initContacs()
+        }
     }
 }
 
