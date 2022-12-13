@@ -28,14 +28,14 @@ class MainActivity : AppCompatActivity() {
         initFirebase()
         initUser {
             CoroutineScope(Dispatchers.IO).launch {
-                initContacs()
+                initContacts()
             }
             initFields()
             initFunc()
         }
     }
 
-    private fun initContacs() {
+    private fun initContacts() {
         if (checkPermissions(READ_CONTACTS)) {
             //showToast("Reading the contacts")
         }
@@ -78,7 +78,7 @@ class MainActivity : AppCompatActivity() {
                 READ_CONTACTS
             ) == PackageManager.PERMISSION_GRANTED
         ) {
-            initContacs()
+            initContacts()
         }
     }
 }
