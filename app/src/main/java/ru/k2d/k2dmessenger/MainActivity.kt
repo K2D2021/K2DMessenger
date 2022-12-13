@@ -5,6 +5,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import ru.k2d.k2dmessenger.activities.RegisterActivity
 import ru.k2d.k2dmessenger.databinding.ActivityMainBinding
 import ru.k2d.k2dmessenger.ui.fragments.ChatsFragment
@@ -24,7 +27,9 @@ class MainActivity : AppCompatActivity() {
         APP_ACTIVITY = this
         initFirebase()
         initUser {
-            initContacs()
+            CoroutineScope(Dispatchers.IO).launch {
+                initContacs()
+            }
             initFields()
             initFunc()
         }
@@ -32,7 +37,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initContacs() {
         if (checkPermissions(READ_CONTACTS)) {
-            showToast("Reading the contacts")
+            //showToast("Reading the contacts")
         }
     }
 
