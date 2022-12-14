@@ -35,11 +35,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun initContacts() {
-        if (checkPermissions(READ_CONTACTS)) {
-            //showToast("Reading the contacts")
-        }
-    }
+
 
     private fun initFunc() {
         if (AUTH.currentUser != null) {
