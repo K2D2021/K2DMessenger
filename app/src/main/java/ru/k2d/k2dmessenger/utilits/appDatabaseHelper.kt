@@ -19,6 +19,7 @@ lateinit var USER: User
 
 const val NODE_USERS = "users"
 const val NODE_USERNAMES = "usernames"
+const val NODE_PHONES = "phones"
 
 const val FOLDER_PROFILE_IMAGE = "profile_image"
 
@@ -72,7 +73,7 @@ inline fun initUser(crossinline function: () -> Unit) {
 @SuppressLint("Range")
 fun initContacts() {
     if (checkPermissions(READ_CONTACTS)) {
-        var arrayContacts = arrayListOf<CommonModel>()
+        val arrayContacts = arrayListOf<CommonModel>()
         val cursor = APP_ACTIVITY.contentResolver.query(
             ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
             null,
