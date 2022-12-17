@@ -18,10 +18,13 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem
 import com.mikepenz.materialdrawer.util.AbstractDrawerImageLoader
 import com.mikepenz.materialdrawer.util.DrawerImageLoader
 import ru.k2d.k2dmessenger.R
+import ru.k2d.k2dmessenger.ui.fragments.ContactsFragment
 import ru.k2d.k2dmessenger.ui.fragments.SettingsFragment
+import ru.k2d.k2dmessenger.utilits.APP_ACTIVITY
 import ru.k2d.k2dmessenger.utilits.USER
 import ru.k2d.k2dmessenger.utilits.downloadAndSetImage
 import ru.k2d.k2dmessenger.utilits.replaceFragment
+import java.text.FieldPosition
 
 class AppDrawer(val mainActivity: AppCompatActivity, private val toolbar: Toolbar) {
 
@@ -115,12 +118,17 @@ class AppDrawer(val mainActivity: AppCompatActivity, private val toolbar: Toolba
                     position: Int,
                     drawerItem: IDrawerItem<*>
                 ): Boolean {
-                    when (position) {
-                        7 -> mainActivity.replaceFragment(SettingsFragment())
-                    }
+                    clickToItem(position)
                     return false
                 }
             }).build()
+    }
+
+    private fun clickToItem(position: Int){
+        when (position) {
+            7 -> APP_ACTIVITY.replaceFragment(SettingsFragment())
+            4 -> APP_ACTIVITY.replaceFragment(ContactsFragment())
+        }
     }
 
     private fun createHeader() {
