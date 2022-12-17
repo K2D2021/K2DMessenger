@@ -24,7 +24,6 @@ import ru.k2d.k2dmessenger.utilits.APP_ACTIVITY
 import ru.k2d.k2dmessenger.utilits.USER
 import ru.k2d.k2dmessenger.utilits.downloadAndSetImage
 import ru.k2d.k2dmessenger.utilits.replaceFragment
-import java.text.FieldPosition
 
 class AppDrawer(val mainActivity: AppCompatActivity, private val toolbar: Toolbar) {
 
