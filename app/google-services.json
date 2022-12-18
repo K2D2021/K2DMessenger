@@ -15,22 +15,6 @@
       },
       "oauth_client": [
         {
-          "client_id": "167716252424-hc6620i6snt3nuqcua6k8gkta1k2gf3l.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "ru.k2d.k2dmessenger",
-            "certificate_hash": "57ad39af8083bd2a6bdc4c89fbf9d7254276e713"
-          }
-        },
-        {
-          "client_id": "167716252424-jbiblr7ehi5cu0ddtp2uliklcp4c3thd.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "ru.k2d.k2dmessenger",
-            "certificate_hash": "27376dbd6dd1f6b3e57dbd05d308890ab19ff8a2"
-          }
-        },
-        {
           "client_id": "167716252424-rg85ii5n2b4vsj8f13s7kb9j9ag11m30.apps.googleusercontent.com",
           "client_type": 3
         }
