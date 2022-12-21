@@ -22,10 +22,10 @@ class EnterPhoneNumberFragment : Fragment(R.layout.fragment_enter_phone_number) 
 
     override fun onStart() {
         super.onStart()
-        mCallback = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks(){
+        mCallback = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
             override fun onVerificationCompleted(credential: PhoneAuthCredential) {
-                AUTH.signInWithCredential(credential).addOnCompleteListener{task ->
-                    if (task.isSuccessful){
+                AUTH.signInWithCredential(credential).addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
                         showToast("Welcome!")
                         (activity as RegisterActivity).replaceActivity(MainActivity())
                     } else {
@@ -39,7 +39,7 @@ class EnterPhoneNumberFragment : Fragment(R.layout.fragment_enter_phone_number) 
             }
 
             override fun onCodeSent(id: String, token: PhoneAuthProvider.ForceResendingToken) {
-                replaceFragment(EnterCodeFragment(mPhoneNumber,id))
+                replaceFragment(EnterCodeFragment(mPhoneNumber, id))
             }
 
         }

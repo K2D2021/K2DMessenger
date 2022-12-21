@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "167716252424-cn56a8dt7v1o1foed9iv2d56v26i63qr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ru.k2d.k2dmessenger",
+            "certificate_hash": "57ad39af8083bd2a6bdc4c89fbf9d7254276e713"
+          }
+        },
+        {
           "client_id": "167716252424-rg85ii5n2b4vsj8f13s7kb9j9ag11m30.apps.googleusercontent.com",
           "client_type": 3
         }
