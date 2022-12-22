@@ -71,6 +71,6 @@ Deep and mysterious splash screen at the loading stage
 - Kotlin coroutines are used for asynchronous operations
 
 # Project stats
-<img src="">
+<img src="https://github.com/K2D2021/K2DMessenger/blob/master/Gifs/K2DMessengerStatistics.jpg">
 
 
