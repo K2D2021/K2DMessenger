@@ -29,18 +29,19 @@ Beautiful and elegant design, without unnecessary elements.
 
 
 ### Circle avatars
-The project uses a library CircleImageView by hdodenhof to display user avatars in circle format
+This project uses the CircleImageView by hdodenhof library to display user avatars in circle format
 
 
 ### Firebase database
+The project was connected to Firebase to use a realtime database to store users and their data.
 
 
 ### Side navigation menu
+This application uses the Material Drawer by Mike Penz library to build an interface with a side menu.
 
 
 ### Online autorization
-
-
+Connecting to Firebase allows you to perform online authorization.
 
 
 
@@ -60,7 +61,7 @@ Deep and mysterious splash screen at the loading stage
 - Clean architecture 
 - SOLID
 - MVVM
-- Mikepenz:materialdrawer
+- Material Drawer by Mike Penz (https://github.com/mikepenz/MaterialDrawer/tree/v7.0.0)
 - Firebase
 - Lifecycle
 - Recyclerview
@@ -68,7 +69,7 @@ Deep and mysterious splash screen at the loading stage
 - Theartofdev.edmodo:android-image-cropper
 - Squareup.picasso:picasso
 - Single activity approach
-- [View binding](https://developer.android.com/topic/libraries/view-binding)
+- View binding
 - Kotlin coroutines are used for asynchronous operations
 
 # Project stats
