@@ -61,16 +61,17 @@ Deep and mysterious splash screen at the loading stage
 - Clean architecture 
 - SOLID
 - MVVM
-- Material Drawer by Mike Penz (https://github.com/mikepenz/MaterialDrawer/tree/v7.0.0)
 - Firebase
 - Lifecycle
 - Recyclerview
-- CircleImageView by hdodenhof (https://github.com/hdodenhof/CircleImageView)
-- Theartofdev.edmodo:android-image-cropper
-- Squareup.picasso:picasso
 - Single activity approach
 - View binding
 - Kotlin coroutines are used for asynchronous operations
+- Material Drawer by Mike Penz (https://github.com/mikepenz/MaterialDrawer/tree/v7.0.0)
+- CircleImageView by hdodenhof (https://github.com/hdodenhof/CircleImageView)
+- Android-Image-Cropper by ArthurHub (https://github.com/ArthurHub/Android-Image-Cropper)
+- Picasso by square (https://github.com/square/picasso)
+
 
 # Project stats
 <img src="https://github.com/K2D2021/K2DMessenger/blob/master/Gifs/K2DMessengerStatistics.jpg">
