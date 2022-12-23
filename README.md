@@ -29,6 +29,7 @@ Beautiful and elegant design, without unnecessary elements.
 
 
 ### Circle avatars
+The project uses a library CircleImageView by hdodenhof to display user avatars in circle format
 
 
 ### Firebase database
@@ -63,7 +64,7 @@ Deep and mysterious splash screen at the loading stage
 - Firebase
 - Lifecycle
 - Recyclerview
-- Hdodenhof:circleimageview
+- CircleImageView by hdodenhof (https://github.com/hdodenhof/CircleImageView)
 - Theartofdev.edmodo:android-image-cropper
 - Squareup.picasso:picasso
 - Single activity approach
