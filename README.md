@@ -24,12 +24,15 @@ At the moment it is still in initial development.
 ### Minimalistic design
 Beautiful and elegant design, without unnecessary elements.
 
-<img src="">
+<img src="https://github.com/K2D2021/K2DMessenger/blob/master/Gifs/K2DMessengerDesign.gif">
 
 
 
 ### Circle avatars
 This project uses the CircleImageView by hdodenhof library to display user avatars in circle format
+
+<img src="https://github.com/K2D2021/K2DMessenger/blob/master/Gifs/K2DMessengerAvatar.gif">
+
 
 
 ### Firebase database
@@ -39,9 +42,14 @@ The project was connected to Firebase to use a realtime database to store users 
 ### Side navigation menu
 This application uses the Material Drawer by Mike Penz library to build an interface with a side menu.
 
+<img src="https://github.com/K2D2021/K2DMessenger/blob/master/Gifs/K2DMessengerMenu.gif">
+
+
 
 ### Online autorization
 Connecting to Firebase allows you to perform online authorization.
+
+<img src="https://github.com/K2D2021/K2DMessenger/blob/master/Gifs/K2DMessengerLogin.gif">
 
 
 
