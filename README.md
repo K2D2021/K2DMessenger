@@ -37,6 +37,9 @@ This project uses the CircleImageView by hdodenhof library to display user avata
 
 ### Firebase database
 The project was connected to Firebase to use a realtime database to store users and their data.
+<img src="https://github.com/K2D2021/K2DMessenger/blob/master/Gifs/K2DMessengerFirebase.jpg">
+
+
 
 
 ### Side navigation menu
