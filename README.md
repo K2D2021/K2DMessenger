@@ -63,7 +63,7 @@ Especially for this application, an icon has been developed in the same style wi
 ### Mysterious splashscreen
 Deep and mysterious splash screen at the loading stage
 
-<img src="">
+<img src="https://github.com/K2D2021/K2DMessenger/blob/master/Gifs/K2DMessengerSplashScreen.jpg">
 
 # Technologies
 - Clean architecture 
