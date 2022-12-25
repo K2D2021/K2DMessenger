@@ -11,6 +11,4 @@ class AppTextWatcher(val onSuccess: (Editable?) -> Unit) : TextWatcher {
     override fun afterTextChanged(s: Editable?) {
         onSuccess(s)
     }
-
-
 }

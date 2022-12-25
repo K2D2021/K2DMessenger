@@ -3,13 +3,15 @@ package ru.k2d.k2dmessenger.utilits
 import android.annotation.SuppressLint
 import android.net.Uri
 import android.provider.ContactsContract
+import ru.k2d.k2dmessenger.models.CommonModel
+import ru.k2d.k2dmessenger.models.User
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import ru.k2d.k2dmessenger.models.CommonModel
-import ru.k2d.k2dmessenger.models.User
+import java.util.ArrayList
 
 lateinit var AUTH: FirebaseAuth
 lateinit var CURRENT_UID: String
@@ -87,12 +89,13 @@ fun initContacts() {
             while (it.moveToNext()) {
                 var fullName =
                     it.getString(it.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME))
-                var phone = it.getString(it.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
+                var phone =
+                    it.getString(it.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
                 val newModel = CommonModel()
-                fullName = "Test user full name"
-                phone = "+79097997977"
+                fullName = "Test user full name2"
+                phone = "+79097997976"
                 newModel.fullname = fullName
-                newModel.phone = phone.replace(Regex("[\\s,-]"),"")
+                newModel.phone = phone.replace(Regex("[\\s,-]"), "")
                 arrayContacts.add(newModel)
             }
         }
@@ -102,17 +105,16 @@ fun initContacts() {
 }
 
 fun updatePhonesToDatabase(arrayContacts: ArrayList<CommonModel>) {
-    REF_DATABASE_ROOT.child(NODE_PHONES).addListenerForSingleValueEvent(AppValueEventListener{
-        it.children.forEach{snapshot ->
+    REF_DATABASE_ROOT.child(NODE_PHONES).addListenerForSingleValueEvent(AppValueEventListener {
+        it.children.forEach { snapshot ->
             arrayContacts.forEach { contact ->
-                if(snapshot.key == contact.phone){
+                if (snapshot.key == contact.phone) {
                     REF_DATABASE_ROOT.child(NODE_PHONES_CONTACTS).child(CURRENT_UID)
                         .child(snapshot.value.toString()).child(CHILD_ID)
                         .setValue(snapshot.value.toString())
                         .addOnFailureListener { showToast(it.message.toString()) }
                 }
             }
-
         }
     })
 }

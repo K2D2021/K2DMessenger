@@ -10,5 +10,4 @@ class ContactsFragment : BaseFragment(R.layout.fragment_contacts) {
         super.onResume()
         APP_ACTIVITY.title = "Contacts"
     }
-
 }
