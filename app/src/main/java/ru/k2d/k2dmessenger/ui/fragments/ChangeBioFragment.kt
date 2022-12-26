@@ -25,6 +25,4 @@ class ChangeBioFragment : BaseChangeFragment(R.layout.fragment_change_bio) {
                 }
             }
     }
-
-
 }
