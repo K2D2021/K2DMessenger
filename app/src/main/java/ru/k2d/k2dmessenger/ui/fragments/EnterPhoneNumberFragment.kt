@@ -67,5 +67,4 @@ class EnterPhoneNumberFragment : Fragment(R.layout.fragment_enter_phone_number) 
             mCallback
         )
     }
-
 }

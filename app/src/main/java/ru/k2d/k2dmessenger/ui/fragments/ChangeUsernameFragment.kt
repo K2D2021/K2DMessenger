@@ -50,6 +50,7 @@ class ChangeUsernameFragment : BaseChangeFragment(R.layout.fragment_change_usern
                 }
             }
     }
+
     private fun deleteOldUsername() {
         REF_DATABASE_ROOT.child(NODE_USERNAMES).child(USER.username).removeValue()
             .addOnCompleteListener {
