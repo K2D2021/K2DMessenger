@@ -24,6 +24,7 @@
         tools:text="User name" />
 
     <TextView
+        android:id="@+id/contact_status"
         style="@style/smallText"
         app:layout_constraintStart_toEndOf="@id/contact_photo"
         app:layout_constraintTop_toBottomOf="@id/contact_fullname"
