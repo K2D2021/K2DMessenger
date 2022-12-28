@@ -92,8 +92,8 @@ fun initContacts() {
                 var phone =
                     it.getString(it.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
                 val newModel = CommonModel()
-                fullName = "Test user full name2"
-                phone = "+79097997976"
+               // fullName = "Test user full name2"
+               // phone = "+79097997976"
                 newModel.fullname = fullName
                 newModel.phone = phone.replace(Regex("[\\s,-]"), "")
                 arrayContacts.add(newModel)
