@@ -85,7 +85,7 @@ fun initContacts() {
             null
         )
         cursor?.let {
-
+//Need to make logic whe it real phone do safe code else unsafe code
             while (it.moveToNext()) {
                 var fullName =
                     it.getString(it.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME))
