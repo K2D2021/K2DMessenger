@@ -22,6 +22,7 @@ class ContactsFragment : BaseFragment(R.layout.fragment_contacts) {
     private lateinit var mAdapter: FirebaseRecyclerAdapter<CommonModel, ContactsHolder>
     private lateinit var mRefContacts: DatabaseReference
     private lateinit var mRefUsers: DatabaseReference
+    private lateinit var mRefUsersListener: AppValueEventListener
 
     override fun onResume() {
         super.onResume()
