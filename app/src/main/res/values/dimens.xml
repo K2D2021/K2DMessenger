@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Margins -->
-    <dimen name="horizontal_margin">16dp</dimen>
+    <dimen name="app_margin">16dp</dimen>
     <dimen name="vertical_margin">10dp</dimen>
     <dimen name="vertical_large_margin">16dp</dimen>
 
@@ -18,4 +18,8 @@
     <dimen name="settings_btn_change_photo_height">45dp</dimen>
     <dimen name="settings_ripple_effect_radius">4dp</dimen>
     <dimen name="appPadding">10dp</dimen>
+
+    <!-- Toolbar -->
+    <dimen name="toolbar_image_width">45dp</dimen>
+    <dimen name="toolbar_image_height">45dp</dimen>
 </resources>
