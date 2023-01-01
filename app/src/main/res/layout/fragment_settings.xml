@@ -31,7 +31,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/app_margin"
-            android:layout_marginTop="@dimen/vertical_margin"
+            android:layout_marginTop="@dimen/app_small_margin"
             tools:text="@string/settings_default_username"
             android:textColor="@color/colorAccent"
             android:textSize="@dimen/normalText"

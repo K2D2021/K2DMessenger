@@ -2,7 +2,7 @@
 <resources>
     <!-- Margins -->
     <dimen name="app_margin">16dp</dimen>
-    <dimen name="vertical_margin">10dp</dimen>
+    <dimen name="app_small_margin">10dp</dimen>
     <dimen name="vertical_large_margin">16dp</dimen>
 
     <!-- Text sizes -->
