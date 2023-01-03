@@ -12,9 +12,9 @@
 
     <TextView
         android:id="@+id/textView"
-        android:textColor="@color/colorBlack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/chats" />
+        android:text="@string/chats"
+        android:textColor="@color/colorBlack" />
 
 </FrameLayout>
