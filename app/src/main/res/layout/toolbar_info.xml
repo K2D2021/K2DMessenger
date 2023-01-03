@@ -14,7 +14,6 @@
         app:civ_circle_background_color="@color/accent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="@dimen/app_small_margin"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
