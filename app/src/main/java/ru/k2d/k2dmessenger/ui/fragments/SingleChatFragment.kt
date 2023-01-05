@@ -30,8 +30,8 @@ class SingleChatFragment(contact: CommonModel) : BaseFragment(R.layout.fragment_
 
     private fun initInfoToolbar() {
         mToolbarInfo.toolbar_chat_image.downloadAndSetImage(mReceivingUser.photoUrl)
-        mToolbarInfo.contact_chat_fullname
-        mToolbarInfo.contact_chat_status
+        mToolbarInfo.toolbar_chat_fullname.text = mReceivingUser.fullname
+        mToolbarInfo.toolbar_chat_status.text = mReceivingUser.state
     }
 
     override fun onPause() {
