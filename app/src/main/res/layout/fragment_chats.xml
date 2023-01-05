@@ -16,5 +16,4 @@
         android:layout_height="wrap_content"
         android:text="@string/chats"
         android:textColor="@color/colorBlack" />
-
 </FrameLayout>
