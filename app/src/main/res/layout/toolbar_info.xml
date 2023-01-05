@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/contact_chat_fullname"
+        android:id="@+id/toolbar_chat_fullname"
         style="@style/normalText"
         android:textColor="@color/accent"
         app:layout_constraintStart_toEndOf="@id/toolbar_chat_image"
@@ -25,11 +25,11 @@
         tools:text="User name" />
 
     <TextView
-        android:id="@+id/contact_status"
+        android:id="@+id/toolbar_chat_status"
         style="@style/smallText"
         android:textColor="@color/colorAccentDark"
         app:layout_constraintStart_toEndOf="@id/toolbar_chat_image"
-        app:layout_constraintTop_toBottomOf="@id/contact_chat_fullname"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_chat_fullname"
         tools:text="Online" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
