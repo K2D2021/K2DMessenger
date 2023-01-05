@@ -1,6 +1,6 @@
 package ru.k2d.k2dmessenger.models
 
-data class User(
+data class Usermodel(
     val id: String = "",
     var username: String = "",
     var bio: String = "",
