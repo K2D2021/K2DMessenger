@@ -9,8 +9,8 @@
     <EditText
         android:id="@+id/register_input_phone_number"
         style="@style/editText"
-        android:hint="@string/register_phone_hint"
         android:autofillHints="phone"
+        android:hint="@string/register_phone_hint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,6 +25,4 @@
         android:src="@drawable/ic_btn_next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
