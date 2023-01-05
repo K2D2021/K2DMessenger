@@ -8,15 +8,15 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chat_recycler_view"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:listitem="@layout/message_item"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:background="@color/colorBlueWish"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toTopOf="@id/chat_input_message"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/message_item" />
 
     <EditText
         android:id="@+id/chat_input_message"
