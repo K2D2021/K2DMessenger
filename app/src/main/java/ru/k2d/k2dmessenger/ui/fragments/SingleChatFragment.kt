@@ -1,22 +1,21 @@
 package ru.k2d.k2dmessenger.ui.fragments
 
 import android.view.View
+import com.google.firebase.database.DatabaseReference
 import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.toolbar_info.view.*
 import ru.k2d.k2dmessenger.R
 import ru.k2d.k2dmessenger.models.CommonModel
 import ru.k2d.k2dmessenger.models.Usermodel
-import ru.k2d.k2dmessenger.utilits.APP_ACTIVITY
-import ru.k2d.k2dmessenger.utilits.AppValueEventListener
-import ru.k2d.k2dmessenger.utilits.downloadAndSetImage
-import ru.k2d.k2dmessenger.utilits.getUserModel
+import ru.k2d.k2dmessenger.utilits.*
 
 
-class SingleChatFragment(contact: CommonModel) : BaseFragment(R.layout.fragment_single_chat) {
+class SingleChatFragment(private val contact: CommonModel) : BaseFragment(R.layout.fragment_single_chat) {
 
     private lateinit var mListenerInfoToolbar: AppValueEventListener
     private lateinit var mReceivingUser: Usermodel
     private lateinit var mToolbarInfo: View
+    private lateinit var mRefUser: DatabaseReference
 
     override fun onResume() {
         super.onResume()
@@ -26,6 +25,9 @@ class SingleChatFragment(contact: CommonModel) : BaseFragment(R.layout.fragment_
             mReceivingUser = it.getUserModel()
             initInfoToolbar()
         }
+
+        mRefUser = REF_DATABASE_ROOT.child(NODE_USERS).child(contact.id)
+        mRefUser.addValueEventListener(mListenerInfoToolbar)
     }
 
     private fun initInfoToolbar() {
@@ -37,6 +39,6 @@ class SingleChatFragment(contact: CommonModel) : BaseFragment(R.layout.fragment_
     override fun onPause() {
         super.onPause()
         mToolbarInfo.visibility = View.GONE
+        mRefUser.removeEventListener(mListenerInfoToolbar)
     }
-
 }
