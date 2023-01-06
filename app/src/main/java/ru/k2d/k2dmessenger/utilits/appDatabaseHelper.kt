@@ -80,6 +80,11 @@ fun updatePhonesToDatabase(arrayContacts: ArrayList<CommonModel>) {
                             .child(snapshot.value.toString()).child(CHILD_ID)
                             .setValue(snapshot.value.toString())
                             .addOnFailureListener { showToast(it.message.toString()) }
+
+                        REF_DATABASE_ROOT.child(NODE_PHONES_CONTACTS).child(CURRENT_UID)
+                            .child(snapshot.value.toString()).child(CHILD_FULLNAME)
+                            .setValue(contact.fullname)
+                            .addOnFailureListener { showToast(it.message.toString()) }
                     }
                 }
             }
