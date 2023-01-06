@@ -31,6 +31,11 @@ const val CHILD_BIO = "bio"
 const val CHILD_PHOTO_URL = "photoUrl"
 const val CHILD_STATE = "state"
 
+const val CHILD_TEXT = "text"
+const val CHILD_TYPE = "type"
+const val CHILD_FROM = "from"
+const val CHILD_TIMESTAMP = "timeStamp"
+
 
 fun initFirebase() {
     AUTH = FirebaseAuth.getInstance()
