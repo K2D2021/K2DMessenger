@@ -10,7 +10,8 @@ import ru.k2d.k2dmessenger.models.Usermodel
 import ru.k2d.k2dmessenger.utilits.*
 
 
-class SingleChatFragment(private val contact: CommonModel) : BaseFragment(R.layout.fragment_single_chat) {
+class SingleChatFragment(private val contact: CommonModel) :
+    BaseFragment(R.layout.fragment_single_chat) {
 
     private lateinit var mListenerInfoToolbar: AppValueEventListener
     private lateinit var mReceivingUser: Usermodel
@@ -31,8 +32,10 @@ class SingleChatFragment(private val contact: CommonModel) : BaseFragment(R.layo
     }
 
     private fun initInfoToolbar() {
+        if (mReceivingUser.fullname.isEmpty()) {
+            mToolbarInfo.toolbar_chat_fullname.text = contact.fullname
+        } else mToolbarInfo.toolbar_chat_fullname.text = mReceivingUser.fullname
         mToolbarInfo.toolbar_chat_image.downloadAndSetImage(mReceivingUser.photoUrl)
-        mToolbarInfo.toolbar_chat_fullname.text = mReceivingUser.fullname
         mToolbarInfo.toolbar_chat_status.text = mReceivingUser.state
     }
 
