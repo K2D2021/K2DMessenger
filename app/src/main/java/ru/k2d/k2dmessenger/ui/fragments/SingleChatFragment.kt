@@ -3,6 +3,7 @@ package ru.k2d.k2dmessenger.ui.fragments
 import android.view.View
 import com.google.firebase.database.DatabaseReference
 import kotlinx.android.synthetic.main.activity_main.view.*
+import kotlinx.android.synthetic.main.fragment_single_chat.*
 import kotlinx.android.synthetic.main.toolbar_info.view.*
 import ru.k2d.k2dmessenger.R
 import ru.k2d.k2dmessenger.models.CommonModel
@@ -29,6 +30,14 @@ class SingleChatFragment(private val contact: CommonModel) :
 
         mRefUser = REF_DATABASE_ROOT.child(NODE_USERS).child(contact.id)
         mRefUser.addValueEventListener(mListenerInfoToolbar)
+        chat_btn_send_message.setOnClickListener {
+            val message = chat_input_message.text.toString()
+            if (message.isEmpty()){
+                showToast("Please input message")
+            } else sendMessage(message, contact.id, TYPE_TEXT){
+                chat_input_message.setText("")
+            }
+        }
     }
 
     private fun initInfoToolbar() {

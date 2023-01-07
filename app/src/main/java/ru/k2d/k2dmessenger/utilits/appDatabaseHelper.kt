@@ -5,6 +5,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ServerValue
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import ru.k2d.k2dmessenger.models.CommonModel
@@ -16,10 +17,13 @@ lateinit var REF_DATABASE_ROOT: DatabaseReference
 lateinit var REF_STORAGE_ROOT: StorageReference
 lateinit var USER: Usermodel
 
+const val TYPE_TEXT = "text"
+
 const val NODE_USERS = "users"
 const val NODE_USERNAMES = "usernames"
 const val NODE_PHONES = "phones"
 const val NODE_PHONES_CONTACTS = "phones_contacts"
+const val NODE_MESSAGES = "messages"
 
 const val FOLDER_PROFILE_IMAGE = "profile_image"
 
@@ -102,3 +106,25 @@ fun DataSnapshot.getCommonModel(): CommonModel =
 
 fun DataSnapshot.getUserModel(): Usermodel =
     this.getValue(Usermodel::class.java) ?: Usermodel()
+
+fun sendMessage(message: String, receivingUserId: String, typeText: String, function: () -> Unit) {
+    val refDialogUser = "$NODE_MESSAGES/$CURRENT_UID/$receivingUserId"
+    val refDialogReceivingUser = "$NODE_MESSAGES/$receivingUserId/$CURRENT_UID"
+    val messageKey = REF_DATABASE_ROOT.child(refDialogUser).push().key
+
+    val mapMessage = hashMapOf<String,Any>()
+    mapMessage[CHILD_FROM] = CURRENT_UID
+    mapMessage[CHILD_TYPE] = typeText
+    mapMessage[CHILD_TEXT] = message
+    mapMessage[CHILD_TIMESTAMP] = ServerValue.TIMESTAMP
+
+    val mapDialog = hashMapOf<String,Any>()
+    mapDialog["$refDialogUser/$messageKey"] = mapMessage
+    mapDialog["$refDialogReceivingUser/$messageKey"] = mapMessage
+
+    REF_DATABASE_ROOT
+        .updateChildren(mapDialog)
+        .addOnSuccessListener { function() }
+        .addOnFailureListener { showToast(it.message.toString()) }
+
+}
