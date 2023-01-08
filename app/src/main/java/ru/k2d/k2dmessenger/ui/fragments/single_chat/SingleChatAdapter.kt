@@ -11,8 +11,6 @@ import ru.k2d.k2dmessenger.R
 import ru.k2d.k2dmessenger.models.CommonModel
 import ru.k2d.k2dmessenger.utilits.CURRENT_UID
 import ru.k2d.k2dmessenger.utilits.asTime
-import java.text.SimpleDateFormat
-import java.util.*
 
 class SingleChatAdapter: RecyclerView.Adapter<SingleChatAdapter.SingleChatHolder>() {
 
