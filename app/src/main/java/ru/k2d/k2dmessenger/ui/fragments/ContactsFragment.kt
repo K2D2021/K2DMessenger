@@ -13,6 +13,7 @@ import kotlinx.android.synthetic.main.contact_item.view.*
 import kotlinx.android.synthetic.main.fragment_contacts.*
 import ru.k2d.k2dmessenger.R
 import ru.k2d.k2dmessenger.models.CommonModel
+import ru.k2d.k2dmessenger.ui.fragments.single_chat.SingleChatFragment
 import ru.k2d.k2dmessenger.utilits.*
 
 

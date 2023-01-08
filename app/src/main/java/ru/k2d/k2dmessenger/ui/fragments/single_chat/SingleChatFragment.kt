@@ -1,4 +1,4 @@
-package ru.k2d.k2dmessenger.ui.fragments
+package ru.k2d.k2dmessenger.ui.fragments.single_chat
 
 import android.view.View
 import com.google.firebase.database.DatabaseReference
@@ -8,6 +8,7 @@ import kotlinx.android.synthetic.main.toolbar_info.view.*
 import ru.k2d.k2dmessenger.R
 import ru.k2d.k2dmessenger.models.CommonModel
 import ru.k2d.k2dmessenger.models.Usermodel
+import ru.k2d.k2dmessenger.ui.fragments.BaseFragment
 import ru.k2d.k2dmessenger.utilits.*
 
 
