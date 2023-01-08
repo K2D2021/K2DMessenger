@@ -10,6 +10,7 @@ import kotlinx.android.synthetic.main.message_item.view.*
 import ru.k2d.k2dmessenger.R
 import ru.k2d.k2dmessenger.models.CommonModel
 import ru.k2d.k2dmessenger.utilits.CURRENT_UID
+import ru.k2d.k2dmessenger.utilits.asTime
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -53,8 +54,3 @@ class SingleChatAdapter: RecyclerView.Adapter<SingleChatAdapter.SingleChatHolder
     }
 }
 
-private fun String.asTime(): String {
-    val time = Date(this.toLong())
-    val timeFormat = SimpleDateFormat("HH:MM",Locale.getDefault())
-    return timeFormat.format(time)
-}

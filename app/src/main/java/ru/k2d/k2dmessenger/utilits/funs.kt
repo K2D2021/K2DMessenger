@@ -12,6 +12,8 @@ import androidx.fragment.app.Fragment
 import com.squareup.picasso.Picasso
 import ru.k2d.k2dmessenger.R
 import ru.k2d.k2dmessenger.models.CommonModel
+import java.text.SimpleDateFormat
+import java.util.*
 
 fun showToast(message: String) {
     Toast.makeText(APP_ACTIVITY, message, Toast.LENGTH_SHORT).show()
@@ -83,4 +85,10 @@ fun initContacts() {
         cursor?.close()
         updatePhonesToDatabase(arrayContacts)
     }
+}
+
+fun String.asTime(): String {
+    val time = Date(this.toLong())
+    val timeFormat = SimpleDateFormat("HH:MM", Locale.getDefault())
+    return timeFormat.format(time)
 }
