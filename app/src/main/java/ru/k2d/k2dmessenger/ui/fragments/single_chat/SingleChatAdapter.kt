@@ -1,5 +1,6 @@
 package ru.k2d.k2dmessenger.ui.fragments.single_chat
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -47,6 +48,7 @@ class SingleChatAdapter: RecyclerView.Adapter<SingleChatAdapter.SingleChatHolder
 
     override fun getItemCount(): Int = mlistMessagesCache.size
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setList(list: List<CommonModel>){
         mlistMessagesCache = list
         notifyDataSetChanged()
