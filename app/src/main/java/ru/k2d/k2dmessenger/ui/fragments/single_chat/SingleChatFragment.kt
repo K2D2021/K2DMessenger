@@ -40,6 +40,7 @@ class SingleChatFragment(private val contact: CommonModel) :
         mMessagesListener = AppValueEventListener { dataSnapshot ->
             mListMessages = dataSnapshot.children.map { it.getCommonModel() }
             mAdapter.setList(mListMessages)
+            mRecyclerView.smoothScrollToPosition(mAdapter.itemCount)
         }
         mRefMessages.addValueEventListener(mMessagesListener)
     }
