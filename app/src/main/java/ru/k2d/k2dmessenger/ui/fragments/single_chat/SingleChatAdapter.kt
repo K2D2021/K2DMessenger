@@ -49,6 +49,7 @@ class SingleChatAdapter: RecyclerView.Adapter<SingleChatAdapter.SingleChatHolder
 
     fun setList(list: List<CommonModel>){
         mlistMessagesCache = list
+        notifyDataSetChanged()
     }
 }
 
