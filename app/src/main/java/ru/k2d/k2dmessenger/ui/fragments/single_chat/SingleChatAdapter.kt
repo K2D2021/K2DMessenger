@@ -37,12 +37,12 @@ class SingleChatAdapter: RecyclerView.Adapter<SingleChatAdapter.SingleChatHolder
             holder.blocUserMessage.visibility = View.VISIBLE
             holder.blocReceivedMessage.visibility = View.GONE
             holder.chatUserMessage.text = mlistMessagesCache[position].text
-            holder.chatUserMessageTime.text = mlistMessagesCache[position].timeStamp.asTime()
+            holder.chatUserMessageTime.text = mlistMessagesCache[position].timeStamp.toString().asTime()
         } else {
             holder.blocUserMessage.visibility = View.GONE
             holder.blocReceivedMessage.visibility = View.VISIBLE
             holder.chatReceivedMessage.text = mlistMessagesCache[position].text
-            holder.chatReceivedMessageTime.text = mlistMessagesCache[position].timeStamp.asTime()
+            holder.chatReceivedMessageTime.text = mlistMessagesCache[position].timeStamp.toString().asTime()
         }
     }
 
