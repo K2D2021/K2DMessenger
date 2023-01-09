@@ -41,6 +41,7 @@ class SingleChatFragment(private val contact: CommonModel) :
             mListMessages = dataSnapshot.children.map { it.getCommonModel() }
             mAdapter.setList(mListMessages)
         }
+        mRefMessages.addValueEventListener(mMessagesListener)
     }
 
     private fun initToolbar() {
@@ -75,5 +76,6 @@ class SingleChatFragment(private val contact: CommonModel) :
         super.onPause()
         mToolbarInfo.visibility = View.GONE
         mRefUser.removeEventListener(mListenerInfoToolbar)
+        mRefMessages.removeEventListener(mMessagesListener)
     }
 }
