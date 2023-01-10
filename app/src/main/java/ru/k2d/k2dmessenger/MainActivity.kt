@@ -8,6 +8,9 @@ import androidx.core.content.ContextCompat
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import ru.k2d.k2dmessenger.database.AUTH
+import ru.k2d.k2dmessenger.database.initFirebase
+import ru.k2d.k2dmessenger.database.initUser
 import ru.k2d.k2dmessenger.databinding.ActivityMainBinding
 import ru.k2d.k2dmessenger.ui.fragments.MainFragment
 import ru.k2d.k2dmessenger.ui.fragments.register.EnterPhoneNumberFragment

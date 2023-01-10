@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.message_item.view.*
 import ru.k2d.k2dmessenger.R
 import ru.k2d.k2dmessenger.models.CommonModel
-import ru.k2d.k2dmessenger.utilits.CURRENT_UID
+import ru.k2d.k2dmessenger.database.CURRENT_UID
 import ru.k2d.k2dmessenger.utilits.asTime
 
 class SingleChatAdapter: RecyclerView.Adapter<SingleChatAdapter.SingleChatHolder>() {

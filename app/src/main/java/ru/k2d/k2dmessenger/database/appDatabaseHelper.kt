@@ -1,4 +1,4 @@
-package ru.k2d.k2dmessenger.utilits
+package ru.k2d.k2dmessenger.database
 
 import android.net.Uri
 import com.google.firebase.auth.FirebaseAuth
@@ -8,8 +8,12 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ServerValue
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import ru.k2d.k2dmessenger.R
 import ru.k2d.k2dmessenger.models.CommonModel
 import ru.k2d.k2dmessenger.models.Usermodel
+import ru.k2d.k2dmessenger.utilits.APP_ACTIVITY
+import ru.k2d.k2dmessenger.utilits.AppValueEventListener
+import ru.k2d.k2dmessenger.utilits.showToast
 
 lateinit var AUTH: FirebaseAuth
 lateinit var CURRENT_UID: String
@@ -112,13 +116,13 @@ fun sendMessage(message: String, receivingUserId: String, typeText: String, func
     val refDialogReceivingUser = "$NODE_MESSAGES/$receivingUserId/$CURRENT_UID"
     val messageKey = REF_DATABASE_ROOT.child(refDialogUser).push().key
 
-    val mapMessage = hashMapOf<String,Any>()
+    val mapMessage = hashMapOf<String, Any>()
     mapMessage[CHILD_FROM] = CURRENT_UID
     mapMessage[CHILD_TYPE] = typeText
     mapMessage[CHILD_TEXT] = message
     mapMessage[CHILD_TIMESTAMP] = ServerValue.TIMESTAMP
 
-    val mapDialog = hashMapOf<String,Any>()
+    val mapDialog = hashMapOf<String, Any>()
     mapDialog["$refDialogUser/$messageKey"] = mapMessage
     mapDialog["$refDialogReceivingUser/$messageKey"] = mapMessage
 
@@ -127,4 +131,30 @@ fun sendMessage(message: String, receivingUserId: String, typeText: String, func
         .addOnSuccessListener { function() }
         .addOnFailureListener { showToast(it.message.toString()) }
 
+}
+
+fun updateCurrentUsername(newUserName: String) {
+    REF_DATABASE_ROOT.child(NODE_USERS).child(CURRENT_UID).child(CHILD_USERNAME)
+        .setValue(newUserName)
+        .addOnCompleteListener {
+            if (it.isSuccessful) {
+                showToast(APP_ACTIVITY.getString(R.string.toast_data_update))
+                deleteOldUsername(newUserName)
+            } else {
+                showToast(it.exception?.message.toString())
+            }
+        }
+}
+
+private fun deleteOldUsername(newUserName: String) {
+    REF_DATABASE_ROOT.child(NODE_USERNAMES).child(USER.username).removeValue()
+        .addOnCompleteListener {
+            if (it.isSuccessful) {
+                showToast(APP_ACTIVITY.getString(R.string.toast_data_update))
+                APP_ACTIVITY.supportFragmentManager.popBackStack()
+                USER.username = newUserName
+            } else {
+                showToast(it.exception?.message.toString())
+            }
+        }
 }

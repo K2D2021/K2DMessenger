@@ -2,6 +2,7 @@ package ru.k2d.k2dmessenger.ui.fragments
 
 import kotlinx.android.synthetic.main.fragment_change_bio.*
 import ru.k2d.k2dmessenger.R
+import ru.k2d.k2dmessenger.database.*
 import ru.k2d.k2dmessenger.utilits.*
 
 

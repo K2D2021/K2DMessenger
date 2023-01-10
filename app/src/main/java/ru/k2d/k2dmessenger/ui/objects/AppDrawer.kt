@@ -19,7 +19,7 @@ import ru.k2d.k2dmessenger.R
 import ru.k2d.k2dmessenger.ui.fragments.ContactsFragment
 import ru.k2d.k2dmessenger.ui.fragments.SettingsFragment
 import ru.k2d.k2dmessenger.utilits.APP_ACTIVITY
-import ru.k2d.k2dmessenger.utilits.USER
+import ru.k2d.k2dmessenger.database.USER
 import ru.k2d.k2dmessenger.utilits.downloadAndSetImage
 import ru.k2d.k2dmessenger.utilits.replaceFragment
 

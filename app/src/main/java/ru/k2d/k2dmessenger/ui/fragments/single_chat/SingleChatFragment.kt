@@ -7,6 +7,7 @@ import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.fragment_single_chat.*
 import kotlinx.android.synthetic.main.toolbar_info.view.*
 import ru.k2d.k2dmessenger.R
+import ru.k2d.k2dmessenger.database.*
 import ru.k2d.k2dmessenger.models.CommonModel
 import ru.k2d.k2dmessenger.models.Usermodel
 import ru.k2d.k2dmessenger.ui.fragments.BaseFragment

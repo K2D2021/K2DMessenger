@@ -1,5 +1,7 @@
 package ru.k2d.k2dmessenger.utilits
 
+import ru.k2d.k2dmessenger.database.*
+
 enum class AppStates(val state: String) {
     ONLINE("Online"),
     OFFLINE("Offline"),

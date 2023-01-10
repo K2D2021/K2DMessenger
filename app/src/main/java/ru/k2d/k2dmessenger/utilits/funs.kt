@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import com.squareup.picasso.Picasso
 import ru.k2d.k2dmessenger.MainActivity
 import ru.k2d.k2dmessenger.R
+import ru.k2d.k2dmessenger.database.updatePhonesToDatabase
 import ru.k2d.k2dmessenger.models.CommonModel
 import java.text.SimpleDateFormat
 import java.util.*

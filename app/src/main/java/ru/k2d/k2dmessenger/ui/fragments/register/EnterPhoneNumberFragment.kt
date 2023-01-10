@@ -6,6 +6,7 @@ import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
 import kotlinx.android.synthetic.main.fragment_enter_phone_number.*
 import ru.k2d.k2dmessenger.R
+import ru.k2d.k2dmessenger.database.AUTH
 import ru.k2d.k2dmessenger.utilits.*
 import java.util.concurrent.TimeUnit
 
