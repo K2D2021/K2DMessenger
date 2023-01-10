@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 import ru.k2d.k2dmessenger.R
 import ru.k2d.k2dmessenger.utilits.APP_ACTIVITY
 
-class ChatsFragment : Fragment(R.layout.fragment_chats) {
+class MainFragment : Fragment(R.layout.fragment_chats) {
 
     override fun onResume() {
         super.onResume()

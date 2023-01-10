@@ -9,7 +9,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import ru.k2d.k2dmessenger.databinding.ActivityMainBinding
-import ru.k2d.k2dmessenger.ui.fragments.ChatsFragment
+import ru.k2d.k2dmessenger.ui.fragments.MainFragment
 import ru.k2d.k2dmessenger.ui.fragments.register.EnterPhoneNumberFragment
 import ru.k2d.k2dmessenger.ui.objects.AppDrawer
 import ru.k2d.k2dmessenger.utilits.*
@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(mToolbar)
         if (AUTH.currentUser != null) {
             mAppDrawer.create()
-            replaceFragment(ChatsFragment(), false)
+            replaceFragment(MainFragment(), false)
         } else {
             replaceFragment(EnterPhoneNumberFragment(), false)
         }
