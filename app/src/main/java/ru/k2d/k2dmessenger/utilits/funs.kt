@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.squareup.picasso.Picasso
+import ru.k2d.k2dmessenger.MainActivity
 import ru.k2d.k2dmessenger.R
 import ru.k2d.k2dmessenger.models.CommonModel
 import java.text.SimpleDateFormat
@@ -19,10 +20,10 @@ fun showToast(message: String) {
     Toast.makeText(APP_ACTIVITY, message, Toast.LENGTH_SHORT).show()
 }
 
-fun AppCompatActivity.replaceActivity(activity: AppCompatActivity) {
-    val intent = Intent(this, activity::class.java)
-    startActivity(intent)
-    this.finish()
+fun restartActivity() {
+    val intent = Intent(APP_ACTIVITY, MainActivity::class.java)
+    APP_ACTIVITY.startActivity(intent)
+    APP_ACTIVITY.finish()
 }
 
 fun replaceFragment(fragment: Fragment, addStack: Boolean = true) {

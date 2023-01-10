@@ -1,4 +1,4 @@
-package ru.k2d.k2dmessenger.ui.fragments
+package ru.k2d.k2dmessenger.ui.fragments.register
 
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.PhoneAuthProvider
