@@ -5,12 +5,8 @@ import com.google.firebase.FirebaseException
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
 import kotlinx.android.synthetic.main.fragment_enter_phone_number.*
-import ru.k2d.k2dmessenger.MainActivity
 import ru.k2d.k2dmessenger.R
-import ru.k2d.k2dmessenger.utilits.AUTH
-import ru.k2d.k2dmessenger.utilits.replaceActivity
-import ru.k2d.k2dmessenger.utilits.replaceFragment
-import ru.k2d.k2dmessenger.utilits.showToast
+import ru.k2d.k2dmessenger.utilits.*
 import java.util.concurrent.TimeUnit
 
 class EnterPhoneNumberFragment : Fragment(R.layout.fragment_enter_phone_number) {
@@ -26,7 +22,7 @@ class EnterPhoneNumberFragment : Fragment(R.layout.fragment_enter_phone_number) 
                 AUTH.signInWithCredential(credential).addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         showToast("Welcome!")
-                        (activity as RegisterActivity).replaceActivity(MainActivity())
+                        restartActivity()
                     } else {
                         showToast(task.exception?.message.toString())
                     }
@@ -62,7 +58,7 @@ class EnterPhoneNumberFragment : Fragment(R.layout.fragment_enter_phone_number) 
             mPhoneNumber,
             60,
             TimeUnit.SECONDS,
-            activity as RegisterActivity,
+            APP_ACTIVITY,
             mCallback
         )
     }
