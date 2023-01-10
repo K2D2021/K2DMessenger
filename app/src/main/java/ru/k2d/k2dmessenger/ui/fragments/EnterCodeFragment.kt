@@ -5,7 +5,6 @@ import com.google.firebase.auth.PhoneAuthProvider
 import kotlinx.android.synthetic.main.fragment_enter_code.*
 import ru.k2d.k2dmessenger.MainActivity
 import ru.k2d.k2dmessenger.R
-import ru.k2d.k2dmessenger.activities.RegisterActivity
 import ru.k2d.k2dmessenger.utilits.*
 
 class EnterCodeFragment(val phoneNumber: String, val id: String) :

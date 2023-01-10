@@ -8,7 +8,6 @@ import androidx.core.content.ContextCompat
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import ru.k2d.k2dmessenger.activities.RegisterActivity
 import ru.k2d.k2dmessenger.databinding.ActivityMainBinding
 import ru.k2d.k2dmessenger.ui.fragments.ChatsFragment
 import ru.k2d.k2dmessenger.ui.objects.AppDrawer

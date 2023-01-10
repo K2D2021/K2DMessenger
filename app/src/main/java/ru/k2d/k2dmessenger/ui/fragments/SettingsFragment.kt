@@ -9,7 +9,6 @@ import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
 import kotlinx.android.synthetic.main.fragment_settings.*
 import ru.k2d.k2dmessenger.R
-import ru.k2d.k2dmessenger.activities.RegisterActivity
 import ru.k2d.k2dmessenger.utilits.*
 
 class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
