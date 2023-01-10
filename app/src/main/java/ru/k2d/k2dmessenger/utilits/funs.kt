@@ -64,13 +64,13 @@ fun initContacts() {
         cursor?.let {
             //Need to make logic whe it real phone do safe code else unsafe code
             while (it.moveToNext()) {
-                var fullName =
+                val fullName =
                     it.getString(it.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME))
-                var phone =
+                val phone =
                     it.getString(it.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
                 val newModel = CommonModel()
-                fullName = "Test user full name2"
-                phone = "+79097997976"
+                //fullName = "Test user full name2"
+                //phone = "+79097997976"
                 newModel.fullname = fullName
                 newModel.phone = phone.replace(Regex("[\\s,-]"), "")
                 arrayContacts.add(newModel)
