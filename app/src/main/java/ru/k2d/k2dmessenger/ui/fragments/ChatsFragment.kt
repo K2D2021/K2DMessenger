@@ -8,6 +8,7 @@ class ChatsFragment : Fragment(R.layout.fragment_chats) {
 
     override fun onResume() {
         super.onResume()
-        APP_ACTIVITY.title = "Chats"
+        APP_ACTIVITY.title = "K2DMessenger"
+        APP_ACTIVITY.mAppDrawer.enableDrawer()
     }
 }
