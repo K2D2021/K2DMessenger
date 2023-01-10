@@ -158,3 +158,14 @@ private fun deleteOldUsername(newUserName: String) {
             }
         }
 }
+
+fun setBioToDatabase(newBio: String) {
+    REF_DATABASE_ROOT.child(NODE_USERS).child(CURRENT_UID).child(CHILD_BIO).setValue(newBio)
+        .addOnCompleteListener {
+            if (it.isSuccessful) {
+                showToast(APP_ACTIVITY.getString(R.string.toast_data_update))
+                USER.bio = newBio
+                APP_ACTIVITY.supportFragmentManager.popBackStack()
+            }
+        }
+}
