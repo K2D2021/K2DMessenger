@@ -43,8 +43,7 @@ class SingleChatFragment(private val contact: CommonModel) :
         mRecyclerView.adapter = mAdapter
         mMessagesListener = object : ChildEventListener {
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
-                mListMessages.add(snapshot.getCommonModel())
-                mAdapter.setList(mListMessages)
+                mAdapter.addItem(snapshot.getCommonModel())
                 mRecyclerView.smoothScrollToPosition(mAdapter.itemCount)
             }
 
