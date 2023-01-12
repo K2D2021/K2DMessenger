@@ -26,6 +26,7 @@ class SingleChatFragment(private val contact: CommonModel) :
     private lateinit var mAdapter: SingleChatAdapter
     private lateinit var mRecyclerView: RecyclerView
     private lateinit var mMessagesListener: ChildEventListener
+    private var mCountMessages = 10
 
     override fun onResume() {
         super.onResume()
@@ -38,12 +39,12 @@ class SingleChatFragment(private val contact: CommonModel) :
         mAdapter = SingleChatAdapter()
         mRefMessages = REF_DATABASE_ROOT.child(NODE_MESSAGES).child(CURRENT_UID).child(contact.id)
         mRecyclerView.adapter = mAdapter
-        mMessagesListener = AppChildEventListener{
+        mMessagesListener = AppChildEventListener {
             mAdapter.addItem(it.getCommonModel())
             mRecyclerView.smoothScrollToPosition(mAdapter.itemCount)
         }
 
-        mRefMessages.addChildEventListener(mMessagesListener)
+        mRefMessages.limitToLast(mCountMessages).addChildEventListener(mMessagesListener)
     }
 
     private fun initToolbar() {
