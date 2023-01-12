@@ -52,9 +52,16 @@ class SingleChatAdapter: RecyclerView.Adapter<SingleChatAdapter.SingleChatHolder
     override fun getItemCount(): Int = mlistMessagesCache.size
 
     fun setList(list: List<CommonModel>){
-        mDiffResult = DiffUtil.calculateDiff(DiffUtilCallback(mlistMessagesCache, list))
+
+    }
+
+    fun addItem(item: CommonModel){
+        val newList = mutableListOf<CommonModel>()
+        newList.addAll(mlistMessagesCache)
+        newList.add(item)
+        mDiffResult = DiffUtil.calculateDiff(DiffUtilCallback(mlistMessagesCache, newList))
         mDiffResult.dispatchUpdatesTo(this)
-        mlistMessagesCache = list
+        mlistMessagesCache = newList
     }
 }
 

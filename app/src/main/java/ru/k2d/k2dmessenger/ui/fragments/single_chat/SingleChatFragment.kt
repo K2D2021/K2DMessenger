@@ -2,6 +2,9 @@ package ru.k2d.k2dmessenger.ui.fragments.single_chat
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.database.ChildEventListener
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.fragment_single_chat.*
@@ -24,8 +27,8 @@ class SingleChatFragment(private val contact: CommonModel) :
     private lateinit var mRefMessages: DatabaseReference
     private lateinit var mAdapter: SingleChatAdapter
     private lateinit var mRecyclerView: RecyclerView
-    private lateinit var mMessagesListener: AppValueEventListener
-    private var mListMessages = emptyList<CommonModel>()
+    private lateinit var mMessagesListener: ChildEventListener
+    private var mListMessages = mutableListOf<CommonModel>()
 
     override fun onResume() {
         super.onResume()
@@ -38,12 +41,32 @@ class SingleChatFragment(private val contact: CommonModel) :
         mAdapter = SingleChatAdapter()
         mRefMessages = REF_DATABASE_ROOT.child(NODE_MESSAGES).child(CURRENT_UID).child(contact.id)
         mRecyclerView.adapter = mAdapter
-        mMessagesListener = AppValueEventListener { dataSnapshot ->
-            mListMessages = dataSnapshot.children.map { it.getCommonModel() }
-            mAdapter.setList(mListMessages)
-            mRecyclerView.smoothScrollToPosition(mAdapter.itemCount)
+        mMessagesListener = object : ChildEventListener {
+            override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
+                mListMessages.add(snapshot.getCommonModel())
+                mAdapter.setList(mListMessages)
+                mRecyclerView.smoothScrollToPosition(mAdapter.itemCount)
+            }
+
+            override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
+                //TODO("Not yet implemented")
+            }
+
+            override fun onChildRemoved(snapshot: DataSnapshot) {
+//                TODO("Not yet implemented")
+            }
+
+            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
+//                TODO("Not yet implemented")
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+//                TODO("Not yet implemented")
+            }
+
         }
-        mRefMessages.addValueEventListener(mMessagesListener)
+
+        mRefMessages.addChildEventListener(mMessagesListener)
     }
 
     private fun initToolbar() {
