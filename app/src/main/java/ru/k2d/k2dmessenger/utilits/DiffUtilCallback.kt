@@ -7,19 +7,12 @@ class DiffUtilCallback(
     private val oldList: List<CommonModel>,
     private val newList: List<CommonModel>
 ) : DiffUtil.Callback() {
-    override fun getOldListSize(): Int {
+    override fun getOldListSize(): Int = oldList.size
+    override fun getNewListSize(): Int = newList.size
 
-    }
+    override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean =
+        oldList[oldItemPosition].timeStamp == newList[newItemPosition].timeStamp
 
-    override fun getNewListSize(): Int {
-        TODO("Not yet implemented")
-    }
-
-    override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        TODO("Not yet implemented")
-    }
-
-    override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        TODO("Not yet implemented")
-    }
+    override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean =
+        oldList[oldItemPosition] == newList[newItemPosition]
 }
