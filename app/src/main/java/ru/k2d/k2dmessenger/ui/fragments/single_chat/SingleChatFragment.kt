@@ -26,7 +26,6 @@ class SingleChatFragment(private val contact: CommonModel) :
     private lateinit var mAdapter: SingleChatAdapter
     private lateinit var mRecyclerView: RecyclerView
     private lateinit var mMessagesListener: ChildEventListener
-    private var mListMessages = mutableListOf<CommonModel>()
 
     override fun onResume() {
         super.onResume()
