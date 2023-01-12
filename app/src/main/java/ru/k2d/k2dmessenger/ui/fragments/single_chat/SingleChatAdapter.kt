@@ -1,21 +1,24 @@
 package ru.k2d.k2dmessenger.ui.fragments.single_chat
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.DiffUtil.DiffResult
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.message_item.view.*
 import ru.k2d.k2dmessenger.R
-import ru.k2d.k2dmessenger.models.CommonModel
 import ru.k2d.k2dmessenger.database.CURRENT_UID
+import ru.k2d.k2dmessenger.models.CommonModel
+import ru.k2d.k2dmessenger.utilits.DiffUtilCallback
 import ru.k2d.k2dmessenger.utilits.asTime
 
 class SingleChatAdapter: RecyclerView.Adapter<SingleChatAdapter.SingleChatHolder>() {
 
     private var mlistMessagesCache = emptyList<CommonModel>()
+    private lateinit var mDiffResult: DiffResult
 
     class SingleChatHolder(view: View) : RecyclerView.ViewHolder(view){
         val blocUserMessage:ConstraintLayout = view.bloc_user_message
@@ -48,10 +51,10 @@ class SingleChatAdapter: RecyclerView.Adapter<SingleChatAdapter.SingleChatHolder
 
     override fun getItemCount(): Int = mlistMessagesCache.size
 
-    @SuppressLint("NotifyDataSetChanged")
     fun setList(list: List<CommonModel>){
+        mDiffResult = DiffUtil.calculateDiff(DiffUtilCallback(mlistMessagesCache, list))
+        mDiffResult.dispatchUpdatesTo(this)
         mlistMessagesCache = list
-        notifyDataSetChanged()
     }
 }
 
