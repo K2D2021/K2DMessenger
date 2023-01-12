@@ -1,6 +1,7 @@
 package ru.k2d.k2dmessenger.ui.fragments.single_chat
 
 import android.view.View
+import android.widget.AbsListView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DatabaseReference
@@ -27,6 +28,8 @@ class SingleChatFragment(private val contact: CommonModel) :
     private lateinit var mRecyclerView: RecyclerView
     private lateinit var mMessagesListener: ChildEventListener
     private var mCountMessages = 10
+    private var mIsScrolling = false
+    private var mSmoothScrollToPosition = true
 
     override fun onResume() {
         super.onResume()
@@ -39,12 +42,38 @@ class SingleChatFragment(private val contact: CommonModel) :
         mAdapter = SingleChatAdapter()
         mRefMessages = REF_DATABASE_ROOT.child(NODE_MESSAGES).child(CURRENT_UID).child(contact.id)
         mRecyclerView.adapter = mAdapter
+
         mMessagesListener = AppChildEventListener {
             mAdapter.addItem(it.getCommonModel())
-            mRecyclerView.smoothScrollToPosition(mAdapter.itemCount)
+            if (mSmoothScrollToPosition) {
+                mRecyclerView.smoothScrollToPosition(mAdapter.itemCount)
+            }
         }
 
         mRefMessages.limitToLast(mCountMessages).addChildEventListener(mMessagesListener)
+
+        mRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                if (newState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL) mIsScrolling =
+                    true
+            }
+
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                if (mIsScrolling && dy < 0) {
+                    updateData()
+                }
+            }
+        })
+    }
+
+    private fun updateData() {
+        mSmoothScrollToPosition = false
+        mIsScrolling = false
+        mCountMessages += 10
+        mRefMessages.limitToLast(mCountMessages).addChildEventListener(mMessagesListener)
+
     }
 
     private fun initToolbar() {
@@ -58,6 +87,7 @@ class SingleChatFragment(private val contact: CommonModel) :
         mRefUser = REF_DATABASE_ROOT.child(NODE_USERS).child(contact.id)
         mRefUser.addValueEventListener(mListenerInfoToolbar)
         chat_btn_send_message.setOnClickListener {
+            mSmoothScrollToPosition = true
             val message = chat_input_message.text.toString()
             if (message.isEmpty()) {
                 showToast("Please input message")
