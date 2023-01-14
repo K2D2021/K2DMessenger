@@ -22,7 +22,7 @@
         android:id="@+id/chat_input_message"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Message"
+        android:hint="@string/single_chat_message"
         android:padding="@dimen/appPadding"
         android:textColor="@color/colorBlack"
         android:textColorHint="@color/colorGrey"
