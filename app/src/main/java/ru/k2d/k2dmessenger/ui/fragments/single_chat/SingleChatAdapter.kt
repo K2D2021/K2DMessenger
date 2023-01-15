@@ -5,14 +5,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.DiffUtil.DiffResult
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.message_item.view.*
 import ru.k2d.k2dmessenger.R
 import ru.k2d.k2dmessenger.database.CURRENT_UID
 import ru.k2d.k2dmessenger.models.CommonModel
-import ru.k2d.k2dmessenger.utilits.DiffUtilCallback
 import ru.k2d.k2dmessenger.utilits.asTime
 
 class SingleChatAdapter : RecyclerView.Adapter<SingleChatAdapter.SingleChatHolder>() {
