@@ -17,7 +17,7 @@ import ru.k2d.k2dmessenger.utilits.asTime
 
 class SingleChatAdapter : RecyclerView.Adapter<SingleChatAdapter.SingleChatHolder>() {
 
-    private var mlistMessagesCache = emptyList<CommonModel>()
+    private var mlistMessagesCache = mutableListOf<CommonModel>()
     private lateinit var mDiffResult: DiffResult
 
     class SingleChatHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -54,15 +54,8 @@ class SingleChatAdapter : RecyclerView.Adapter<SingleChatAdapter.SingleChatHolde
     override fun getItemCount(): Int = mlistMessagesCache.size
 
     fun addItem(item: CommonModel) {
-        val newList = mutableListOf<CommonModel>()
-        newList.addAll(mlistMessagesCache)
-        if (!newList.contains(item)) newList.add(item)
-
-        newList.sortBy { it.timeStamp.toString() }
-
-        mDiffResult = DiffUtil.calculateDiff(DiffUtilCallback(mlistMessagesCache, newList))
-        mDiffResult.dispatchUpdatesTo(this)
-        mlistMessagesCache = newList
+        mlistMessagesCache.add(item)
+        notifyItemInserted(mlistMessagesCache.size)
     }
 }
 
