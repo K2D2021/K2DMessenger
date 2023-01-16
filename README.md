@@ -1,5 +1,5 @@
 # K2DMessenger
-Messenger for smart, secure and fast communication
+Messenger for smart, secure and fast communication in the world!
 
 - [Description](#description)
 - [Technologies](#technologies)
