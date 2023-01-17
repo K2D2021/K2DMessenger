@@ -44,7 +44,7 @@ class SingleChatFragment(private val contact: CommonModel) :
         mRecyclerView.adapter = mAdapter
 
         mMessagesListener = AppChildEventListener {
-            mAdapter.addItem(it.getCommonModel())
+            mAdapter.addItem(it.getCommonModel(), mSmoothScrollToPosition)
             if (mSmoothScrollToPosition) {
                 mRecyclerView.smoothScrollToPosition(mAdapter.itemCount)
             }
