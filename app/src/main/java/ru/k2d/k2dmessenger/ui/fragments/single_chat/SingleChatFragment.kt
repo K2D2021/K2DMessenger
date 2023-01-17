@@ -46,11 +46,16 @@ class SingleChatFragment(private val contact: CommonModel) :
         mRecyclerView.adapter = mAdapter
 
         mMessagesListener = AppChildEventListener {
-            mAdapter.addItem(it.getCommonModel(), mSmoothScrollToPosition) {
-                if (mSmoothScrollToPosition) {
+            val message = it.getCommonModel()
+
+            if (mSmoothScrollToPosition) {
+                mAdapter.addItemToBottom(message) {
                     mRecyclerView.smoothScrollToPosition(mAdapter.itemCount)
                 }
-                mSwipeRefreshLayout.isRefreshing = false
+            } else {
+                mAdapter.addItemToTop(message) {
+                    mSwipeRefreshLayout.isRefreshing = false
+                }
             }
         }
 
