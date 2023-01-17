@@ -3,6 +3,7 @@ package ru.k2d.k2dmessenger.ui.fragments.single_chat
 import android.view.View
 import android.widget.AbsListView
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.firebase.database.DatabaseReference
 import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.fragment_single_chat.*
@@ -29,6 +30,7 @@ class SingleChatFragment(private val contact: CommonModel) :
     private var mCountMessages = 10
     private var mIsScrolling = false
     private var mSmoothScrollToPosition = true
+    private lateinit var mSwipeRefreshLayout: SwipeRefreshLayout
 
     override fun onResume() {
         super.onResume()
@@ -65,6 +67,8 @@ class SingleChatFragment(private val contact: CommonModel) :
                 }
             }
         })
+
+        mSwipeRefreshLayout.setOnRefreshListener { updateData() }
     }
 
     private fun updateData() {
