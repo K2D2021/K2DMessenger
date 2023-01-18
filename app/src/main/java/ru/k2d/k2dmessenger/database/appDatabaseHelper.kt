@@ -30,6 +30,7 @@ const val NODE_PHONES_CONTACTS = "phones_contacts"
 const val NODE_MESSAGES = "messages"
 
 const val FOLDER_PROFILE_IMAGE = "profile_image"
+const val FOLDER_MESSAGE_IMAGE = "message_image"
 
 const val CHILD_ID = "id"
 const val CHILD_PHONE = "phone"
