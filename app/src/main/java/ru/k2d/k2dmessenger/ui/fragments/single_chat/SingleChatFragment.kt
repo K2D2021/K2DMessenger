@@ -160,7 +160,7 @@ class SingleChatFragment(private val contact: CommonModel) :
                 .child(messageKey)
             putImageToStorage(uri, path) {
                 getUrlFromStorage(path) {
-
+                    sendMessageAsImage(contact.id, it, messageKey)
                 }
             }
         }
