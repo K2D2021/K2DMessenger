@@ -20,7 +20,6 @@ import ru.k2d.k2dmessenger.utilits.downloadAndSetImage
 class SingleChatAdapter : RecyclerView.Adapter<SingleChatAdapter.SingleChatHolder>() {
 
     private var mlistMessagesCache = mutableListOf<CommonModel>()
-    private lateinit var mDiffResult: DiffResult
 
     class SingleChatHolder(view: View) : RecyclerView.ViewHolder(view) {
         //Text
