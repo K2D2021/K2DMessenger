@@ -1,10 +1,12 @@
 package ru.k2d.k2dmessenger.ui.fragments.single_chat
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.view.MotionEvent
 import android.view.View
 import android.widget.AbsListView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -45,6 +47,7 @@ class SingleChatFragment(private val contact: CommonModel) :
         initRecyclerView()
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private fun initFields() {
         mSwipeRefreshLayout = chat_swipe_refresh
         mLayoutManager = LinearLayoutManager(this.context)
@@ -66,9 +69,11 @@ class SingleChatFragment(private val contact: CommonModel) :
         chat_btn_voice.setOnTouchListener { v, event ->
             if (checkPermissions(RECORD_AUDIO)) {
                 if (event.action == MotionEvent.ACTION_DOWN) {
-                    chat_input_message.setText("Recording")
+                    chat_input_message.setText(getString(R.string.text_recording))
+                    chat_btn_voice.setColorFilter(ContextCompat.getColor(APP_ACTIVITY, R.color.colorPrimary))
                 } else if (event.action == MotionEvent.ACTION_UP) {
                     chat_input_message.setText("")
+                    chat_btn_voice.setColorFilter(ContextCompat.getColor(APP_ACTIVITY, R.color.colorBlack))
                 }
             }
             true

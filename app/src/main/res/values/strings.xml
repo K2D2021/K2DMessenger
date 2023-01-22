@@ -28,4 +28,5 @@
     <string name="settings_hint_input_username">Username</string>
     <string name="settings_input_bio">Bio</string>
     <string name="single_chat_message">Message</string>
+    <string name="text_recording">Recording</string>
 </resources>
