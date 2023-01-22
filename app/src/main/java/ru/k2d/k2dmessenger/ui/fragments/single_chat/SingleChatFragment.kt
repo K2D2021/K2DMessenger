@@ -59,6 +59,10 @@ class SingleChatFragment(private val contact: CommonModel) :
         })
 
         chat_btn_attach.setOnClickListener { attachFile() }
+
+        chat_btn_voice.setOnTouchListener { v, event ->
+            true
+        }
     }
 
     private fun attachFile() {
