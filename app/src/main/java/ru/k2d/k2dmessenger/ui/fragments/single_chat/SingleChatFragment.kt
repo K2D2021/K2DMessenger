@@ -2,6 +2,7 @@ package ru.k2d.k2dmessenger.ui.fragments.single_chat
 
 import android.app.Activity
 import android.content.Intent
+import android.view.MotionEvent
 import android.view.View
 import android.widget.AbsListView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -52,15 +53,24 @@ class SingleChatFragment(private val contact: CommonModel) :
             if (string.isEmpty()) {
                 chat_btn_send_message.visibility = View.GONE
                 chat_btn_attach.visibility = View.VISIBLE
+                chat_btn_voice.visibility = View.VISIBLE
             } else {
                 chat_btn_send_message.visibility = View.VISIBLE
                 chat_btn_attach.visibility = View.GONE
+                chat_btn_voice.visibility = View.GONE
             }
         })
 
         chat_btn_attach.setOnClickListener { attachFile() }
 
         chat_btn_voice.setOnTouchListener { v, event ->
+            if (checkPermissions(RECORD_AUDIO)) {
+                if (event.action == MotionEvent.ACTION_DOWN) {
+                    chat_input_message.setText("Recording")
+                } else if (event.action == MotionEvent.ACTION_UP) {
+                    chat_input_message.setText("")
+                }
+            }
             true
         }
     }
