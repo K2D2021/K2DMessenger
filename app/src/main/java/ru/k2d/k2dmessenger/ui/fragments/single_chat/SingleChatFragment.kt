@@ -15,6 +15,9 @@ import com.theartofdev.edmodo.cropper.CropImage
 import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.fragment_single_chat.*
 import kotlinx.android.synthetic.main.toolbar_info.view.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import ru.k2d.k2dmessenger.R
 import ru.k2d.k2dmessenger.database.*
 import ru.k2d.k2dmessenger.models.CommonModel
@@ -66,17 +69,29 @@ class SingleChatFragment(private val contact: CommonModel) :
 
         chat_btn_attach.setOnClickListener { attachFile() }
 
-        chat_btn_voice.setOnTouchListener { v, event ->
-            if (checkPermissions(RECORD_AUDIO)) {
-                if (event.action == MotionEvent.ACTION_DOWN) {
-                    chat_input_message.setText(getString(R.string.text_recording))
-                    chat_btn_voice.setColorFilter(ContextCompat.getColor(APP_ACTIVITY, R.color.colorPrimary))
-                } else if (event.action == MotionEvent.ACTION_UP) {
-                    chat_input_message.setText("")
-                    chat_btn_voice.setColorFilter(ContextCompat.getColor(APP_ACTIVITY, R.color.colorBlack))
+        CoroutineScope(Dispatchers.IO).launch {
+            chat_btn_voice.setOnTouchListener { v, event ->
+                if (checkPermissions(RECORD_AUDIO)) {
+                    if (event.action == MotionEvent.ACTION_DOWN) {
+                        chat_input_message.setText(getString(R.string.text_recording))
+                        chat_btn_voice.setColorFilter(
+                            ContextCompat.getColor(
+                                APP_ACTIVITY,
+                                R.color.colorPrimary
+                            )
+                        )
+                    } else if (event.action == MotionEvent.ACTION_UP) {
+                        chat_input_message.setText("")
+                        chat_btn_voice.setColorFilter(
+                            ContextCompat.getColor(
+                                APP_ACTIVITY,
+                                R.color.colorBlack
+                            )
+                        )
+                    }
                 }
+                true
             }
-            true
         }
     }
 
