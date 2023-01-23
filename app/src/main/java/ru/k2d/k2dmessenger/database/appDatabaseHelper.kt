@@ -198,3 +198,11 @@ fun sendMessageAsImage(receivingUserId: String, imageUrl: String, messageKey: St
         .updateChildren(mapDialog)
         .addOnFailureListener { showToast(it.message.toString()) }
 }
+
+fun getMessageKey(id: String) =
+    REF_DATABASE_ROOT.child(NODE_MESSAGES).child(CURRENT_UID).child(id)
+        .push().key.toString()
+
+fun uploadFileToStorage(uri: Uri, messageKey: String) {
+    showToast("Record is OK")
+}
