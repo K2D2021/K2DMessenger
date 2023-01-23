@@ -80,6 +80,7 @@ class SingleChatFragment(private val contact: CommonModel) :
                                 R.color.colorPrimary
                             )
                         )
+                        AppVoiceRecorder.startRecord()
                     } else if (event.action == MotionEvent.ACTION_UP) {
                         chat_input_message.setText("")
                         chat_btn_voice.setColorFilter(
@@ -88,11 +89,18 @@ class SingleChatFragment(private val contact: CommonModel) :
                                 R.color.colorBlack
                             )
                         )
+                        AppVoiceRecorder.stopRecord{
+                            uploadFileToStorage()
+                        }
                     }
                 }
                 true
             }
         }
+    }
+
+    private fun uploadFileToStorage() {
+
     }
 
     private fun attachFile() {
