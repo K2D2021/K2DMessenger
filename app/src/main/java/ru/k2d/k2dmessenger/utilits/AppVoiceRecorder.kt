@@ -1,6 +1,9 @@
 package ru.k2d.k2dmessenger.utilits
 
 import android.media.MediaRecorder
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.io.File
 
 class AppVoiceRecorder {
@@ -11,7 +14,7 @@ class AppVoiceRecorder {
         private lateinit var mMessageKey: String
 
 
-        fun startRecord(messageKey: String) {
+        fun startRecord(messageKey: String) = CoroutineScope(Dispatchers.IO).launch{
             try {
                 mMessageKey = messageKey
                 createFileForRecord()
@@ -37,12 +40,21 @@ class AppVoiceRecorder {
 
         }
 
-        fun stopRecord(onSuccess: () -> Unit) {
-
+        fun stopRecord(onSuccess: (file:File, messageKey:String) -> Unit) {
+            try {
+                mMediaRecorder.stop()
+                onSuccess(mFile, mMessageKey)
+            } catch (e: Exception) {
+                showToast(e.message.toString())
+            }
         }
 
         fun releaseRecorder() {
-
+            try {
+                mMediaRecorder.release()
+            } catch (e: Exception) {
+                showToast(e.message.toString())
+            }
         }
     }
 }

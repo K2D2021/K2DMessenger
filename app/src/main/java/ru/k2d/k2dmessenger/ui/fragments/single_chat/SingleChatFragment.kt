@@ -215,4 +215,9 @@ class SingleChatFragment(private val contact: CommonModel) :
         mRefUser.removeEventListener(mListenerInfoToolbar)
         mRefMessages.removeEventListener(mMessagesListener)
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        AppVoiceRecorder.releaseRecorder()
+    }
 }
