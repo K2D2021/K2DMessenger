@@ -45,7 +45,7 @@ const val CHILD_TEXT = "text"
 const val CHILD_TYPE = "type"
 const val CHILD_FROM = "from"
 const val CHILD_TIMESTAMP = "timeStamp"
-const val CHILD_IMAGE_URL = "imageUrl"
+const val CHILD_FILE_URL = "fileUrl"
 
 
 fun initFirebase() {
@@ -188,7 +188,7 @@ fun sendMessageAsImage(receivingUserId: String, imageUrl: String, messageKey: St
     mapMessage[CHILD_TYPE] = TYPE_MESSAGE_IMAGE
     mapMessage[CHILD_ID] = messageKey
     mapMessage[CHILD_TIMESTAMP] = ServerValue.TIMESTAMP
-    mapMessage[CHILD_IMAGE_URL] = imageUrl
+    mapMessage[CHILD_FILE_URL] = imageUrl
 
     val mapDialog = hashMapOf<String, Any>()
     mapDialog["$refDialogUser/$messageKey"] = mapMessage
