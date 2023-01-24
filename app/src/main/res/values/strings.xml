@@ -29,4 +29,5 @@
     <string name="settings_input_bio">Bio</string>
     <string name="single_chat_message">Message</string>
     <string name="text_recording">Recording</string>
+    <string name="todo">TODO</string>
 </resources>
