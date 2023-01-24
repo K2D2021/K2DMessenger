@@ -11,6 +11,7 @@ import kotlinx.android.synthetic.main.message_item.view.*
 import ru.k2d.k2dmessenger.R
 import ru.k2d.k2dmessenger.database.CURRENT_UID
 import ru.k2d.k2dmessenger.models.CommonModel
+import ru.k2d.k2dmessenger.ui.fragments.message_recycler_view.views.MessageView
 import ru.k2d.k2dmessenger.utilits.TYPE_MESSAGE_IMAGE
 import ru.k2d.k2dmessenger.utilits.TYPE_MESSAGE_TEXT
 import ru.k2d.k2dmessenger.utilits.asTime
@@ -18,9 +19,9 @@ import ru.k2d.k2dmessenger.utilits.downloadAndSetImage
 
 class SingleChatAdapter : RecyclerView.Adapter<SingleChatAdapter.SingleChatHolder>() {
 
-    private var mlistMessagesCache = mutableListOf<CommonModel>()
+    private var mlistMessagesCache = mutableListOf<MessageView>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SingleChatHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.message_item, parent, false)
         return SingleChatHolder(view)
     }
@@ -70,7 +71,7 @@ class SingleChatAdapter : RecyclerView.Adapter<SingleChatAdapter.SingleChatHolde
 
     override fun getItemCount(): Int = mlistMessagesCache.size
 
-    fun addItemToBottom(item: CommonModel, onSuccess: () -> Unit) {
+    fun addItemToBottom(item: MessageView, onSuccess: () -> Unit) {
         if (!mlistMessagesCache.contains(item)) {
             mlistMessagesCache.add(item)
             notifyItemInserted(mlistMessagesCache.size)
@@ -78,7 +79,7 @@ class SingleChatAdapter : RecyclerView.Adapter<SingleChatAdapter.SingleChatHolde
         onSuccess()
     }
 
-    fun addItemToTop(item: CommonModel, onSuccess: () -> Unit) {
+    fun addItemToTop(item: MessageView, onSuccess: () -> Unit) {
         if (!mlistMessagesCache.contains(item)) {
             mlistMessagesCache.add(item)
             mlistMessagesCache.sortBy { it.timeStamp.toString() }
