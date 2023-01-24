@@ -94,7 +94,13 @@ class SingleChatFragment(private val contact: CommonModel) :
                             )
                         )
                         mAppVoiceRecorder.stopRecord { file, messageKey ->
-                            uploadFileToStorage(Uri.fromFile(file), messageKey)
+                            uploadFileToStorage(
+                                Uri.fromFile(file),
+                                messageKey,
+                                contact.id,
+                                TYPE_MESSAGE_VOICE
+                            )
+                            mSmoothScrollToPosition = true
                         }
                     }
                 }
@@ -194,9 +200,9 @@ class SingleChatFragment(private val contact: CommonModel) :
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode == Activity.RESULT_OK && data != null) {
             val uri = CropImage.getActivityResult(data).uri
-            val messageKey =
-                getMessageKey(contact.id)
-
+            val messageKey = getMessageKey(contact.id)
+            uploadFileToStorage(uri, messageKey, contact.id, TYPE_MESSAGE_IMAGE)
+            mSmoothScrollToPosition = true
         }
     }
 
