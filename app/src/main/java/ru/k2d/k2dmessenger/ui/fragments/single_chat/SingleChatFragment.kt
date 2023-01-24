@@ -196,15 +196,7 @@ class SingleChatFragment(private val contact: CommonModel) :
             val uri = CropImage.getActivityResult(data).uri
             val messageKey =
                 getMessageKey(contact.id)
-            val path = REF_STORAGE_ROOT
-                .child(FOLDER_MESSAGE_IMAGE)
-                .child(messageKey)
-            putImageToStorage(uri, path) {
-                getUrlFromStorage(path) {
-                    sendMessageAsImage(contact.id, it, messageKey)
-                    mSmoothScrollToPosition = true
-                }
-            }
+
         }
     }
 

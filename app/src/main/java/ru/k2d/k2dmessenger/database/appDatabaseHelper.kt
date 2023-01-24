@@ -204,5 +204,13 @@ fun getMessageKey(id: String) =
         .push().key.toString()
 
 fun uploadFileToStorage(uri: Uri, messageKey: String) {
-    showToast("Record is OK")
+    val path = REF_STORAGE_ROOT
+        .child(FOLDER_MESSAGE_IMAGE)
+        .child(messageKey)
+    putImageToStorage(uri, path) {
+        getUrlFromStorage(path) {
+            sendMessageAsImage(contact.id, it, messageKey)
+            mSmoothScrollToPosition = true
+        }
+    }
 }
