@@ -22,7 +22,7 @@ class SingleChatAdapter : RecyclerView.Adapter<SingleChatAdapter.SingleChatHolde
     private var mlistMessagesCache = mutableListOf<MessageView>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.message_item, parent, false)
+
         return SingleChatHolder(view)
     }
 
