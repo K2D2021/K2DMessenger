@@ -19,6 +19,10 @@ class SingleChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         return AppHolderFactory.getHolder(parent, viewType)
     }
 
+    override fun getItemViewType(position: Int): Int {
+        return mlistMessagesCache[position].getTypeView()
+    }
+
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
             is HolderImageMessage -> drawMessageImage(holder, position)

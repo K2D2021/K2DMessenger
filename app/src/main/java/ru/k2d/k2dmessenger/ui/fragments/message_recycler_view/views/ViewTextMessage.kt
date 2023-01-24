@@ -1,6 +1,6 @@
 package ru.k2d.k2dmessenger.ui.fragments.message_recycler_view.views
 
-class ViewTextMessage(
+data class ViewTextMessage(
     override val id: String,
     override val from: String,
     override val timeStamp: String,
@@ -9,5 +9,9 @@ class ViewTextMessage(
 ) : MessageView {
     override fun getTypeView(): Int {
         return MessageView.MESSAGE_TEXT
+    }
+
+    override fun equals(other: Any?): Boolean {
+        return (other as MessageView).id == id
     }
 }
