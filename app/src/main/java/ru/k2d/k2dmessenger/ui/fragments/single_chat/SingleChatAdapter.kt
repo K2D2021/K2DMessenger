@@ -16,11 +16,15 @@ class SingleChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var mlistMessagesCache = mutableListOf<MessageView>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return AppHolderFactory.getHolder(parent,viewType)
+        return AppHolderFactory.getHolder(parent, viewType)
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-
+        when (holder) {
+            is HolderImageMessage -> drawMessageImage(holder, position)
+            is HolderTextMessage -> drawMessageText(holder, position)
+            else -> {}
+        }
     }
 
     private fun drawMessageImage(holder: HolderImageMessage, position: Int) {
@@ -29,13 +33,13 @@ class SingleChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             holder.blocUserImageMessage.visibility = View.VISIBLE
             holder.chatUserImage.downloadAndSetImage(mlistMessagesCache[position].fileUrl)
             holder.chatUserImageMessageTime.text =
-                mlistMessagesCache[position].timeStamp.toString().asTime()
+                mlistMessagesCache[position].timeStamp.asTime()
         } else {
             holder.blocReceivedImageMessage.visibility = View.VISIBLE
             holder.blocUserImageMessage.visibility = View.GONE
             holder.chatReceivedImage.downloadAndSetImage(mlistMessagesCache[position].fileUrl)
             holder.chatReceivedImageMessageTime.text =
-                mlistMessagesCache[position].timeStamp.toString().asTime()
+                mlistMessagesCache[position].timeStamp.asTime()
         }
     }
 
@@ -45,13 +49,13 @@ class SingleChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             holder.blocReceivedMessage.visibility = View.GONE
             holder.chatUserMessage.text = mlistMessagesCache[position].text
             holder.chatUserMessageTime.text =
-                mlistMessagesCache[position].timeStamp.toString().asTime()
+                mlistMessagesCache[position].timeStamp.asTime()
         } else {
             holder.blocUserMessage.visibility = View.GONE
             holder.blocReceivedMessage.visibility = View.VISIBLE
             holder.chatReceivedMessage.text = mlistMessagesCache[position].text
             holder.chatReceivedMessageTime.text =
-                mlistMessagesCache[position].timeStamp.toString().asTime()
+                mlistMessagesCache[position].timeStamp.asTime()
         }
     }
 
@@ -68,7 +72,7 @@ class SingleChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     fun addItemToTop(item: MessageView, onSuccess: () -> Unit) {
         if (!mlistMessagesCache.contains(item)) {
             mlistMessagesCache.add(item)
-            mlistMessagesCache.sortBy { it.timeStamp.toString() }
+            mlistMessagesCache.sortBy { it.timeStamp }
             notifyItemInserted(0)
         }
         onSuccess()
