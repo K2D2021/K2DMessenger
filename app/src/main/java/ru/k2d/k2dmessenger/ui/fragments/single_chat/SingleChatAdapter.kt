@@ -20,25 +20,6 @@ class SingleChatAdapter : RecyclerView.Adapter<SingleChatAdapter.SingleChatHolde
 
     private var mlistMessagesCache = mutableListOf<CommonModel>()
 
-    class SingleChatHolder(view: View) : RecyclerView.ViewHolder(view) {
-        //Text
-        val blocUserMessage: ConstraintLayout = view.bloc_user_message
-        val chatUserMessage: TextView = view.chat_user_message
-        val chatUserMessageTime: TextView = view.chat_user_message_time
-
-        val blocReceivedMessage: ConstraintLayout = view.bloc_received_message
-        val chatReceivedMessage: TextView = view.chat_received_message
-        val chatReceivedMessageTime: TextView = view.chat_received_message_time
-
-        //Image
-        val blocReceivedImageMessage: ConstraintLayout = view.bloc_received_image_message
-        val blocUserImageMessage: ConstraintLayout = view.bloc_user_image_message
-        val chatReceivedImage: ImageView = view.chat_received_image
-        val chatUserImage: ImageView = view.chat_user_image
-        val chatReceivedImageMessageTime: TextView = view.chat_received_image_message_time
-        val chatUserImageMessageTime: TextView = view.chat_user_image_message_time
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SingleChatHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.message_item, parent, false)
         return SingleChatHolder(view)
