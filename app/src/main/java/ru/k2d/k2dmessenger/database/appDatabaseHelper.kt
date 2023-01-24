@@ -32,6 +32,7 @@ const val NODE_MESSAGES = "messages"
 
 const val FOLDER_PROFILE_IMAGE = "profile_image"
 const val FOLDER_MESSAGE_IMAGE = "message_image"
+const val FOLDER_FILES = "files"
 
 const val CHILD_ID = "id"
 const val CHILD_PHONE = "phone"
@@ -69,7 +70,7 @@ inline fun getUrlFromStorage(path: StorageReference, crossinline function: (url:
         .addOnFailureListener { showToast(it.message.toString()) }
 }
 
-inline fun putImageToStorage(uri: Uri, path: StorageReference, crossinline function: () -> Unit) {
+inline fun putFileToStorage(uri: Uri, path: StorageReference, crossinline function: () -> Unit) {
     path.putFile(uri)
         .addOnSuccessListener { function() }
         .addOnFailureListener { showToast(it.message.toString()) }
@@ -153,9 +154,9 @@ fun updateCurrentUsername(newUserName: String) {
 private fun deleteOldUsername(newUserName: String) {
     REF_DATABASE_ROOT.child(NODE_USERNAMES).child(USER.username).removeValue()
         .addOnSuccessListener {
-                showToast(APP_ACTIVITY.getString(R.string.toast_data_update))
-                APP_ACTIVITY.supportFragmentManager.popBackStack()
-                USER.username = newUserName
+            showToast(APP_ACTIVITY.getString(R.string.toast_data_update))
+            APP_ACTIVITY.supportFragmentManager.popBackStack()
+            USER.username = newUserName
         }.addOnFailureListener { showToast(it.message.toString()) }
 }
 
@@ -179,7 +180,7 @@ fun setNameToDatabase(fullname: String) {
         }.addOnFailureListener { showToast(it.message.toString()) }
 }
 
-fun sendMessageAsImage(receivingUserId: String, imageUrl: String, messageKey: String) {
+fun sendMessageAsFile(receivingUserId: String, imageUrl: String, messageKey: String) {
     val refDialogUser = "$NODE_MESSAGES/$CURRENT_UID/$receivingUserId"
     val refDialogReceivingUser = "$NODE_MESSAGES/$receivingUserId/$CURRENT_UID"
 
@@ -203,14 +204,11 @@ fun getMessageKey(id: String) =
     REF_DATABASE_ROOT.child(NODE_MESSAGES).child(CURRENT_UID).child(id)
         .push().key.toString()
 
-fun uploadFileToStorage(uri: Uri, messageKey: String) {
-    val path = REF_STORAGE_ROOT
-        .child(FOLDER_MESSAGE_IMAGE)
-        .child(messageKey)
-    putImageToStorage(uri, path) {
+fun uploadFileToStorage(uri: Uri, messageKey: String, receivedID: String) {
+    val path = REF_STORAGE_ROOT.child(FOLDER_FILES).child(messageKey)
+    putFileToStorage(uri, path) {
         getUrlFromStorage(path) {
-            sendMessageAsImage(contact.id, it, messageKey)
-            mSmoothScrollToPosition = true
+            sendMessageAsFile(receivedID, it, messageKey)
         }
     }
 }
