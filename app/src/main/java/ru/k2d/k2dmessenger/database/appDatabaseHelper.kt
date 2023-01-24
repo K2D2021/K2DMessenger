@@ -13,7 +13,6 @@ import ru.k2d.k2dmessenger.models.CommonModel
 import ru.k2d.k2dmessenger.models.Usermodel
 import ru.k2d.k2dmessenger.utilits.APP_ACTIVITY
 import ru.k2d.k2dmessenger.utilits.AppValueEventListener
-import ru.k2d.k2dmessenger.utilits.TYPE_MESSAGE_IMAGE
 import ru.k2d.k2dmessenger.utilits.showToast
 
 lateinit var AUTH: FirebaseAuth
@@ -180,16 +179,21 @@ fun setNameToDatabase(fullname: String) {
         }.addOnFailureListener { showToast(it.message.toString()) }
 }
 
-fun sendMessageAsFile(receivingUserId: String, imageUrl: String, messageKey: String) {
+fun sendMessageAsFile(
+    receivingUserId: String,
+    fileUrl: String,
+    messageKey: String,
+    typeMessage: String
+) {
     val refDialogUser = "$NODE_MESSAGES/$CURRENT_UID/$receivingUserId"
     val refDialogReceivingUser = "$NODE_MESSAGES/$receivingUserId/$CURRENT_UID"
 
     val mapMessage = hashMapOf<String, Any>()
     mapMessage[CHILD_FROM] = CURRENT_UID
-    mapMessage[CHILD_TYPE] = TYPE_MESSAGE_IMAGE
+    mapMessage[CHILD_TYPE] = typeMessage
     mapMessage[CHILD_ID] = messageKey
     mapMessage[CHILD_TIMESTAMP] = ServerValue.TIMESTAMP
-    mapMessage[CHILD_FILE_URL] = imageUrl
+    mapMessage[CHILD_FILE_URL] = fileUrl
 
     val mapDialog = hashMapOf<String, Any>()
     mapDialog["$refDialogUser/$messageKey"] = mapMessage
@@ -204,11 +208,11 @@ fun getMessageKey(id: String) =
     REF_DATABASE_ROOT.child(NODE_MESSAGES).child(CURRENT_UID).child(id)
         .push().key.toString()
 
-fun uploadFileToStorage(uri: Uri, messageKey: String, receivedID: String) {
+fun uploadFileToStorage(uri: Uri, messageKey: String, receivedID: String, typeMessage: String) {
     val path = REF_STORAGE_ROOT.child(FOLDER_FILES).child(messageKey)
     putFileToStorage(uri, path) {
         getUrlFromStorage(path) {
-            sendMessageAsFile(receivedID, it, messageKey)
+            sendMessageAsFile(receivedID, it, messageKey, typeMessage)
         }
     }
 }
