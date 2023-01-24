@@ -1,41 +1,29 @@
 package ru.k2d.k2dmessenger.ui.fragments.single_chat
 
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.message_item.view.*
-import ru.k2d.k2dmessenger.R
 import ru.k2d.k2dmessenger.database.CURRENT_UID
-import ru.k2d.k2dmessenger.models.CommonModel
+import ru.k2d.k2dmessenger.ui.fragments.message_recycler_view.view_holders.AppHolderFactory
+import ru.k2d.k2dmessenger.ui.fragments.message_recycler_view.view_holders.HolderImageMessage
+import ru.k2d.k2dmessenger.ui.fragments.message_recycler_view.view_holders.HolderTextMessage
 import ru.k2d.k2dmessenger.ui.fragments.message_recycler_view.views.MessageView
-import ru.k2d.k2dmessenger.utilits.TYPE_MESSAGE_IMAGE
-import ru.k2d.k2dmessenger.utilits.TYPE_MESSAGE_TEXT
 import ru.k2d.k2dmessenger.utilits.asTime
 import ru.k2d.k2dmessenger.utilits.downloadAndSetImage
 
-class SingleChatAdapter : RecyclerView.Adapter<SingleChatAdapter.SingleChatHolder>() {
+class SingleChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var mlistMessagesCache = mutableListOf<MessageView>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-
-        return SingleChatHolder(view)
+        return AppHolderFactory.getHolder(parent,viewType)
     }
 
-    override fun onBindViewHolder(holder: SingleChatHolder, position: Int) {
-        when (mlistMessagesCache[position].type) {
-            TYPE_MESSAGE_TEXT -> drawMessageText(holder, position)
-            TYPE_MESSAGE_IMAGE -> drawMessageImage(holder, position)
-        }
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+
     }
 
-    private fun drawMessageImage(holder: SingleChatHolder, position: Int) {
-        holder.blocUserMessage.visibility = View.GONE
-        holder.blocReceivedMessage.visibility = View.GONE
+    private fun drawMessageImage(holder: HolderImageMessage, position: Int) {
         if (mlistMessagesCache[position].from == CURRENT_UID) {
             holder.blocReceivedImageMessage.visibility = View.GONE
             holder.blocUserImageMessage.visibility = View.VISIBLE
@@ -51,9 +39,7 @@ class SingleChatAdapter : RecyclerView.Adapter<SingleChatAdapter.SingleChatHolde
         }
     }
 
-    private fun drawMessageText(holder: SingleChatHolder, position: Int) {
-        holder.blocReceivedImageMessage.visibility = View.GONE
-        holder.blocUserImageMessage.visibility = View.GONE
+    private fun drawMessageText(holder: HolderTextMessage, position: Int) {
         if (mlistMessagesCache[position].from == CURRENT_UID) {
             holder.blocUserMessage.visibility = View.VISIBLE
             holder.blocReceivedMessage.visibility = View.GONE
