@@ -7,6 +7,9 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.message_item_image.view.*
 import kotlinx.android.synthetic.main.message_item_voice.view.*
+import ru.k2d.k2dmessenger.database.CURRENT_UID
+import ru.k2d.k2dmessenger.ui.fragments.message_recycler_view.views.MessageView
+import ru.k2d.k2dmessenger.utilits.asTime
 
 class HolderVoiceMessage(view: View) : RecyclerView.ViewHolder(view) {
     val blocReceivedVoiceMessage: ConstraintLayout = view.bloc_received_voice_message
@@ -19,4 +22,18 @@ class HolderVoiceMessage(view: View) : RecyclerView.ViewHolder(view) {
 
     val chatUserBtnPlay: ImageView = view.chat_user_btn_play
     val chatUserBtnStop: ImageView = view.chat_user_btn_stop
+
+    fun drawMessageVoice(holder: HolderVoiceMessage, view: MessageView) {
+        if (view.from == CURRENT_UID) {
+            holder.blocReceivedVoiceMessage.visibility = View.GONE
+            holder.blocUserVoiceMessage.visibility = View.VISIBLE
+            holder.chatUserVoiceMessageTime.text =
+                view.timeStamp.asTime()
+        } else {
+            holder.blocReceivedVoiceMessage.visibility = View.VISIBLE
+            holder.blocUserVoiceMessage.visibility = View.GONE
+            holder.chatReceivedVoiceMessageTime.text =
+                view.timeStamp.asTime()
+        }
+    }
 }
