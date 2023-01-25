@@ -5,7 +5,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.message_item_image.view.*
 import kotlinx.android.synthetic.main.message_item_voice.view.*
 import ru.k2d.k2dmessenger.database.CURRENT_UID
 import ru.k2d.k2dmessenger.ui.fragments.message_recycler_view.views.MessageView

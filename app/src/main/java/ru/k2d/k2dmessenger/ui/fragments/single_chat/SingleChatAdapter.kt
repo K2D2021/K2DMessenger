@@ -1,16 +1,12 @@
 package ru.k2d.k2dmessenger.ui.fragments.single_chat
 
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import ru.k2d.k2dmessenger.database.CURRENT_UID
 import ru.k2d.k2dmessenger.ui.fragments.message_recycler_view.view_holders.AppHolderFactory
 import ru.k2d.k2dmessenger.ui.fragments.message_recycler_view.view_holders.HolderImageMessage
 import ru.k2d.k2dmessenger.ui.fragments.message_recycler_view.view_holders.HolderTextMessage
 import ru.k2d.k2dmessenger.ui.fragments.message_recycler_view.view_holders.HolderVoiceMessage
 import ru.k2d.k2dmessenger.ui.fragments.message_recycler_view.views.MessageView
-import ru.k2d.k2dmessenger.utilits.asTime
-import ru.k2d.k2dmessenger.utilits.downloadAndSetImage
 
 class SingleChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
