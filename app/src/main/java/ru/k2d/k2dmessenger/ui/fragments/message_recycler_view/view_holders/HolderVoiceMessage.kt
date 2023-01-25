@@ -6,12 +6,17 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.message_item_image.view.*
+import kotlinx.android.synthetic.main.message_item_voice.view.*
 
 class HolderVoiceMessage(view: View) : RecyclerView.ViewHolder(view) {
-    val blocReceivedImageMessage: ConstraintLayout = view.bloc_received_image_message
-    val blocUserImageMessage: ConstraintLayout = view.bloc_user_image_message
-    val chatReceivedImage: ImageView = view.chat_received_image
-    val chatUserImage: ImageView = view.chat_user_image
-    val chatReceivedImageMessageTime: TextView = view.chat_received_image_message_time
-    val chatUserImageMessageTime: TextView = view.chat_user_image_message_time
+    val blocReceivedVoiceMessage: ConstraintLayout = view.bloc_received_voice_message
+    val blocUserVoiceMessage: ConstraintLayout = view.bloc_user_voice_message
+    val chatReceivedVoiceMessageTime: TextView = view.chat_received_voice_message_time
+    val chatUserVoiceMessageTime: TextView = view.chat_user_voice_message_time
+
+    val chatReceivedBtnPlay: ImageView = view.chat_received_btn_play
+    val chatReceivedBtnStop: ImageView = view.chat_received_btn_stop
+
+    val chatUserBtnPlay: ImageView = view.chat_user_btn_play
+    val chatUserBtnStop: ImageView = view.chat_user_btn_stop
 }
