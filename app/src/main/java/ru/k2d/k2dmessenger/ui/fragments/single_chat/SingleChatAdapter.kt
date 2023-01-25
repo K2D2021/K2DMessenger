@@ -7,6 +7,7 @@ import ru.k2d.k2dmessenger.database.CURRENT_UID
 import ru.k2d.k2dmessenger.ui.fragments.message_recycler_view.view_holders.AppHolderFactory
 import ru.k2d.k2dmessenger.ui.fragments.message_recycler_view.view_holders.HolderImageMessage
 import ru.k2d.k2dmessenger.ui.fragments.message_recycler_view.view_holders.HolderTextMessage
+import ru.k2d.k2dmessenger.ui.fragments.message_recycler_view.view_holders.HolderVoiceMessage
 import ru.k2d.k2dmessenger.ui.fragments.message_recycler_view.views.MessageView
 import ru.k2d.k2dmessenger.utilits.asTime
 import ru.k2d.k2dmessenger.utilits.downloadAndSetImage
@@ -26,6 +27,7 @@ class SingleChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
             is HolderImageMessage -> drawMessageImage(holder, position)
+            is HolderVoiceMessage -> drawMessageVoice(holder, position)
             is HolderTextMessage -> drawMessageText(holder, position)
             else -> {}
         }
@@ -43,6 +45,20 @@ class SingleChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             holder.blocUserImageMessage.visibility = View.GONE
             holder.chatReceivedImage.downloadAndSetImage(mlistMessagesCache[position].fileUrl)
             holder.chatReceivedImageMessageTime.text =
+                mlistMessagesCache[position].timeStamp.asTime()
+        }
+    }
+
+    private fun drawMessageVoice(holder: HolderVoiceMessage, position: Int) {
+        if (mlistMessagesCache[position].from == CURRENT_UID) {
+            holder.blocReceivedVoiceMessage.visibility = View.GONE
+            holder.blocUserVoiceMessage.visibility = View.VISIBLE
+            holder.chatUserVoiceMessageTime.text =
+                mlistMessagesCache[position].timeStamp.asTime()
+        } else {
+            holder.blocReceivedVoiceMessage.visibility = View.VISIBLE
+            holder.blocUserVoiceMessage.visibility = View.GONE
+            holder.chatReceivedVoiceMessageTime.text =
                 mlistMessagesCache[position].timeStamp.asTime()
         }
     }
