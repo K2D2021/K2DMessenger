@@ -8,7 +8,7 @@ data class ViewVoiceMessage(
     override val text: String = ""
 ) : MessageView {
     override fun getTypeView(): Int {
-        return MessageView.MESSAGE_IMAGE
+        return MessageView.MESSAGE_VOICE
     }
 
     override fun equals(other: Any?): Boolean {
