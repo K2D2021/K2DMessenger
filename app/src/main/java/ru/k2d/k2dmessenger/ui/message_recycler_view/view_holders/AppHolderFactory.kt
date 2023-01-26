@@ -1,10 +1,10 @@
-package ru.k2d.k2dmessenger.ui.fragments.message_recycler_view.view_holders
+package ru.k2d.k2dmessenger.ui.message_recycler_view.view_holders
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ru.k2d.k2dmessenger.R
-import ru.k2d.k2dmessenger.ui.fragments.message_recycler_view.views.MessageView
+import ru.k2d.k2dmessenger.ui.message_recycler_view.views.MessageView
 
 class AppHolderFactory {
     companion object {

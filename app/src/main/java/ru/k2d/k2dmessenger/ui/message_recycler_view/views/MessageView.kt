@@ -1,4 +1,4 @@
-package ru.k2d.k2dmessenger.ui.fragments.message_recycler_view.views
+package ru.k2d.k2dmessenger.ui.message_recycler_view.views
 
 interface MessageView {
     val id: String

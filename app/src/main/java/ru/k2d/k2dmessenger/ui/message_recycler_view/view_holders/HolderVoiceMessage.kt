@@ -1,4 +1,4 @@
-package ru.k2d.k2dmessenger.ui.fragments.message_recycler_view.view_holders
+package ru.k2d.k2dmessenger.ui.message_recycler_view.view_holders
 
 import android.view.View
 import android.widget.ImageView
@@ -7,7 +7,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.message_item_voice.view.*
 import ru.k2d.k2dmessenger.database.CURRENT_UID
-import ru.k2d.k2dmessenger.ui.fragments.message_recycler_view.views.MessageView
+import ru.k2d.k2dmessenger.ui.message_recycler_view.views.MessageView
 import ru.k2d.k2dmessenger.utilits.asTime
 
 class HolderVoiceMessage(view: View) : RecyclerView.ViewHolder(view) {
