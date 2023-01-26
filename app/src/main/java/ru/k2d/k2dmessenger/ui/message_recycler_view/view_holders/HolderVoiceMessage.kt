@@ -10,7 +10,7 @@ import ru.k2d.k2dmessenger.database.CURRENT_UID
 import ru.k2d.k2dmessenger.ui.message_recycler_view.views.MessageView
 import ru.k2d.k2dmessenger.utilits.asTime
 
-class HolderVoiceMessage(view: View) : RecyclerView.ViewHolder(view) {
+class HolderVoiceMessage(view: View) : RecyclerView.ViewHolder(view), MessageHolder {
     val blocReceivedVoiceMessage: ConstraintLayout = view.bloc_received_voice_message
     val blocUserVoiceMessage: ConstraintLayout = view.bloc_user_voice_message
     val chatReceivedVoiceMessageTime: TextView = view.chat_received_voice_message_time
@@ -22,16 +22,16 @@ class HolderVoiceMessage(view: View) : RecyclerView.ViewHolder(view) {
     val chatUserBtnPlay: ImageView = view.chat_user_btn_play
     val chatUserBtnStop: ImageView = view.chat_user_btn_stop
 
-    fun drawMessageVoice(holder: HolderVoiceMessage, view: MessageView) {
+    override fun drawMessage(view: MessageView) {
         if (view.from == CURRENT_UID) {
-            holder.blocReceivedVoiceMessage.visibility = View.GONE
-            holder.blocUserVoiceMessage.visibility = View.VISIBLE
-            holder.chatUserVoiceMessageTime.text =
+            blocReceivedVoiceMessage.visibility = View.GONE
+            blocUserVoiceMessage.visibility = View.VISIBLE
+            chatUserVoiceMessageTime.text =
                 view.timeStamp.asTime()
         } else {
-            holder.blocReceivedVoiceMessage.visibility = View.VISIBLE
-            holder.blocUserVoiceMessage.visibility = View.GONE
-            holder.chatReceivedVoiceMessageTime.text =
+            blocReceivedVoiceMessage.visibility = View.VISIBLE
+            blocUserVoiceMessage.visibility = View.GONE
+            chatReceivedVoiceMessageTime.text =
                 view.timeStamp.asTime()
         }
     }
