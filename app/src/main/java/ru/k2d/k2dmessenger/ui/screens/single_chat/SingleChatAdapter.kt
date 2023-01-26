@@ -1,4 +1,4 @@
-package ru.k2d.k2dmessenger.ui.fragments.single_chat
+package ru.k2d.k2dmessenger.ui.screens.single_chat
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView

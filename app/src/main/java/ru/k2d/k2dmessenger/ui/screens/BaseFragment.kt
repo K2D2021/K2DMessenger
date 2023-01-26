@@ -1,4 +1,4 @@
-package ru.k2d.k2dmessenger.ui.fragments
+package ru.k2d.k2dmessenger.ui.screens
 
 import androidx.fragment.app.Fragment
 import ru.k2d.k2dmessenger.utilits.APP_ACTIVITY

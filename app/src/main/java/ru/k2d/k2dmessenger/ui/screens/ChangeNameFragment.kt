@@ -1,4 +1,4 @@
-package ru.k2d.k2dmessenger.ui.fragments
+package ru.k2d.k2dmessenger.ui.screens
 
 import kotlinx.android.synthetic.main.fragment_change_name.*
 import ru.k2d.k2dmessenger.R

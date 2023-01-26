@@ -12,8 +12,8 @@ import ru.k2d.k2dmessenger.database.AUTH
 import ru.k2d.k2dmessenger.database.initFirebase
 import ru.k2d.k2dmessenger.database.initUser
 import ru.k2d.k2dmessenger.databinding.ActivityMainBinding
-import ru.k2d.k2dmessenger.ui.fragments.MainFragment
-import ru.k2d.k2dmessenger.ui.fragments.register.EnterPhoneNumberFragment
+import ru.k2d.k2dmessenger.ui.screens.MainFragment
+import ru.k2d.k2dmessenger.ui.screens.register.EnterPhoneNumberFragment
 import ru.k2d.k2dmessenger.ui.objects.AppDrawer
 import ru.k2d.k2dmessenger.utilits.*
 
