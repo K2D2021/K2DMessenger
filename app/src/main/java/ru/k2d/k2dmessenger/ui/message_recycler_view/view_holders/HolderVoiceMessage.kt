@@ -39,6 +39,6 @@ class HolderVoiceMessage(view: View) : RecyclerView.ViewHolder(view), MessageHol
     override fun onAttach(view: MessageView) {
     }
 
-    override fun onDetach(view: MessageView) {
+    override fun onDetach() {
     }
 }
