@@ -35,4 +35,10 @@ class HolderVoiceMessage(view: View) : RecyclerView.ViewHolder(view), MessageHol
                 view.timeStamp.asTime()
         }
     }
+
+    override fun onAttach(view: MessageView) {
+    }
+
+    override fun onDetach(view: MessageView) {
+    }
 }

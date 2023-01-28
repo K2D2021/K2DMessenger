@@ -33,4 +33,10 @@ class HolderTextMessage(view: View) : RecyclerView.ViewHolder(view), MessageHold
                 view.timeStamp.asTime()
         }
     }
+
+    override fun onAttach(view: MessageView) {
+    }
+
+    override fun onDetach(view: MessageView) {
+    }
 }
