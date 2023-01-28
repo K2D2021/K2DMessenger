@@ -37,8 +37,15 @@ class HolderVoiceMessage(view: View) : RecyclerView.ViewHolder(view), MessageHol
     }
 
     override fun onAttach(view: MessageView) {
+        if (view.from == CURRENT_UID){
+            chatUserBtnPlay.setOnClickListener {  }
+        } else {
+            chatReceivedBtnPlay.setOnClickListener {  }
+        }
     }
 
     override fun onDetach() {
+        chatUserBtnPlay.setOnClickListener(null)
+        chatReceivedBtnPlay.setOnClickListener(null)
     }
 }
