@@ -21,6 +21,10 @@ class SingleChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         (holder as MessageHolder).drawMessage(mlistMessagesCache[position])
     }
 
+    override fun onViewAttachedToWindow(holder: RecyclerView.ViewHolder) {
+        super.onViewAttachedToWindow(holder)
+    }
+
     override fun getItemCount(): Int = mlistMessagesCache.size
 
     fun addItemToBottom(item: MessageView, onSuccess: () -> Unit) {
