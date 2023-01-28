@@ -8,9 +8,13 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.message_item_voice.view.*
 import ru.k2d.k2dmessenger.database.CURRENT_UID
 import ru.k2d.k2dmessenger.ui.message_recycler_view.views.MessageView
+import ru.k2d.k2dmessenger.utilits.AppVoicePlayer
 import ru.k2d.k2dmessenger.utilits.asTime
 
 class HolderVoiceMessage(view: View) : RecyclerView.ViewHolder(view), MessageHolder {
+
+    private val mAppVoicePlayer = AppVoicePlayer()
+
     val blocReceivedVoiceMessage: ConstraintLayout = view.bloc_received_voice_message
     val blocUserVoiceMessage: ConstraintLayout = view.bloc_user_voice_message
     val chatReceivedVoiceMessageTime: TextView = view.chat_received_voice_message_time
@@ -37,10 +41,28 @@ class HolderVoiceMessage(view: View) : RecyclerView.ViewHolder(view), MessageHol
     }
 
     override fun onAttach(view: MessageView) {
-        if (view.from == CURRENT_UID){
-            chatUserBtnPlay.setOnClickListener {  }
+        if (view.from == CURRENT_UID) {
+            chatUserBtnPlay.setOnClickListener {
+                chatUserBtnPlay.visibility = View.GONE
+                chatUserBtnStop.visibility = View.VISIBLE
+                play(view) {
+                    chatUserBtnPlay.visibility = View.VISIBLE
+                    chatUserBtnStop.visibility = View.GONE
+                }
+
+            }
         } else {
-            chatReceivedBtnPlay.setOnClickListener {  }
+            chatReceivedBtnPlay.setOnClickListener {
+                play(view) {
+
+                }
+            }
+        }
+    }
+
+    private fun play(view: MessageView, function: () -> Unit) {
+        mAppVoicePlayer.play(view.id, view.fileUrl) {
+
         }
     }
 

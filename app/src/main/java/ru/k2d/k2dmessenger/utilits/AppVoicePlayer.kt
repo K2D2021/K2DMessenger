@@ -7,15 +7,15 @@ class AppVoicePlayer {
     private lateinit var mMediaPlayer: MediaPlayer
     private lateinit var mFile: File
 
-    fun play(){
+    fun play(messageKey: String, fileUrl: String, function: () -> Unit) {
 
     }
 
-    fun stop(){
+    fun stop() {
 
     }
 
-    fun release(){
+    fun release() {
 
     }
 }
