@@ -16,7 +16,6 @@ data class CommonModel(
     var fileUrl: String = "empty"
 
 
-
 ) {
     override fun equals(other: Any?): Boolean {
         return (other as CommonModel).id == id
