@@ -8,6 +8,7 @@ import ru.k2d.k2dmessenger.ui.message_recycler_view.views.MessageView
 class SingleChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var mlistMessagesCache = mutableListOf<MessageView>()
+    private var mListHolders = mutableListOf<MessageHolder>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return AppHolderFactory.getHolder(parent, viewType)
@@ -23,11 +24,13 @@ class SingleChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onViewAttachedToWindow(holder: RecyclerView.ViewHolder) {
         (holder as MessageHolder).onAttach(mlistMessagesCache[holder.absoluteAdapterPosition])
+        mListHolders.add((holder as MessageHolder))
         super.onViewAttachedToWindow(holder)
     }
 
     override fun onViewDetachedFromWindow(holder: RecyclerView.ViewHolder) {
         (holder as MessageHolder).onDetach()
+        mListHolders.remove((holder as MessageHolder))
         super.onViewDetachedFromWindow(holder)
     }
 
@@ -50,5 +53,10 @@ class SingleChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         onSuccess()
     }
 
+    fun onDestroy() {
+        mListHolders.forEach {
+            it.onDetach()
+        }
+    }
 }
 
