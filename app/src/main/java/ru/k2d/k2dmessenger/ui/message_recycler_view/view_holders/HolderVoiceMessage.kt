@@ -41,6 +41,7 @@ class HolderVoiceMessage(view: View) : RecyclerView.ViewHolder(view), MessageHol
     }
 
     override fun onAttach(view: MessageView) {
+        mAppVoicePlayer.init()
         if (view.from == CURRENT_UID) {
             chatUserBtnPlay.setOnClickListener {
                 chatUserBtnPlay.visibility = View.GONE
@@ -72,5 +73,6 @@ class HolderVoiceMessage(view: View) : RecyclerView.ViewHolder(view), MessageHol
     override fun onDetach() {
         chatUserBtnPlay.setOnClickListener(null)
         chatReceivedBtnPlay.setOnClickListener(null)
+        mAppVoicePlayer.release()
     }
 }
