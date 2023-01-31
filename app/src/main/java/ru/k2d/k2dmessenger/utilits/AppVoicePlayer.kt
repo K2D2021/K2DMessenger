@@ -1,6 +1,8 @@
 package ru.k2d.k2dmessenger.utilits
 
 import android.media.MediaPlayer
+import ru.k2d.k2dmessenger.database.REF_STORAGE_ROOT
+import ru.k2d.k2dmessenger.database.getFileFromStorage
 import java.io.File
 
 class AppVoicePlayer {
@@ -12,6 +14,13 @@ class AppVoicePlayer {
         if (mFile.exists() && mFile.length() > 0 && mFile.isFile) {
             startPlay {
                 function()
+            }
+        } else {
+            mFile.createNewFile()
+            getFileFromStorage(mFile,fileUrl){
+                startPlay {
+                    function()
+                }
             }
         }
     }
@@ -43,6 +52,6 @@ class AppVoicePlayer {
     }
 
     fun release() {
-
+        mMediaPlayer.release()
     }
 }

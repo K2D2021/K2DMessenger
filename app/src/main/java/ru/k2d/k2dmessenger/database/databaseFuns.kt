@@ -13,6 +13,7 @@ import ru.k2d.k2dmessenger.models.Usermodel
 import ru.k2d.k2dmessenger.utilits.APP_ACTIVITY
 import ru.k2d.k2dmessenger.utilits.AppValueEventListener
 import ru.k2d.k2dmessenger.utilits.showToast
+import java.io.File
 
 fun initFirebase() {
     AUTH = FirebaseAuth.getInstance()
@@ -181,4 +182,11 @@ fun uploadFileToStorage(uri: Uri, messageKey: String, receivedID: String, typeMe
             sendMessageAsFile(receivedID, it, messageKey, typeMessage)
         }
     }
+}
+
+fun getFileFromStorage(mFile: File, fileUrl: String, function: () -> Unit) {
+    val path = REF_STORAGE_ROOT.storage.getReferenceFromUrl(fileUrl)
+    path.getFile(mFile)
+        .addOnSuccessListener { function() }
+        .addOnFailureListener { showToast(it.message.toString()) }
 }
