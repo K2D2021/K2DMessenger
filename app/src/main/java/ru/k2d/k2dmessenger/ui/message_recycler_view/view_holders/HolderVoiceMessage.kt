@@ -46,6 +46,12 @@ class HolderVoiceMessage(view: View) : RecyclerView.ViewHolder(view), MessageHol
             chatUserBtnPlay.setOnClickListener {
                 chatUserBtnPlay.visibility = View.GONE
                 chatUserBtnStop.visibility = View.VISIBLE
+                chatUserBtnStop.setOnClickListener {
+                    stop {
+                        chatUserBtnPlay.visibility = View.VISIBLE
+                        chatUserBtnStop.visibility = View.GONE
+                    }
+                }
                 play(view) {
                     chatUserBtnPlay.visibility = View.VISIBLE
                     chatUserBtnStop.visibility = View.GONE
@@ -56,6 +62,12 @@ class HolderVoiceMessage(view: View) : RecyclerView.ViewHolder(view), MessageHol
             chatReceivedBtnPlay.setOnClickListener {
                 chatReceivedBtnPlay.visibility = View.GONE
                 chatReceivedBtnStop.visibility = View.VISIBLE
+                chatReceivedBtnStop.setOnClickListener {
+                    stop {
+                        chatReceivedBtnPlay.visibility = View.VISIBLE
+                        chatReceivedBtnStop.visibility = View.GONE
+                    }
+                }
                 play(view) {
                     chatReceivedBtnPlay.visibility = View.VISIBLE
                     chatReceivedBtnStop.visibility = View.GONE
@@ -66,7 +78,13 @@ class HolderVoiceMessage(view: View) : RecyclerView.ViewHolder(view), MessageHol
 
     private fun play(view: MessageView, function: () -> Unit) {
         mAppVoicePlayer.play(view.id, view.fileUrl) {
+            function()
+        }
+    }
 
+    private fun stop(function: () -> Unit) {
+        mAppVoicePlayer.stop {
+            function()
         }
     }
 
