@@ -10,13 +10,13 @@ import ru.k2d.k2dmessenger.ui.message_recycler_view.views.MessageView
 import ru.k2d.k2dmessenger.utilits.asTime
 
 class HolderTextMessage(view: View) : RecyclerView.ViewHolder(view), MessageHolder {
-    val blocUserMessage: ConstraintLayout = view.bloc_user_message
-    val chatUserMessage: TextView = view.chat_user_message
-    val chatUserMessageTime: TextView = view.chat_user_message_time
+    private val blocUserMessage: ConstraintLayout = view.bloc_user_message
+    private val chatUserMessage: TextView = view.chat_user_message
+    private val chatUserMessageTime: TextView = view.chat_user_message_time
 
-    val blocReceivedMessage: ConstraintLayout = view.bloc_received_message
-    val chatReceivedMessage: TextView = view.chat_received_message
-    val chatReceivedMessageTime: TextView = view.chat_received_message_time
+    private val blocReceivedMessage: ConstraintLayout = view.bloc_received_message
+    private val chatReceivedMessage: TextView = view.chat_received_message
+    private val chatReceivedMessageTime: TextView = view.chat_received_message_time
 
     override fun drawMessage(view: MessageView) {
         if (view.from == CURRENT_UID) {

@@ -12,12 +12,12 @@ import ru.k2d.k2dmessenger.utilits.asTime
 import ru.k2d.k2dmessenger.utilits.downloadAndSetImage
 
 class HolderImageMessage(view: View) : RecyclerView.ViewHolder(view), MessageHolder {
-    val blocReceivedImageMessage: ConstraintLayout = view.bloc_received_image_message
-    val blocUserImageMessage: ConstraintLayout = view.bloc_user_image_message
-    val chatReceivedImage: ImageView = view.chat_received_image
-    val chatUserImage: ImageView = view.chat_user_image
-    val chatReceivedImageMessageTime: TextView = view.chat_received_image_message_time
-    val chatUserImageMessageTime: TextView = view.chat_user_image_message_time
+    private val blocReceivedImageMessage: ConstraintLayout = view.bloc_received_image_message
+    private val blocUserImageMessage: ConstraintLayout = view.bloc_user_image_message
+    private val chatReceivedImage: ImageView = view.chat_received_image
+    private val chatUserImage: ImageView = view.chat_user_image
+    private val chatReceivedImageMessageTime: TextView = view.chat_received_image_message_time
+    private val chatUserImageMessageTime: TextView = view.chat_user_image_message_time
 
     override fun drawMessage(view: MessageView) {
         if (view.from == CURRENT_UID) {
