@@ -20,8 +20,7 @@
             android:id="@+id/chat_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="@color/colorBlueWish"
-            tools:listitem="@layout/message_item" />
+            android:background="@color/colorBlueWish" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <EditText
