@@ -1,7 +1,6 @@
 package ru.k2d.k2dmessenger.ui.screens.single_chat
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.view.MotionEvent
@@ -25,8 +24,8 @@ import ru.k2d.k2dmessenger.R
 import ru.k2d.k2dmessenger.database.*
 import ru.k2d.k2dmessenger.models.CommonModel
 import ru.k2d.k2dmessenger.models.Usermodel
-import ru.k2d.k2dmessenger.ui.screens.BaseFragment
 import ru.k2d.k2dmessenger.ui.message_recycler_view.views.AppViewFactory
+import ru.k2d.k2dmessenger.ui.screens.BaseFragment
 import ru.k2d.k2dmessenger.utilits.*
 
 
