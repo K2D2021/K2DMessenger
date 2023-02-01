@@ -3,9 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    app:layout_behavior="com.google.material.bottomsheet.BottomSheetBehavior"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
     app:behavior_hideable = "true"
     app:behavior_peekHeight = "0dp"
+    android:background="@color/colorAccent"
     android:id="@+id/bottom_sheet_choice"
     android:layout_height="@dimen/bottom_sheet_height">
 

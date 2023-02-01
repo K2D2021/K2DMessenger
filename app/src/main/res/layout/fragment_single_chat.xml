@@ -74,4 +74,5 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <include layout="@layout/choice_upload"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
