@@ -8,8 +8,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bloc_received_voice_message"
-        android:layout_width="@dimen/chat_voice_width"
-        android:layout_height="@dimen/chat_voice_height"
+        android:layout_width="@dimen/chat_common_width"
+        android:layout_height="@dimen/chat_common_height"
         android:background="@drawable/bg_receiving_message"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,8 +50,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bloc_user_voice_message"
-        android:layout_width="@dimen/chat_voice_width"
-        android:layout_height="@dimen/chat_voice_height"
+        android:layout_width="@dimen/chat_common_width"
+        android:layout_height="@dimen/chat_common_height"
         android:background="@drawable/bg_user_message"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
