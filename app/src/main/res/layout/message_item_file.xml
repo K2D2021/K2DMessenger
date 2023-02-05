@@ -8,8 +8,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bloc_received_file_message"
-        android:layout_width="@dimen/chat_file_width"
-        android:layout_height="@dimen/chat_file_height"
+        android:layout_width="@dimen/chat_common_width"
+        android:layout_height="@dimen/chat_common_height"
         android:background="@drawable/bg_receiving_message"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -17,8 +17,8 @@
 
         <ImageView
             android:id="@+id/chat_received_btn_play"
-            android:layout_width="@dimen/btn_file_width"
-            android:layout_height="@dimen/btn_file_height"
+            android:layout_width="@dimen/chat_btn_width"
+            android:layout_height="@dimen/chat_btn_height"
             android:layout_marginStart="@dimen/app_small_margin"
             android:src="@drawable/ic_play_blue"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -39,8 +39,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bloc_user_file_message"
-        android:layout_width="@dimen/chat_file_width"
-        android:layout_height="@dimen/chat_file_height"
+        android:layout_width="@dimen/chat_common_width"
+        android:layout_height="@dimen/chat_common_height"
         android:background="@drawable/bg_user_message"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,8 +48,8 @@
 
         <ImageView
             android:id="@+id/chat_user_btn_play"
-            android:layout_width="@dimen/btn_file_width"
-            android:layout_height="@dimen/btn_file_height"
+            android:layout_width="@dimen/chat_btn_width"
+            android:layout_height="@dimen/chat_btn_height"
             android:layout_marginStart="@dimen/app_small_margin"
             android:src="@drawable/ic_play_green"
             app:layout_constraintBottom_toBottomOf="parent"
