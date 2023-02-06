@@ -228,7 +228,7 @@ class SingleChatFragment(private val contact: CommonModel) :
                     val uri = data.data
                     val messageKey = getMessageKey(contact.id)
                     val filename = getFilenameFromUri(uri!!)
-                    uploadFileToStorage(uri, messageKey, contact.id, TYPE_MESSAGE_FILE)
+                    uploadFileToStorage(uri, messageKey, contact.id, TYPE_MESSAGE_FILE, filename)
                     mSmoothScrollToPosition = true
                 }
             }
