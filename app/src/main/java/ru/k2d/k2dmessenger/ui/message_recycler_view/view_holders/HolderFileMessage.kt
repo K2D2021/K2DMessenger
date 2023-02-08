@@ -1,5 +1,6 @@
 package ru.k2d.k2dmessenger.ui.message_recycler_view.view_holders
 
+import android.os.Environment
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
@@ -10,6 +11,7 @@ import kotlinx.android.synthetic.main.message_item_file.view.*
 import ru.k2d.k2dmessenger.database.CURRENT_UID
 import ru.k2d.k2dmessenger.ui.message_recycler_view.views.MessageView
 import ru.k2d.k2dmessenger.utilits.asTime
+import java.io.File
 
 class HolderFileMessage(view: View) : RecyclerView.ViewHolder(view), MessageHolder {
 
@@ -41,8 +43,27 @@ class HolderFileMessage(view: View) : RecyclerView.ViewHolder(view), MessageHold
     }
 
     override fun onAttach(view: MessageView) {
-        if (view.from == CURRENT_UID) chatUserBtnDownload.setOnClickListener {  }
-        else chatReceivedBtnDownload.setOnClickListener {  }
+        if (view.from == CURRENT_UID) chatUserBtnDownload.setOnClickListener { clickToBtnFile(view) }
+        else chatReceivedBtnDownload.setOnClickListener { clickToBtnFile(view) }
+    }
+
+    private fun clickToBtnFile(view: MessageView) {
+        if (view.from == CURRENT_UID){
+            chatUserBtnDownload.visibility = View.INVISIBLE
+            chatUserProgressBar.visibility = View.VISIBLE
+        } else {
+            chatReceivedBtnDownload.visibility = View.INVISIBLE
+            chatReceivedProgressBar.visibility = View.VISIBLE
+        }
+
+        val file = File(
+            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
+            view.text
+        )
+
+        try {
+
+        }
     }
 
     override fun onDetach() {
