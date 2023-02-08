@@ -30,21 +30,23 @@ class HolderFileMessage(view: View) : RecyclerView.ViewHolder(view), MessageHold
         if (view.from == CURRENT_UID) {
             blocReceivedFileMessage.visibility = View.GONE
             blocUserFileMessage.visibility = View.VISIBLE
-            chatUserFileMessageTime.text =
-                view.timeStamp.asTime()
+            chatUserFileMessageTime.text = view.timeStamp.asTime()
+            chatUserFilename.text = view.text
         } else {
             blocReceivedFileMessage.visibility = View.VISIBLE
             blocUserFileMessage.visibility = View.GONE
-            chatReceivedFileMessageTime.text =
-                view.timeStamp.asTime()
+            chatReceivedFileMessageTime.text = view.timeStamp.asTime()
+            chatReceivedFilename.text = view.text
         }
     }
 
     override fun onAttach(view: MessageView) {
-
+        if (view.from == CURRENT_UID) chatUserBtnDownload.setOnClickListener {  }
+        else chatReceivedBtnDownload.setOnClickListener {  }
     }
 
     override fun onDetach() {
-
+        chatUserBtnDownload.setOnClickListener(null)
+        chatReceivedBtnDownload.setOnClickListener(null)
     }
 }
