@@ -9,8 +9,12 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.message_item_file.view.*
 import ru.k2d.k2dmessenger.database.CURRENT_UID
+import ru.k2d.k2dmessenger.database.getFileFromStorage
 import ru.k2d.k2dmessenger.ui.message_recycler_view.views.MessageView
+import ru.k2d.k2dmessenger.utilits.WRITE_FILES
 import ru.k2d.k2dmessenger.utilits.asTime
+import ru.k2d.k2dmessenger.utilits.checkPermissions
+import ru.k2d.k2dmessenger.utilits.showToast
 import java.io.File
 
 class HolderFileMessage(view: View) : RecyclerView.ViewHolder(view), MessageHolder {
@@ -62,7 +66,20 @@ class HolderFileMessage(view: View) : RecyclerView.ViewHolder(view), MessageHold
         )
 
         try {
-
+            if (checkPermissions(WRITE_FILES)){
+                file.createNewFile()
+                getFileFromStorage(file,view.fileUrl){
+                    if (view.from == CURRENT_UID){
+                        chatUserBtnDownload.visibility = View.VISIBLE
+                        chatUserProgressBar.visibility = View.INVISIBLE
+                    } else {
+                        chatReceivedBtnDownload.visibility = View.VISIBLE
+                        chatReceivedProgressBar.visibility = View.INVISIBLE
+                    }
+                }
+            }
+        } catch (e:Exception) {
+            showToast(e.message.toString())
         }
     }
 
