@@ -198,3 +198,7 @@ fun getFileFromStorage(mFile: File, fileUrl: String, function: () -> Unit) {
         .addOnSuccessListener { function() }
         .addOnFailureListener { showToast(it.message.toString()) }
 }
+
+fun saveToMainList(id: String, type: String) {
+    var refUser =
+}

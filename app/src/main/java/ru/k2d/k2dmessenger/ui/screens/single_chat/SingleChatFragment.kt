@@ -200,7 +200,7 @@ class SingleChatFragment(private val contact: CommonModel) :
             if (message.isEmpty()) {
                 showToast("Please input message")
             } else sendMessage(message, contact.id, TYPE_TEXT) {
-                saveToMainList(contact.id,)
+                saveToMainList(contact.id, TYPE_CHAT)
                 chat_input_message.setText("")
             }
         }
