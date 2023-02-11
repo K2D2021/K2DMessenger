@@ -12,7 +12,7 @@ import ru.k2d.k2dmessenger.database.AUTH
 import ru.k2d.k2dmessenger.database.initFirebase
 import ru.k2d.k2dmessenger.database.initUser
 import ru.k2d.k2dmessenger.databinding.ActivityMainBinding
-import ru.k2d.k2dmessenger.ui.screens.main_list.MainFragment
+import ru.k2d.k2dmessenger.ui.screens.main_list.MainListFragment
 import ru.k2d.k2dmessenger.ui.screens.register.EnterPhoneNumberFragment
 import ru.k2d.k2dmessenger.ui.objects.AppDrawer
 import ru.k2d.k2dmessenger.utilits.*
@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(mToolbar)
         if (AUTH.currentUser != null) {
             mAppDrawer.create()
-            replaceFragment(MainFragment(), false)
+            replaceFragment(MainListFragment(), false)
         } else {
             replaceFragment(EnterPhoneNumberFragment(), false)
         }
