@@ -5,7 +5,7 @@ import ru.k2d.k2dmessenger.R
 import ru.k2d.k2dmessenger.utilits.APP_ACTIVITY
 import ru.k2d.k2dmessenger.utilits.hideKeyboard
 
-class MainFragment : Fragment(R.layout.fragment_chats) {
+class MainFragment : Fragment(R.layout.fragment_main_list) {
 
     override fun onResume() {
         super.onResume()
