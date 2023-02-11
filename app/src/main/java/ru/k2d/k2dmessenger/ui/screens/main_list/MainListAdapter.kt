@@ -9,6 +9,7 @@ import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.main_list_item.view.*
 import ru.k2d.k2dmessenger.R
 import ru.k2d.k2dmessenger.models.CommonModel
+import ru.k2d.k2dmessenger.utilits.downloadAndSetImage
 
 class MainListAdapter : RecyclerView.Adapter<MainListAdapter.MainListHolder>() {
 
@@ -21,7 +22,13 @@ class MainListAdapter : RecyclerView.Adapter<MainListAdapter.MainListHolder>() {
 
     override fun onBindViewHolder(holder: MainListHolder, position: Int) {
         holder.itemName.text = listItems[position].fullname
-        holder.itemLastMessage.text = listItems[position].
+        holder.itemLastMessage.text = listItems[position].lastMessage
+        holder.itemPhoto.downloadAndSetImage(listItems[position].photoUrl)
+    }
+
+    fun updateListItems(item:CommonModel){
+        listItems.add(item)
+        notifyItemInserted(listItems.size)
     }
 
     override fun getItemCount(): Int = listItems.size
