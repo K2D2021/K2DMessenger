@@ -31,4 +31,6 @@
     <string name="text_recording">Recording</string>
     <string name="todo">TODO</string>
     <string name="img_content_description">TODO</string>
+    <string name="clear_chat">Clear the chat</string>
+    <string name="delete_chat">Delete the chat</string>
 </resources>
