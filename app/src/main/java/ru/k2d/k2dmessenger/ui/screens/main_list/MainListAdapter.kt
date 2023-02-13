@@ -9,7 +9,9 @@ import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.main_list_item.view.*
 import ru.k2d.k2dmessenger.R
 import ru.k2d.k2dmessenger.models.CommonModel
+import ru.k2d.k2dmessenger.ui.screens.single_chat.SingleChatFragment
 import ru.k2d.k2dmessenger.utilits.downloadAndSetImage
+import ru.k2d.k2dmessenger.utilits.replaceFragment
 
 class MainListAdapter : RecyclerView.Adapter<MainListAdapter.MainListHolder>() {
 
@@ -17,7 +19,11 @@ class MainListAdapter : RecyclerView.Adapter<MainListAdapter.MainListHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainListHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.main_list_item,parent,false)
-        return MainListHolder(view)
+        val holder = MainListHolder(view)
+        holder.itemView.setOnClickListener {
+            replaceFragment(SingleChatFragment(listItems[holder.adapterPosition]))
+        }
+        return holder
     }
 
     override fun onBindViewHolder(holder: MainListHolder, position: Int) {
