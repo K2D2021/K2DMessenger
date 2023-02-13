@@ -17,7 +17,7 @@ import com.mikepenz.materialdrawer.util.AbstractDrawerImageLoader
 import com.mikepenz.materialdrawer.util.DrawerImageLoader
 import ru.k2d.k2dmessenger.R
 import ru.k2d.k2dmessenger.ui.screens.ContactsFragment
-import ru.k2d.k2dmessenger.ui.screens.SettingsFragment
+import ru.k2d.k2dmessenger.ui.screens.settings.SettingsFragment
 import ru.k2d.k2dmessenger.utilits.APP_ACTIVITY
 import ru.k2d.k2dmessenger.database.USER
 import ru.k2d.k2dmessenger.utilits.downloadAndSetImage

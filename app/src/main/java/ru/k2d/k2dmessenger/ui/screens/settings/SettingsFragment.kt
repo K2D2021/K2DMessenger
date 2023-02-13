@@ -1,4 +1,4 @@
-package ru.k2d.k2dmessenger.ui.screens
+package ru.k2d.k2dmessenger.ui.screens.settings
 
 import android.app.Activity.RESULT_OK
 import android.content.Intent
@@ -10,6 +10,7 @@ import com.theartofdev.edmodo.cropper.CropImageView
 import kotlinx.android.synthetic.main.fragment_settings.*
 import ru.k2d.k2dmessenger.R
 import ru.k2d.k2dmessenger.database.*
+import ru.k2d.k2dmessenger.ui.screens.BaseFragment
 import ru.k2d.k2dmessenger.utilits.*
 
 class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
