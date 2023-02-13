@@ -3,8 +3,7 @@ package ru.k2d.k2dmessenger.ui.screens.single_chat
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
-import android.view.MotionEvent
-import android.view.View
+import android.view.*
 import android.widget.AbsListView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,6 +25,7 @@ import ru.k2d.k2dmessenger.models.CommonModel
 import ru.k2d.k2dmessenger.models.Usermodel
 import ru.k2d.k2dmessenger.ui.message_recycler_view.views.AppViewFactory
 import ru.k2d.k2dmessenger.ui.screens.BaseFragment
+import ru.k2d.k2dmessenger.ui.screens.settings.ChangeNameFragment
 import ru.k2d.k2dmessenger.utilits.*
 
 
@@ -57,6 +57,7 @@ class SingleChatFragment(private val contact: CommonModel) :
 
     @SuppressLint("ClickableViewAccessibility")
     private fun initFields() {
+        setHasOptionsMenu(true)
         mBottomSheetBehavior = BottomSheetBehavior.from(bottom_sheet_choice)
         mBottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
         mAppVoiceRecorder = AppVoiceRecorder()
@@ -247,5 +248,16 @@ class SingleChatFragment(private val contact: CommonModel) :
         super.onDestroyView()
         mAppVoiceRecorder.releaseRecorder()
         mAdapter.onDestroy()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        activity?.menuInflater?.inflate(R.menu.single_chat_action_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+
+        }
+        return true
     }
 }
