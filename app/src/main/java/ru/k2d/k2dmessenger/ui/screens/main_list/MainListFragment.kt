@@ -41,8 +41,13 @@ class MainListFragment : Fragment(R.layout.fragment_main_list) {
                         mRefMessages.child(model.id).limitToLast(1)
                             .addListenerForSingleValueEvent(AppValueEventListener { dataSnapshot2 ->
                                 val tempList = dataSnapshot2.children.map { it.getCommonModel() }
-                                newModel.lastMessage = tempList[0].text
-                                if (newModel.fullname.isEmpty()){
+
+                                if (tempList.isEmpty()) {
+                                    newModel.lastMessage = "Chat is cleared"
+                                } else {
+                                    newModel.lastMessage = tempList[0].text
+                                }
+                                if (newModel.fullname.isEmpty()) {
                                     newModel.fullname = newModel.phone
                                 }
                                 mAdapter.updateListItems(newModel)
