@@ -25,6 +25,7 @@ import ru.k2d.k2dmessenger.models.CommonModel
 import ru.k2d.k2dmessenger.models.Usermodel
 import ru.k2d.k2dmessenger.ui.message_recycler_view.views.AppViewFactory
 import ru.k2d.k2dmessenger.ui.screens.BaseFragment
+import ru.k2d.k2dmessenger.ui.screens.main_list.MainListFragment
 import ru.k2d.k2dmessenger.ui.screens.settings.ChangeNameFragment
 import ru.k2d.k2dmessenger.utilits.*
 
@@ -256,7 +257,14 @@ class SingleChatFragment(private val contact: CommonModel) :
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-
+            R.id.menu_clear_chat -> clearChat(contact.id){
+                showToast("Chat was cleared")
+                replaceFragment(MainListFragment())
+            }
+            R.id.menu_delete_chat -> deleteChat(contact.id){
+                showToast("Chat was removed")
+                replaceFragment(MainListFragment())
+            }
         }
         return true
     }
