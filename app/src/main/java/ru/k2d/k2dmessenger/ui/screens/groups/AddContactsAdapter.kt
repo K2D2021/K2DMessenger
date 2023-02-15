@@ -6,27 +6,27 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import de.hdodenhof.circleimageview.CircleImageView
-import kotlinx.android.synthetic.main.main_list_item.view.*
+import kotlinx.android.synthetic.main.add_contacts_item.view.*
 import ru.k2d.k2dmessenger.R
 import ru.k2d.k2dmessenger.models.CommonModel
 import ru.k2d.k2dmessenger.ui.screens.single_chat.SingleChatFragment
 import ru.k2d.k2dmessenger.utilits.downloadAndSetImage
 import ru.k2d.k2dmessenger.utilits.replaceFragment
 
-class AddContactsAdapter : RecyclerView.Adapter<AddContactsAdapter.MainListHolder>() {
+class AddContactsAdapter : RecyclerView.Adapter<AddContactsAdapter.AddContactsHolder>() {
 
     private var listItems = mutableListOf<CommonModel>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainListHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AddContactsHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.main_list_item,parent,false)
-        val holder = MainListHolder(view)
+        val holder = AddContactsHolder(view)
         holder.itemView.setOnClickListener {
             replaceFragment(SingleChatFragment(listItems[holder.adapterPosition]))
         }
         return holder
     }
 
-    override fun onBindViewHolder(holder: MainListHolder, position: Int) {
+    override fun onBindViewHolder(holder: AddContactsHolder, position: Int) {
         holder.itemName.text = listItems[position].fullname
         holder.itemLastMessage.text = listItems[position].lastMessage
         holder.itemPhoto.downloadAndSetImage(listItems[position].photoUrl)
@@ -39,9 +39,10 @@ class AddContactsAdapter : RecyclerView.Adapter<AddContactsAdapter.MainListHolde
 
     override fun getItemCount(): Int = listItems.size
 
-    class MainListHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val itemName: TextView = view.main_list_item_name
-        val itemLastMessage: TextView = view.main_list_last_message
-        val itemPhoto: CircleImageView = view.main_list_item_photo
+    class AddContactsHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val itemName: TextView = view.add_contacts_item_name
+        val itemLastMessage: TextView = view.add_contacts_last_message
+        val itemPhoto: CircleImageView = view.add_contacts_item_photo
+        val itemChoice: CircleImageView = view.add_contacts_item_choice
     }
 }
