@@ -3,7 +3,7 @@ package ru.k2d.k2dmessenger.ui.screens.settings
 import kotlinx.android.synthetic.main.fragment_change_username.*
 import ru.k2d.k2dmessenger.R
 import ru.k2d.k2dmessenger.database.*
-import ru.k2d.k2dmessenger.ui.screens.BaseChangeFragment
+import ru.k2d.k2dmessenger.ui.screens.base.BaseChangeFragment
 import ru.k2d.k2dmessenger.utilits.*
 
 

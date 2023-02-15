@@ -1,4 +1,4 @@
-package ru.k2d.k2dmessenger.ui.screens
+package ru.k2d.k2dmessenger.ui.screens.base
 
 import android.view.Menu
 import android.view.MenuInflater
