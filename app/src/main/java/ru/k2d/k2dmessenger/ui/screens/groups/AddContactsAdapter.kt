@@ -20,7 +20,15 @@ class AddContactsAdapter : RecyclerView.Adapter<AddContactsAdapter.AddContactsHo
         val view = LayoutInflater.from(parent.context).inflate(R.layout.add_contacts_item,parent,false)
         val holder = AddContactsHolder(view)
         holder.itemView.setOnClickListener {
-            showToast("Click")
+            if (listItems[holder.adapterPosition].choice){
+                holder.itemChoice.visibility = View.INVISIBLE
+                listItems[holder.adapterPosition].choice = false
+                AddContactsFragment.listContacts.remove(listItems[holder.adapterPosition])
+            } else {
+                holder.itemChoice.visibility = View.VISIBLE
+                listItems[holder.adapterPosition].choice = true
+                AddContactsFragment.listContacts.add(listItems[holder.adapterPosition])
+            }
         }
         return holder
     }

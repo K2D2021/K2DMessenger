@@ -60,4 +60,8 @@ class AddContactsFragment : Fragment(R.layout.fragment_add_contacts) {
 
         mRecyclerView.adapter = mAdapter
     }
+
+    companion object {
+        val listContacts = mutableListOf<CommonModel>()
+    }
 }
