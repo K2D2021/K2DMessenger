@@ -10,7 +10,6 @@ import kotlinx.android.synthetic.main.add_contacts_item.view.*
 import ru.k2d.k2dmessenger.R
 import ru.k2d.k2dmessenger.models.CommonModel
 import ru.k2d.k2dmessenger.utilits.downloadAndSetImage
-import ru.k2d.k2dmessenger.utilits.showToast
 
 class AddContactsAdapter : RecyclerView.Adapter<AddContactsAdapter.AddContactsHolder>() {
 
