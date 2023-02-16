@@ -12,16 +12,17 @@ import ru.k2d.k2dmessenger.models.CommonModel
 import ru.k2d.k2dmessenger.ui.screens.single_chat.SingleChatFragment
 import ru.k2d.k2dmessenger.utilits.downloadAndSetImage
 import ru.k2d.k2dmessenger.utilits.replaceFragment
+import ru.k2d.k2dmessenger.utilits.showToast
 
 class AddContactsAdapter : RecyclerView.Adapter<AddContactsAdapter.AddContactsHolder>() {
 
     private var listItems = mutableListOf<CommonModel>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AddContactsHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.main_list_item,parent,false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.add_contacts_item,parent,false)
         val holder = AddContactsHolder(view)
         holder.itemView.setOnClickListener {
-            replaceFragment(SingleChatFragment(listItems[holder.adapterPosition]))
+            showToast("Click")
         }
         return holder
     }
