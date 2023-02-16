@@ -2,6 +2,7 @@ package ru.k2d.k2dmessenger.ui.screens.groups
 
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.fragment_add_contacts.*
 import kotlinx.android.synthetic.main.fragment_main_list.*
 import ru.k2d.k2dmessenger.R
 import ru.k2d.k2dmessenger.database.*
@@ -10,7 +11,7 @@ import ru.k2d.k2dmessenger.utilits.APP_ACTIVITY
 import ru.k2d.k2dmessenger.utilits.AppValueEventListener
 import ru.k2d.k2dmessenger.utilits.hideKeyboard
 
-class AddContactsFragment : Fragment(R.layout.fragment_main_list) {
+class AddContactsFragment : Fragment(R.layout.fragment_add_contacts) {
 
     private lateinit var mRecyclerView: RecyclerView
     private lateinit var mAdapter: AddContactsAdapter
@@ -22,7 +23,7 @@ class AddContactsFragment : Fragment(R.layout.fragment_main_list) {
 
     override fun onResume() {
         super.onResume()
-        APP_ACTIVITY.title = "K2DMessenger"
+        APP_ACTIVITY.title = "Add member"
         APP_ACTIVITY.mAppDrawer.enableDrawer()
         hideKeyboard()
 
@@ -30,7 +31,7 @@ class AddContactsFragment : Fragment(R.layout.fragment_main_list) {
     }
 
     private fun initRecyclerView() {
-        mRecyclerView = main_list_recycle_view
+        mRecyclerView = add_contacts_recycle_view
         mAdapter = AddContactsAdapter()
         mRefMainList.addListenerForSingleValueEvent(AppValueEventListener { dataSnapshot ->
             mListItems = dataSnapshot.children.map { it.getCommonModel() }
