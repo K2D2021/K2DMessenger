@@ -155,6 +155,11 @@ class AppDrawer {
 
     private fun initLoader() {
         DrawerImageLoader.init(object : AbstractDrawerImageLoader() {
+            @Deprecated("We sorry", ReplaceWith(
+                "imageView.downloadAndSetImage(uri.toString())",
+                "ru.k2d.k2dmessenger.utilits.downloadAndSetImage"
+            )
+            )
             override fun set(imageView: ImageView, uri: Uri, placeholder: Drawable) {
                 imageView.downloadAndSetImage(uri.toString())
             }
