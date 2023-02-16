@@ -3,7 +3,6 @@ package ru.k2d.k2dmessenger.ui.screens.groups
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_add_contacts.*
-import kotlinx.android.synthetic.main.fragment_main_list.*
 import ru.k2d.k2dmessenger.R
 import ru.k2d.k2dmessenger.database.*
 import ru.k2d.k2dmessenger.models.CommonModel
@@ -26,8 +25,12 @@ class AddContactsFragment : Fragment(R.layout.fragment_add_contacts) {
         APP_ACTIVITY.title = "Add member"
         APP_ACTIVITY.mAppDrawer.enableDrawer()
         hideKeyboard()
-
         initRecyclerView()
+        add_contacts_btn_next.setOnClickListener {
+            listContacts.forEach {
+                println(it.id)
+            }
+        }
     }
 
     private fun initRecyclerView() {
