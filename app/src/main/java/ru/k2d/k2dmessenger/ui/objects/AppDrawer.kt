@@ -20,6 +20,7 @@ import ru.k2d.k2dmessenger.ui.screens.contacts.ContactsFragment
 import ru.k2d.k2dmessenger.ui.screens.settings.SettingsFragment
 import ru.k2d.k2dmessenger.utilits.APP_ACTIVITY
 import ru.k2d.k2dmessenger.database.USER
+import ru.k2d.k2dmessenger.ui.screens.groups.AddContactsFragment
 import ru.k2d.k2dmessenger.utilits.downloadAndSetImage
 import ru.k2d.k2dmessenger.utilits.replaceFragment
 
@@ -123,8 +124,9 @@ class AppDrawer {
 
     private fun clickToItem(position: Int) {
         when (position) {
-            7 -> replaceFragment(SettingsFragment())
+            1 -> replaceFragment(AddContactsFragment())
             4 -> replaceFragment(ContactsFragment())
+            7 -> replaceFragment(SettingsFragment())
         }
     }
 
