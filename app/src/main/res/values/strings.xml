@@ -33,4 +33,5 @@
     <string name="img_content_description">TODO</string>
     <string name="clear_chat">Clear the chat</string>
     <string name="delete_chat">Delete the chat</string>
+    <string name="create_group">Create group</string>
 </resources>
