@@ -1,17 +1,14 @@
 package ru.k2d.k2dmessenger.ui.screens.groups
 
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_add_contacts.*
 import ru.k2d.k2dmessenger.R
 import ru.k2d.k2dmessenger.database.*
 import ru.k2d.k2dmessenger.models.CommonModel
-import ru.k2d.k2dmessenger.utilits.APP_ACTIVITY
-import ru.k2d.k2dmessenger.utilits.AppValueEventListener
-import ru.k2d.k2dmessenger.utilits.hideKeyboard
-import ru.k2d.k2dmessenger.utilits.replaceFragment
+import ru.k2d.k2dmessenger.ui.screens.base.BaseFragment
+import ru.k2d.k2dmessenger.utilits.*
 
-class AddContactsFragment : Fragment(R.layout.fragment_add_contacts) {
+class AddContactsFragment : BaseFragment(R.layout.fragment_add_contacts) {
 
     private lateinit var mRecyclerView: RecyclerView
     private lateinit var mAdapter: AddContactsAdapter
@@ -24,11 +21,12 @@ class AddContactsFragment : Fragment(R.layout.fragment_add_contacts) {
     override fun onResume() {
         super.onResume()
         APP_ACTIVITY.title = "Add member"
-        APP_ACTIVITY.mAppDrawer.enableDrawer()
         hideKeyboard()
         initRecyclerView()
         add_contacts_btn_next.setOnClickListener {
-            replaceFragment(CreateGroupFragment(listContacts))
+            if (listContacts.isEmpty()) showToast("Please add members")
+            else replaceFragment(CreateGroupFragment(listContacts))
+
         }
     }
 
