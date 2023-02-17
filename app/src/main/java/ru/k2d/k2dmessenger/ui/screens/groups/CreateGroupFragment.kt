@@ -6,6 +6,7 @@ import ru.k2d.k2dmessenger.R
 import ru.k2d.k2dmessenger.models.CommonModel
 import ru.k2d.k2dmessenger.ui.screens.base.BaseFragment
 import ru.k2d.k2dmessenger.utilits.APP_ACTIVITY
+import ru.k2d.k2dmessenger.utilits.getPlurals
 import ru.k2d.k2dmessenger.utilits.hideKeyboard
 import ru.k2d.k2dmessenger.utilits.showToast
 
@@ -22,6 +23,7 @@ class CreateGroupFragment(private var listContacts: List<CommonModel>) :
         initRecyclerView()
         create_group_btn_complete.setOnClickListener { showToast("Click") }
         create_group_input_name.requestFocus()
+        create_group_counts.text = getPlurals(listContacts.size)
     }
 
     private fun initRecyclerView() {
