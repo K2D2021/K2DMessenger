@@ -1,13 +1,13 @@
 package ru.k2d.k2dmessenger.ui.screens.groups
 
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.fragment_add_contacts.*
 import kotlinx.android.synthetic.main.fragment_create_group.*
 import ru.k2d.k2dmessenger.R
-import ru.k2d.k2dmessenger.database.*
 import ru.k2d.k2dmessenger.models.CommonModel
 import ru.k2d.k2dmessenger.ui.screens.base.BaseFragment
-import ru.k2d.k2dmessenger.utilits.*
+import ru.k2d.k2dmessenger.utilits.APP_ACTIVITY
+import ru.k2d.k2dmessenger.utilits.hideKeyboard
+import ru.k2d.k2dmessenger.utilits.showToast
 
 class CreateGroupFragment(private var listContacts: List<CommonModel>) :
     BaseFragment(R.layout.fragment_create_group) {
