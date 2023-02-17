@@ -9,6 +9,7 @@ import ru.k2d.k2dmessenger.models.CommonModel
 import ru.k2d.k2dmessenger.utilits.APP_ACTIVITY
 import ru.k2d.k2dmessenger.utilits.AppValueEventListener
 import ru.k2d.k2dmessenger.utilits.hideKeyboard
+import ru.k2d.k2dmessenger.utilits.replaceFragment
 
 class AddContactsFragment : Fragment(R.layout.fragment_add_contacts) {
 
@@ -27,9 +28,7 @@ class AddContactsFragment : Fragment(R.layout.fragment_add_contacts) {
         hideKeyboard()
         initRecyclerView()
         add_contacts_btn_next.setOnClickListener {
-            listContacts.forEach {
-                println(it.id)
-            }
+            replaceFragment(CreateGroupFragment(listContacts))
         }
     }
 
