@@ -22,6 +22,7 @@ class CreateGroupFragment(private var listContacts: List<CommonModel>) :
         hideKeyboard()
         initRecyclerView()
         create_group_btn_complete.setOnClickListener { showToast("Click") }
+        create_group_input_name.requestFocus()
     }
 
     private fun initRecyclerView() {
