@@ -34,4 +34,9 @@
     <string name="clear_chat">Clear the chat</string>
     <string name="delete_chat">Delete the chat</string>
     <string name="create_group">Create group</string>
+
+    <plurals name="count_members">
+        <item quantity="one">%d member</item>
+        <item quantity="other">%d members</item>
+    </plurals>
 </resources>
