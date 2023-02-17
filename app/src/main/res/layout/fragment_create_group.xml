@@ -27,4 +27,26 @@
         app:layout_constraintStart_toEndOf="@+id/create_group_photo"
         app:layout_constraintTop_toTopOf="@+id/create_group_photo" />
 
+    <TextView
+        android:id="@+id/create_group_counts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin = "@dimen/app_margin"
+        android:text="@string/account"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/smallText"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/create_group_photo"
+        />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_contacts_btn_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/app_margin"
+        android:backgroundTint="@color/colorPrimary"
+        android:contentDescription="@string/cd_register_btn_next"
+        android:src="@drawable/ic_btn_next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
