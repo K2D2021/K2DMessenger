@@ -19,6 +19,7 @@ class AddContactsFragment : BaseFragment(R.layout.fragment_add_contacts) {
     private var mListItems = listOf<CommonModel>()
 
     override fun onResume() {
+        listContacts.clear()
         super.onResume()
         APP_ACTIVITY.title = "Add member"
         hideKeyboard()
