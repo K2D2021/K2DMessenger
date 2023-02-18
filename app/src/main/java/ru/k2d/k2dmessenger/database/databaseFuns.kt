@@ -264,7 +264,7 @@ fun createGroupToDatabase(
 
     path.updateChildren(mapData)
         .addOnSuccessListener {
-            function
+            function()
 
             if (uri != Uri.EMPTY) {
                 putFileToStorage(uri, pathStorage) {
@@ -275,6 +275,4 @@ fun createGroupToDatabase(
             }
         }
         .addOnFailureListener { showToast(it.message.toString()) }
-
-
 }
