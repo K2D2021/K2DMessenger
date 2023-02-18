@@ -12,6 +12,7 @@ import ru.k2d.k2dmessenger.R
 import ru.k2d.k2dmessenger.database.*
 import ru.k2d.k2dmessenger.models.CommonModel
 import ru.k2d.k2dmessenger.ui.screens.base.BaseFragment
+import ru.k2d.k2dmessenger.ui.screens.main_list.MainListFragment
 import ru.k2d.k2dmessenger.utilits.*
 
 class CreateGroupFragment(private var listContacts: List<CommonModel>) :
@@ -27,7 +28,16 @@ class CreateGroupFragment(private var listContacts: List<CommonModel>) :
         hideKeyboard()
         initRecyclerView()
         create_group_photo.setOnClickListener{ addPhoto()}
-        create_group_btn_complete.setOnClickListener { showToast("Click") }
+        create_group_btn_complete.setOnClickListener {
+            val nameGroup = create_group_input_name.text.toString()
+            if (nameGroup.isEmpty()) {
+                showToast("Please write a name of the group")
+            } else {
+                createGroupToDatabase(nameGroup,mUri,listContacts){
+                    replaceFragment(MainListFragment())
+                }
+            }
+        }
         create_group_input_name.requestFocus()
         create_group_counts.text = getPlurals(listContacts.size)
     }

@@ -238,3 +238,12 @@ fun clearChat(id: String, function: () -> Unit) {
             .addOnFailureListener { it.message.toString() }
         }
 }
+
+fun createGroupToDatabase(
+    nameGroup: String,
+    mUri: Uri?,
+    listContacts: List<CommonModel>,
+    function: () -> Unit
+) {
+
+}
