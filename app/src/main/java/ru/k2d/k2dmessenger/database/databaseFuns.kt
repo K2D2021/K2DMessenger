@@ -203,8 +203,8 @@ fun saveToMainList(id: String, type: String) {
     val refUser = "$NODE_MAIN_LIST/$CURRENT_UID/$id"
     val refReceived = "$NODE_MAIN_LIST$id/$CURRENT_UID/"
 
-    val mapUser = hashMapOf<String,Any>()
-    val mapReceived = hashMapOf<String,Any>()
+    val mapUser = hashMapOf<String, Any>()
+    val mapReceived = hashMapOf<String, Any>()
 
     mapUser[CHILD_ID] = id
     mapUser[CHILD_TYPE] = type
@@ -212,7 +212,7 @@ fun saveToMainList(id: String, type: String) {
     mapReceived[CHILD_ID] = CURRENT_UID
     mapReceived[CHILD_TYPE] = type
 
-    val commonMap = hashMapOf<String,Any>()
+    val commonMap = hashMapOf<String, Any>()
     commonMap[refUser] = mapUser
     commonMap[refReceived] = mapReceived
 
@@ -232,10 +232,11 @@ fun clearChat(id: String, function: () -> Unit) {
     REF_DATABASE_ROOT.child(NODE_MESSAGES).child(CURRENT_UID).child(id)
         .removeValue()
         .addOnFailureListener { showToast(it.message.toString()) }
-        .addOnSuccessListener { REF_DATABASE_ROOT.child(NODE_MESSAGES).child(id).child(CURRENT_UID)
-            .removeValue()
-            .addOnSuccessListener { function() }
-            .addOnFailureListener { it.message.toString() }
+        .addOnSuccessListener {
+            REF_DATABASE_ROOT.child(NODE_MESSAGES).child(id).child(CURRENT_UID)
+                .removeValue()
+                .addOnSuccessListener { function() }
+                .addOnFailureListener { it.message.toString() }
         }
 }
 
@@ -248,26 +249,32 @@ fun createGroupToDatabase(
     val keyGroup = REF_DATABASE_ROOT.child(NODE_GROUPS).push().key.toString()
     val path = REF_DATABASE_ROOT.child(NODE_GROUPS).child(keyGroup)
     val pathStorage = REF_STORAGE_ROOT.child(FOLDER_GROUPS_IMAGE).child(keyGroup)
-    putFileToStorage(uri, pathStorage) {
-        getUrlFromStorage(pathStorage){ it ->
 
-            val mapData = hashMapOf<String, Any>()
-            mapData[CHILD_ID] = keyGroup
-            mapData[CHILD_FULLNAME] = nameGroup
-            mapData[CHILD_FILE_URL] = it
+    val mapData = hashMapOf<String, Any>()
+    mapData[CHILD_ID] = keyGroup
+    mapData[CHILD_FULLNAME] = nameGroup
 
-            val mapMembers = hashMapOf<String, Any>()
-            listContacts.forEach {
-                mapMembers[it.id] = USER_MEMBER
-            }
-            mapMembers[CURRENT_UID] = USER_CREATOR
-
-            mapData[NODE_MEMBERS] = mapMembers
-
-            path.updateChildren(mapData)
-                .addOnSuccessListener { function }
-                .addOnFailureListener { showToast(it.message.toString()) }
-        }
+    val mapMembers = hashMapOf<String, Any>()
+    listContacts.forEach {
+        mapMembers[it.id] = USER_MEMBER
     }
+    mapMembers[CURRENT_UID] = USER_CREATOR
+
+    mapData[NODE_MEMBERS] = mapMembers
+
+    path.updateChildren(mapData)
+        .addOnSuccessListener {
+            function
+
+            if (uri != Uri.EMPTY) {
+                putFileToStorage(uri, pathStorage) {
+                    getUrlFromStorage(pathStorage) {
+                        path.child(CHILD_FILE_URL).setValue(it)
+                    }
+                }
+            }
+        }
+        .addOnFailureListener { showToast(it.message.toString()) }
+
 
 }
