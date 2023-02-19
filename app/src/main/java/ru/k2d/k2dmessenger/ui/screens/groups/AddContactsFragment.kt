@@ -13,7 +13,7 @@ class AddContactsFragment : BaseFragment(R.layout.fragment_add_contacts) {
     private lateinit var mRecyclerView: RecyclerView
     private lateinit var mAdapter: AddContactsAdapter
 
-    private val mRefMainList = REF_DATABASE_ROOT.child(NODE_MAIN_LIST).child(CURRENT_UID)
+    private val mRefContactsList = REF_DATABASE_ROOT.child(NODE_PHONES_CONTACTS).child(CURRENT_UID)
     private val mRefUsers = REF_DATABASE_ROOT.child(NODE_USERS)
     private val mRefMessages = REF_DATABASE_ROOT.child(NODE_MESSAGES).child(CURRENT_UID)
     private var mListItems = listOf<CommonModel>()
@@ -34,15 +34,18 @@ class AddContactsFragment : BaseFragment(R.layout.fragment_add_contacts) {
     private fun initRecyclerView() {
         mRecyclerView = add_contacts_recycle_view
         mAdapter = AddContactsAdapter()
-        mRefMainList.addListenerForSingleValueEvent(AppValueEventListener { dataSnapshot ->
+
+        mRefContactsList.addListenerForSingleValueEvent(AppValueEventListener { dataSnapshot ->
             mListItems = dataSnapshot.children.map { it.getCommonModel() }
             mListItems.forEach { model ->
+
                 mRefUsers.child(model.id)
                     .addListenerForSingleValueEvent(AppValueEventListener { dataSnapshot1 ->
                         val newModel = dataSnapshot1.getCommonModel()
                         mRefMessages.child(model.id).limitToLast(1)
                             .addListenerForSingleValueEvent(AppValueEventListener { dataSnapshot2 ->
-                                val tempList = dataSnapshot2.children.map { it.getCommonModel() }
+                                val tempList =
+                                    dataSnapshot2.children.map { it.getCommonModel() }
 
                                 if (tempList.isEmpty()) {
                                     newModel.lastMessage = "Chat is cleared"
