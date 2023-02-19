@@ -273,11 +273,15 @@ fun createGroupToDatabase(
                 putFileToStorage(uri, pathStorage) {
                     getUrlFromStorage(pathStorage) {
                         path.child(CHILD_PHOTO_URL).setValue(it)
+                        addGroupToMainList(mapData, listContacts) {
+                            function()
+                        }
                     }
                 }
-            }
-            addGroupToMainList(mapData,listContacts){
-                function()
+            } else {
+                addGroupToMainList(mapData, listContacts) {
+                    function()
+                }
             }
         }
         .addOnFailureListener { showToast(it.message.toString()) }
