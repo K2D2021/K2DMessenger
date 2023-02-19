@@ -7,9 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
 import kotlinx.android.synthetic.main.fragment_create_group.*
-import kotlinx.android.synthetic.main.fragment_settings.*
 import ru.k2d.k2dmessenger.R
-import ru.k2d.k2dmessenger.database.*
+import ru.k2d.k2dmessenger.database.createGroupToDatabase
 import ru.k2d.k2dmessenger.models.CommonModel
 import ru.k2d.k2dmessenger.ui.screens.base.BaseFragment
 import ru.k2d.k2dmessenger.ui.screens.main_list.MainListFragment
