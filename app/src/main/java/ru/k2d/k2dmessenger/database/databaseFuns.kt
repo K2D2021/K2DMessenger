@@ -12,8 +12,10 @@ import ru.k2d.k2dmessenger.models.CommonModel
 import ru.k2d.k2dmessenger.models.Usermodel
 import ru.k2d.k2dmessenger.utilits.APP_ACTIVITY
 import ru.k2d.k2dmessenger.utilits.AppValueEventListener
+import ru.k2d.k2dmessenger.utilits.TYPE_GROUP
 import ru.k2d.k2dmessenger.utilits.showToast
 import java.io.File
+import java.util.HashMap
 
 fun initFirebase() {
     AUTH = FirebaseAuth.getInstance()
@@ -273,6 +275,26 @@ fun createGroupToDatabase(
                     }
                 }
             }
+            addGroupToMainList(mapData,listContacts){
+                function()
+            }
         }
+        .addOnFailureListener { showToast(it.message.toString()) }
+}
+
+fun addGroupToMainList(
+    mapData: HashMap<String, Any>,
+    listContacts: List<CommonModel>,
+    function: () -> Unit
+) {
+    val path = REF_DATABASE_ROOT.child(NODE_MAIN_LIST)
+    val map = hashMapOf<String,Any>()
+    map[CHILD_ID] = mapData[CHILD_ID].toString()
+    map[CHILD_TYPE] = TYPE_GROUP
+    listContacts.forEach {
+        path.child(it.id).child(map[CHILD_ID].toString()).updateChildren(map)
+    }
+    path.child(CURRENT_UID).child(map[CHILD_ID].toString()).updateChildren(map)
+        .addOnSuccessListener { function()}
         .addOnFailureListener { showToast(it.message.toString()) }
 }
