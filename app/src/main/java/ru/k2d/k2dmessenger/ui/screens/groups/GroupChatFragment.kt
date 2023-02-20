@@ -29,7 +29,7 @@ import ru.k2d.k2dmessenger.ui.screens.main_list.MainListFragment
 import ru.k2d.k2dmessenger.utilits.*
 
 
-class GroupChatFragment(private val contact: CommonModel) :
+class GroupChatFragment(private val group: CommonModel) :
     BaseFragment(R.layout.fragment_single_chat) {
 
     private lateinit var mListenerInfoToolbar: AppValueEventListener
@@ -89,7 +89,7 @@ class GroupChatFragment(private val contact: CommonModel) :
                                 R.color.colorPrimary
                             )
                         )
-                        val messageKey = getMessageKey(contact.id)
+                        val messageKey = getMessageKey(group.id)
                         mAppVoiceRecorder.startRecord(messageKey)
                     } else if (event.action == MotionEvent.ACTION_UP) {
                         chat_input_message.setText("")
@@ -103,7 +103,7 @@ class GroupChatFragment(private val contact: CommonModel) :
                             uploadFileToStorage(
                                 Uri.fromFile(file),
                                 messageKey,
-                                contact.id,
+                                group.id,
                                 TYPE_MESSAGE_VOICE
                             )
                             mSmoothScrollToPosition = true
@@ -137,7 +137,12 @@ class GroupChatFragment(private val contact: CommonModel) :
     private fun initRecyclerView() {
         mRecyclerView = chat_recycler_view
         mAdapter = GroupChatAdapter()
-        mRefMessages = REF_DATABASE_ROOT.child(NODE_MESSAGES).child(CURRENT_UID).child(contact.id)
+
+        mRefMessages = REF_DATABASE_ROOT
+            .child(NODE_GROUPS)
+            .child(group.id)
+            .child(NODE_MESSAGES)
+
         mRecyclerView.adapter = mAdapter
         mRecyclerView.setHasFixedSize(true)
         mRecyclerView.isNestedScrollingEnabled = false
@@ -193,15 +198,14 @@ class GroupChatFragment(private val contact: CommonModel) :
             initInfoToolbar()
         }
 
-        mRefUser = REF_DATABASE_ROOT.child(NODE_USERS).child(contact.id)
+        mRefUser = REF_DATABASE_ROOT.child(NODE_USERS).child(group.id)
         mRefUser.addValueEventListener(mListenerInfoToolbar)
         chat_btn_send_message.setOnClickListener {
             mSmoothScrollToPosition = true
             val message = chat_input_message.text.toString()
             if (message.isEmpty()) {
                 showToast("Please input message")
-            } else sendMessage(message, contact.id, TYPE_TEXT) {
-                saveToMainList(contact.id, TYPE_CHAT)
+            } else sendMessageToGroup(message, group.id, TYPE_TEXT) {
                 chat_input_message.setText("")
             }
         }
@@ -209,7 +213,7 @@ class GroupChatFragment(private val contact: CommonModel) :
 
     private fun initInfoToolbar() {
         if (mReceivingUser.fullname.isEmpty()) {
-            mToolbarInfo.toolbar_chat_fullname.text = contact.fullname
+            mToolbarInfo.toolbar_chat_fullname.text = group.fullname
         } else mToolbarInfo.toolbar_chat_fullname.text = mReceivingUser.fullname
         mToolbarInfo.toolbar_chat_image.downloadAndSetImage(mReceivingUser.photoUrl)
         mToolbarInfo.toolbar_chat_status.text = mReceivingUser.state
@@ -222,15 +226,15 @@ class GroupChatFragment(private val contact: CommonModel) :
             when (requestCode) {
                 CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE -> {
                     val uri = CropImage.getActivityResult(data).uri
-                    val messageKey = getMessageKey(contact.id)
-                    uploadFileToStorage(uri, messageKey, contact.id, TYPE_MESSAGE_IMAGE)
+                    val messageKey = getMessageKey(group.id)
+                    uploadFileToStorage(uri, messageKey, group.id, TYPE_MESSAGE_IMAGE)
                     mSmoothScrollToPosition = true
                 }
                 PICK_FILE_REQUEST_CODE -> {
                     val uri = data.data
-                    val messageKey = getMessageKey(contact.id)
+                    val messageKey = getMessageKey(group.id)
                     val filename = getFilenameFromUri(uri!!)
-                    uploadFileToStorage(uri, messageKey, contact.id, TYPE_MESSAGE_FILE, filename)
+                    uploadFileToStorage(uri, messageKey, group.id, TYPE_MESSAGE_FILE, filename)
                     mSmoothScrollToPosition = true
                 }
             }
@@ -256,11 +260,11 @@ class GroupChatFragment(private val contact: CommonModel) :
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.menu_clear_chat -> clearChat(contact.id){
+            R.id.menu_clear_chat -> clearChat(group.id){
                 showToast("Chat was cleared")
                 replaceFragment(MainListFragment())
             }
-            R.id.menu_delete_chat -> deleteChat(contact.id){
+            R.id.menu_delete_chat -> deleteChat(group.id){
                 showToast("Chat was removed")
                 replaceFragment(MainListFragment())
             }
