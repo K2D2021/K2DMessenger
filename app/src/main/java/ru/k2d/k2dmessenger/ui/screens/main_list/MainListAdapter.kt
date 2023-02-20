@@ -9,7 +9,10 @@ import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.main_list_item.view.*
 import ru.k2d.k2dmessenger.R
 import ru.k2d.k2dmessenger.models.CommonModel
+import ru.k2d.k2dmessenger.ui.screens.groups.GroupChatFragment
 import ru.k2d.k2dmessenger.ui.screens.single_chat.SingleChatFragment
+import ru.k2d.k2dmessenger.utilits.TYPE_CHAT
+import ru.k2d.k2dmessenger.utilits.TYPE_GROUP
 import ru.k2d.k2dmessenger.utilits.downloadAndSetImage
 import ru.k2d.k2dmessenger.utilits.replaceFragment
 
@@ -18,10 +21,15 @@ class MainListAdapter : RecyclerView.Adapter<MainListAdapter.MainListHolder>() {
     private var listItems = mutableListOf<CommonModel>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainListHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.main_list_item,parent,false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.main_list_item, parent, false)
         val holder = MainListHolder(view)
         holder.itemView.setOnClickListener {
-            replaceFragment(SingleChatFragment(listItems[holder.adapterPosition]))
+
+            when (listItems[holder.adapterPosition].type) {
+                TYPE_CHAT -> replaceFragment(SingleChatFragment(listItems[holder.adapterPosition]))
+                TYPE_GROUP -> replaceFragment(GroupChatFragment(listItems[holder.adapterPosition]))
+            }
         }
         return holder
     }
@@ -32,7 +40,7 @@ class MainListAdapter : RecyclerView.Adapter<MainListAdapter.MainListHolder>() {
         holder.itemPhoto.downloadAndSetImage(listItems[position].photoUrl)
     }
 
-    fun updateListItems(item:CommonModel){
+    fun updateListItems(item: CommonModel) {
         listItems.add(item)
         notifyItemInserted(listItems.size)
     }
